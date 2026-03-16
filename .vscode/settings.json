@@ -3,5 +3,6 @@
     "bootcamp",
     "kiro",
     "senzing"
-  ]
+  ],
+  "kiroAgent.configureMCP": "Disabled"
 }
