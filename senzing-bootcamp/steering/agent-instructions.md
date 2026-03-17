@@ -45,7 +45,7 @@ This document consolidates all agent behavior instructions from across the boot 
 
 ### Module 3: Evaluate Data Quality
 - **Run automated quality scoring** on each data source
-- Use data quality scorer script from MODULE_3_DATA_QUALITY_SCORING.md
+- Use data quality scorer script from docs/modules/MODULE_3_DATA_QUALITY_SCORING.md
 - Generate quality report with scores (0-100)
 - Calculate completeness, consistency, validity, uniqueness metrics
 - Create HTML dashboard for visualization

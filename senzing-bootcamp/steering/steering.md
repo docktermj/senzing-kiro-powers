@@ -1020,7 +1020,243 @@ Use this workflow for each data source that needs to be loaded into Senzing. Cre
 
 9. **Repeat for remaining data sources**: If there are more data sources to load, repeat this entire workflow for each one. Each data source should have its own loading program.
 
-10. **Transition to Module 7**: Once all data sources have been loaded, proceed to Module 7 (Analyze Results and Troubleshoot) to explore and query the resolved entities.
+10. **Transition to Module 7**: Once all data sources have been loaded, proceed to Module 7 (Multi-Source Orchestration) to orchestrate loading of multiple sources with dependencies. If you only have one data source, skip to Module 8 (Query and Validate Results).
+
+## Workflow: Multi-Source Orchestration (Module 7)
+
+**Note**: For the comprehensive, detailed workflow for Module 7, see `docs/development/NEW_WORKFLOWS_PHASE5.md` (Module 7 section, 2,100+ lines).
+
+Use this workflow after loading at least one data source successfully (Module 6). The goal is to orchestrate loading of multiple data sources with proper dependency management, error handling, and progress tracking.
+
+**Time**: 1-2 hours
+
+**Prerequisites**: ✅ Module 6 complete (at least one data source loaded successfully)
+
+**Purpose**: Manage loading of multiple data sources with dependencies, optimize load order, implement parallel loading where appropriate, and handle errors across sources.
+
+### Quick Summary
+
+1. **Assess multi-source requirements** - Review all data sources and identify dependencies
+2. **Define load order** - Create dependency graph and identify parallel opportunities
+3. **Create orchestration script** - Build Python orchestration script with LoadOrchestrator class
+4. **Implement error handling** - Handle failures per source with retry logic
+5. **Add progress tracking** - Track progress across all sources with dashboard
+6. **Test orchestration** - Test with sample data and failure scenarios
+7. **Run full orchestration** - Execute complete load plan
+8. **Validate multi-source results** - Verify cross-source matching and relationships
+9. **Document orchestration** - Update load strategy documentation
+
+### Key Features
+- Dependency management between sources
+- Parallel and sequential loading strategies
+- Complete Python orchestration script (LoadOrchestrator class)
+- Error handling per source with retry logic
+- Progress tracking and reporting
+- Load plan configuration examples
+
+**Success indicator**: ✅ All data sources loaded + orchestration script created + progress tracked + results documented
+
+**For detailed step-by-step instructions**, see `docs/development/NEW_WORKFLOWS_PHASE5.md` (Module 7 section).
+
+**Transition to Module 8**: Once all sources are loaded successfully, proceed to Module 8 (Query and Validate Results).
+
+## Workflow: Query and Validate Results with UAT (Module 8)
+
+**Note**: For the comprehensive, detailed workflow for Module 8, see `docs/development/NEW_WORKFLOWS_PHASE5.md` (Module 8 section, 1,000+ lines).
+
+This workflow replaces the old "Module 7: Query Results" workflow. Use this after all data sources are loaded (Modules 6-7).
+
+**Time**: 1-2 hours
+
+**Prerequisites**: ✅ Module 7 complete (all sources loaded) OR Module 6 complete (single source loaded)
+
+**Purpose**: Create query programs to answer business questions and validate results through User Acceptance Testing (UAT).
+
+### Quick Summary
+
+1. **Review business requirements** - Go back to Module 1 and review the problem statement
+2. **Create query programs** - Build programs for each business question
+3. **Test query programs** - Verify results with test data
+4. **Create UAT test cases** - Define acceptance criteria and test cases
+5. **Execute UAT tests** - Run tests and document results
+6. **Resolve issues** - Fix any failed tests
+7. **Get stakeholder sign-off** - Obtain formal approval
+8. **Document query specifications** - Create query documentation
+
+### Key Features
+- Query program examples (Customer 360, Find Duplicates)
+- UAT test case format (YAML)
+- UAT executor guidance
+- Issue tracking and resolution
+- Sign-off documentation
+- References to `steering/uat-framework.md`
+
+**Success indicator**: ✅ Query programs created + UAT tests passed + Stakeholder sign-off obtained
+
+**For detailed step-by-step instructions**, see `docs/development/NEW_WORKFLOWS_PHASE5.md` (Module 8 section).
+
+**Transition to Module 9**: If deploying to production, proceed to Module 9 (Performance Testing). If not deploying to production, boot camp complete!
+
+## Workflow: Performance Testing and Benchmarking (Module 9)
+
+**Note**: For the comprehensive, detailed workflow for Module 9, see `docs/development/NEW_WORKFLOWS_PHASE5.md` (Module 9 section, 1,500+ lines).
+
+Use this workflow after query validation (Module 8) and before production deployment. The goal is to test performance and scalability to ensure the solution meets production requirements.
+
+**Time**: 1-2 hours
+
+**Prerequisites**: ✅ Module 8 complete (queries working, UAT passed)
+
+**Purpose**: Benchmark transformation, loading, and query performance; test scalability; identify bottlenecks; validate production readiness.
+
+### Quick Summary
+
+1. **Define performance requirements** - Set targets for throughput and response time
+2. **Benchmark transformation** - Test transformation speed
+3. **Benchmark loading** - Test loading performance
+4. **Benchmark queries** - Test query response times and concurrent users
+5. **Profile resource utilization** - Monitor CPU, memory, disk I/O
+6. **Test scalability** - Test with increasing data volumes
+7. **Generate performance report** - Document results and recommendations
+8. **Optimize if needed** - Address any bottlenecks
+
+### Key Features
+- Complete benchmark scripts (transformation, loading, queries)
+- Concurrent query testing
+- Resource monitoring
+- Scalability projections
+- Performance report template
+- Optimization recommendations
+
+**Success indicator**: ✅ Performance targets met + Benchmarks documented + Bottlenecks identified + Production readiness confirmed
+
+**For detailed step-by-step instructions**, see `docs/development/NEW_WORKFLOWS_PHASE5.md` (Module 9 section).
+
+**Transition to Module 10**: Once performance testing is complete, proceed to Module 10 (Security Hardening).
+
+## Workflow: Security Hardening (Module 10)
+
+**Note**: For the comprehensive, detailed workflow for Module 10, see `docs/development/NEW_WORKFLOWS_PHASE5.md` (Module 10 section, 1,500+ lines).
+
+Use this workflow after performance testing (Module 9) and before production deployment. The goal is to secure the application and data for production use.
+
+**Time**: 1-2 hours
+
+**Prerequisites**: ✅ Module 9 complete (performance validated)
+
+**Purpose**: Implement secrets management, authentication/authorization, encryption, PII handling, security scanning, and vulnerability assessment.
+
+### Quick Summary
+
+1. **Assess security requirements** - Review compliance needs (GDPR, CCPA, HIPAA, etc.)
+2. **Implement secrets management** - Use AWS Secrets Manager, Azure Key Vault, or env vars
+3. **Implement authentication/authorization** - Add API keys, JWT, RBAC
+4. **Enable encryption** - Encrypt data at rest and in transit
+5. **Implement PII handling** - Mask PII, log access, implement retention policies
+6. **Run security scanning** - Scan dependencies, code, and containers
+7. **Create security audit document** - Document all security measures
+8. **Document security procedures** - Create runbooks and train team
+
+### Key Features
+- Secrets management (AWS, Azure, environment variables)
+- API authentication (API keys, JWT tokens)
+- Role-based access control (RBAC)
+- Encryption at rest and in transit
+- PII masking and access logging
+- Security scanning tools (safety, bandit, trivy, semgrep)
+- Security audit template
+
+**Success indicator**: ✅ Secrets managed + Authentication implemented + Encryption enabled + PII protected + Vulnerabilities fixed + Security audit complete
+
+**For detailed step-by-step instructions**, see `docs/development/NEW_WORKFLOWS_PHASE5.md` (Module 10 section).
+
+**Transition to Module 11**: Once security hardening is complete, proceed to Module 11 (Monitoring and Observability).
+
+## Workflow: Monitoring and Observability (Module 11)
+
+**Note**: For the comprehensive, detailed workflow for Module 11, see `docs/development/NEW_WORKFLOWS_PHASE5.md` (Module 11 section, 1,500+ lines).
+
+Use this workflow after security hardening (Module 10) and before final deployment. The goal is to set up comprehensive monitoring, logging, and alerting for production operations.
+
+**Time**: 1-2 hours
+
+**Prerequisites**: ✅ Module 10 complete (security hardened)
+
+**Purpose**: Implement distributed tracing, structured logging, metrics collection, APM integration, alerting rules, health checks, and monitoring dashboards.
+
+### Quick Summary
+
+1. **Choose monitoring stack** - Select Prometheus/Grafana, ELK, Cloud, or APM
+2. **Implement metrics collection** - Add Prometheus metrics to application
+3. **Configure structured logging** - Implement JSON logging
+4. **Set up distributed tracing** (optional) - Add OpenTelemetry tracing
+5. **Create health check endpoints** - Implement liveness, readiness, health checks
+6. **Configure alerting rules** - Set up critical and warning alerts
+7. **Create monitoring dashboards** - Build Grafana dashboards
+8. **Deploy monitoring stack** - Deploy with Docker Compose
+9. **Create runbooks** - Document alert response procedures
+10. **Test monitoring** - Verify metrics, logs, alerts, and dashboards
+11. **Document monitoring setup** - Create monitoring guide
+
+### Key Features
+- Monitoring stack options (Prometheus/Grafana, ELK, Cloud, APM)
+- Complete metrics implementation (Prometheus client)
+- Structured logging (JSON formatter)
+- Health check endpoints (liveness, readiness)
+- Alerting rules (critical and warning)
+- Grafana dashboard configuration
+- Docker Compose for monitoring stack
+- Runbook templates
+
+**Success indicator**: ✅ Monitoring stack deployed + Metrics collected + Logs structured + Alerts configured + Dashboards created + Runbooks documented + Team trained
+
+**For detailed step-by-step instructions**, see `docs/development/NEW_WORKFLOWS_PHASE5.md` (Module 11 section).
+
+**Transition to Module 12**: Once monitoring is fully operational, proceed to Module 12 (Package and Deploy).
+
+## Workflow: Package and Deploy (Module 12)
+
+**Note**: For the comprehensive, detailed workflow for Module 12, see `docs/development/NEW_WORKFLOWS_PHASE5.md` (Module 12 section, 1,000+ lines).
+
+This workflow has been updated to reference Modules 9, 10, and 11. Use this workflow after monitoring setup (Module 11) to package and deploy your production-ready solution.
+
+**Time**: 2-3 hours
+
+**Prerequisites**: 
+- ✅ Module 9 complete (performance tested)
+- ✅ Module 10 complete (security hardened)
+- ✅ Module 11 complete (monitoring configured)
+
+**Purpose**: Refactor code into production package structure, add comprehensive tests, apply language-specific packaging, generate deployment documentation, and create deployment artifacts.
+
+### Quick Summary
+
+1. **Review production readiness** - Verify all prerequisites met
+2. **Refactor code structure** - Organize into production package
+3. **Integrate security, performance, and monitoring** - Combine all modules
+4. **Create comprehensive test suite** - Add tests for all components
+5. **Create deployment artifacts** - Generate Docker, K8s, CI/CD configs
+6. **Generate deployment documentation** - Create deployment guide
+7. **Create deployment scripts** - Build automation scripts
+8. **Final validation** - Run all tests and checks
+
+### Key Features
+- References Modules 9, 10, 11 as prerequisites
+- Integrates security measures from Module 10
+- Integrates performance optimizations from Module 9
+- Integrates monitoring from Module 11
+- References `steering/disaster-recovery.md`
+- References `steering/api-gateway-patterns.md`
+- References `steering/multi-environment-strategy.md`
+- Complete Dockerfile with security and health checks
+- Docker Compose with full monitoring stack
+- Comprehensive deployment guide
+
+**Success indicator**: ✅ Code packaged + Tests passing + Deployment artifacts created + Documentation complete + Validation passed + Production deployed
+
+**For detailed step-by-step instructions**, see `docs/development/NEW_WORKFLOWS_PHASE5.md` (Module 12 section).
+
+**Boot Camp Complete!** 🎉
 
 ## Workflow: Quick SDK Test Load (Legacy)
 
@@ -1050,7 +1286,15 @@ Before recommending any installation or deployment approach, call `search_docs` 
 - Missing database schema initialization
 - Incorrect repository configuration
 
-## Workflow: Create Query Programs to Answer the Business Problem (Module 7)
+## Workflow: Create Query Programs to Answer the Business Problem (Module 7) - LEGACY
+
+**Note**: This workflow has been superseded by the new Module 8 workflow above. This section is kept for reference only.
+
+**For current workflow**, see "Workflow: Query and Validate Results with UAT (Module 8)" above, or see the detailed workflow in `docs/development/NEW_WORKFLOWS_PHASE5.md`.
+
+---
+
+### Legacy Content (For Reference Only)
 
 Use this workflow after all data sources have been loaded (Module 6). The goal is to create programs that query Senzing to answer the specific business problem identified in Module 1.
 
@@ -1293,7 +1537,15 @@ This power should activate when the user mentions or is working on:
 - V3 to V4 migration
 
 
-## Workflow: Refine and Package for Deployment (Module 8)
+## Workflow: Refine and Package for Deployment (Module 8) - LEGACY
+
+**Note**: This workflow has been superseded by the new Module 12 workflow above. This section is kept for reference only.
+
+**For current workflow**, see "Workflow: Package and Deploy (Module 12)" above, or see the detailed workflow in `docs/development/NEW_WORKFLOWS_PHASE5.md`.
+
+---
+
+### Legacy Content (For Reference Only)
 
 Use this workflow when the user has completed Modules 0-7 and wants to prepare their code for production deployment.
 

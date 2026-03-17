@@ -685,7 +685,7 @@ Load this guide when:
 
 - `POWER.md` - Module 12 overview
 - `steering/steering.md` - Module 12 workflow
-- `MODULE_12_DEPLOYMENT_PACKAGING.md` - Deployment guide
+- `docs/modules/MODULE_12_DEPLOYMENT_PACKAGING.md` - Deployment guide
 - `steering/disaster-recovery.md` - Backup and recovery
 - `steering/api-gateway-patterns.md` - API integration
 

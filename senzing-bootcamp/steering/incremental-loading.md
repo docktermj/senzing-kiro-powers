@@ -398,7 +398,7 @@ Load this guide when:
 
 - `POWER.md` - Module 6 overview
 - `steering/steering.md` - Module 6 workflow
-- `MODULE_6_SINGLE_SOURCE_LOADING.md` - Single source loading
+- `docs/modules/MODULE_6_SINGLE_SOURCE_LOADING.md` - Single source loading
 
 ## Version History
 

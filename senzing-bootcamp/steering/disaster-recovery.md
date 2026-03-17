@@ -806,7 +806,7 @@ Load this guide when:
 
 - `POWER.md` - Module 12 overview
 - `steering/steering.md` - Module 12 workflow
-- `MODULE_12_DEPLOYMENT_PACKAGING.md` - Deployment guide
+- `docs/modules/MODULE_12_DEPLOYMENT_PACKAGING.md` - Deployment guide
 - `steering/multi-environment-strategy.md` - Environment management
 
 ## Version History
