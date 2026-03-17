@@ -863,6 +863,16 @@ This workflow is now split into two parts:
    - Call `sdk_guide` with `topic='install'` and the detected platform for installation commands
    - Follow platform-specific installation steps
    - Accept EULA during installation
+   
+   **If user chooses Docker deployment**:
+   - Explain that Docker runtime images do NOT include PostgreSQL schema files
+   - For PostgreSQL, must use two-stage initialization pattern:
+     1. Create minimal SQL schema with sys_vars table
+     2. Use SDK's `set_default_config()` to create remaining tables
+   - Container CMD should be `tail -f /dev/null` to keep running
+   - Use `docker exec` to run initialization and loading commands
+   - All Docker files must be created in `docker/` directory
+   - Reference `steering/docker-deployment.md` for complete examples
 
 4. **Verify the installation is working correctly**:
    ```python

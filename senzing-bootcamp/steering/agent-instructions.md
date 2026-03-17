@@ -97,6 +97,18 @@ This document consolidates all agent behavior instructions from across the boot 
 - Create engine configuration
 - Test database connection before proceeding
 
+#### Docker Deployment Guidance
+When user chooses Docker deployment:
+- **Runtime images do NOT include PostgreSQL schema files** - cannot use `/opt/senzing/er/resources/schema/szcore-schema-postgresql-create.sql`
+- **Use two-stage initialization pattern**:
+  1. Create minimal SQL schema with sys_vars table (VERSION='4.2.1', SCHEMA_VERSION='4.0')
+  2. Use SDK's `set_default_config()` to create remaining tables automatically
+- **Container CMD should be `tail -f /dev/null`** to keep container running
+- **Use `docker exec` to run commands** instead of container CMD
+- **All Docker files must be in `docker/` directory** - never in project root
+- Reference `steering/docker-deployment.md` for complete examples
+- Check `docs/guides/TROUBLESHOOTING_INDEX.md` for Docker-specific issues (SENZ1019, SENZ7223, schema file not found, container restarts)
+
 ### Module 6: Loading
 - **Verify `.kiro/hooks/` exists** before installing hooks
 - **Remind to backup** before loading (or use backup hook)

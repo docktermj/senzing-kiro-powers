@@ -580,6 +580,194 @@ Quick reference for common issues and solutions across all boot camp modules.
 
 ---
 
+### Schema Tables Not Found (SENZ1019) - Docker
+
+**Symptom**: `SENZ1019: Schema tables not found` in Docker containers
+
+**Cause**: Database not properly initialized (common in Docker deployments)
+
+**Solutions**:
+
+1. **Check if sys_vars table exists**:
+   ```bash
+   docker-compose exec postgres psql -U senzing -d senzing -c "SELECT * FROM sys_vars;"
+   ```
+
+2. **If table doesn't exist, initialize minimal schema**:
+   ```sql
+   CREATE TABLE sys_vars (
+       var_group VARCHAR(50),
+       var_code VARCHAR(50),
+       var_value TEXT,
+       PRIMARY KEY (var_group, var_code)
+   );
+   
+   INSERT INTO sys_vars VALUES ('SYSTEM', 'VERSION', '4.2.1');
+   INSERT INTO sys_vars VALUES ('SYSTEM', 'SCHEMA_VERSION', '4.0');
+   ```
+
+3. **Run SDK initialization**:
+   ```bash
+   docker-compose exec senzing python src/setup/init_database.py
+   ```
+
+4. **Verify sz_cfg_config table was created**:
+   ```bash
+   docker-compose exec postgres psql -U senzing -d senzing -c "\dt"
+   ```
+
+**Related**: [docker-deployment.md](../../steering/docker-deployment.md)
+
+---
+
+### Invalid Schema Version (SENZ7223) - Docker
+
+**Symptom**: `SENZ7223: Invalid schema version` in Docker
+
+**Cause**: Version mismatch in sys_vars table
+
+**Solutions**:
+
+1. **Check current version**:
+   ```sql
+   SELECT * FROM sys_vars WHERE var_group = 'SYSTEM';
+   ```
+
+2. **Update version for Senzing 4.2.1**:
+   ```sql
+   UPDATE sys_vars SET var_value = '4.2.1' 
+   WHERE var_group = 'SYSTEM' AND var_code = 'VERSION';
+   
+   UPDATE sys_vars SET var_value = '4.0' 
+   WHERE var_group = 'SYSTEM' AND var_code = 'SCHEMA_VERSION';
+   ```
+
+3. **Restart container**:
+   ```bash
+   docker-compose restart senzing
+   ```
+
+**Related**: [docker-deployment.md](../../steering/docker-deployment.md)
+
+---
+
+### Schema File Not Found - Docker
+
+**Symptom**: Cannot find `/opt/senzing/er/resources/schema/szcore-schema-postgresql-create.sql` in Docker
+
+**Cause**: Runtime Docker images don't include schema files
+
+**Solution**:
+
+**DON'T** try to use schema files from runtime images - they don't exist!
+
+**DO** use SDK-based initialization:
+
+1. Create minimal schema (sys_vars, sys_cfg, sz_cfg_config)
+2. Run SDK initialization to create remaining tables
+3. See [docker-deployment.md](../../steering/docker-deployment.md) for complete example
+
+**Related**: [docker-deployment.md](../../steering/docker-deployment.md)
+
+---
+
+## Docker Issues
+
+### Container Restarts Continuously
+
+**Symptom**: Docker container keeps restarting
+
+**Cause**: CMD exits immediately or fails
+
+**Solutions**:
+
+1. **Change CMD to keep container running**:
+   ```dockerfile
+   CMD ["tail", "-f", "/dev/null"]
+   ```
+
+2. **Use docker exec for commands**:
+   ```bash
+   docker exec senzing-app python src/query/run_queries.py
+   ```
+
+3. **Check container logs**:
+   ```bash
+   docker logs senzing-app
+   docker logs --tail 50 senzing-app
+   ```
+
+4. **Implement proper entrypoint with error handling**
+
+**Related**: [docker-deployment.md](../../steering/docker-deployment.md)
+
+---
+
+### Cannot Connect to PostgreSQL from Container
+
+**Symptom**: Connection refused when connecting to PostgreSQL from Docker container
+
+**Solutions**:
+
+1. **Use service name, not localhost**:
+   ```python
+   # ❌ WRONG
+   "CONNECTION": "postgresql://senzing:pass@localhost:5432/senzing"
+   
+   # ✅ CORRECT (in docker-compose)
+   "CONNECTION": "postgresql://senzing:pass@postgres:5432/senzing"
+   ```
+
+2. **Add depends_on with health check**:
+   ```yaml
+   services:
+     senzing:
+       depends_on:
+         postgres:
+           condition: service_healthy
+   ```
+
+3. **Implement wait-for-postgres script**
+
+4. **Check network**:
+   ```bash
+   docker network ls
+   docker network inspect <network_name>
+   ```
+
+**Related**: [docker-deployment.md](../../steering/docker-deployment.md)
+
+---
+
+### Docker Build Context Issues
+
+**Symptom**: Files not found during Docker build
+
+**Cause**: Incorrect build context when Dockerfile is in docker/ folder
+
+**Solutions**:
+
+1. **Build with correct context**:
+   ```bash
+   # From project root
+   docker build -f docker/Dockerfile -t myapp .
+   ```
+
+2. **In docker-compose.yml**:
+   ```yaml
+   build:
+     context: ..              # Parent directory
+     dockerfile: docker/Dockerfile
+   ```
+
+3. **Check .dockerignore location**: Should be `docker/.dockerignore`
+
+**Related**: [DOCKER_FOLDER_POLICY.md](../development/DOCKER_FOLDER_POLICY.md)
+
+---
+
+## Database Issues
+
 ## Error Codes
 
 ### Common Senzing Error Codes

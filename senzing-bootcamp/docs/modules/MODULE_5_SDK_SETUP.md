@@ -150,6 +150,97 @@ docker run senzing/senzing-tools:latest \
 docker volume create senzing-data
 ```
 
+## Docker Deployment Considerations
+
+When using Docker, there are important differences from native installations:
+
+### Runtime Image Limitations
+
+The `senzing/senzingsdk-runtime` images (e.g., `senzing/senzingsdk-runtime:4.2.1`) are optimized for production use and **do not include PostgreSQL schema files**. This means:
+
+- Schema files like `/opt/senzing/er/resources/schema/szcore-schema-postgresql-create.sql` are **not available** in runtime images
+- You cannot use the standard schema creation approach from native installations
+- You must use a **two-stage initialization pattern** instead
+
+### Two-Stage Initialization Pattern
+
+For Docker deployments with PostgreSQL, use this approach:
+
+**Stage 1: Minimal SQL Schema**
+```sql
+-- Create minimal schema with sys_vars table
+CREATE TABLE sys_vars (
+    var_name VARCHAR(50) PRIMARY KEY,
+    var_value VARCHAR(255)
+);
+
+-- Insert required version information
+INSERT INTO sys_vars (var_name, var_value) VALUES ('VERSION', '4.2.1');
+INSERT INTO sys_vars (var_name, var_value) VALUES ('SCHEMA_VERSION', '4.0');
+```
+
+**Stage 2: SDK Initialization**
+```python
+# Use SDK to create remaining tables automatically
+from senzing import G2ConfigMgr, G2Engine
+
+# Initialize config manager
+config_mgr = G2ConfigMgr()
+config_mgr.init("ConfigMgr", engine_config_json, False)
+
+# Set default configuration (creates remaining tables)
+config_mgr.set_default_config()
+config_mgr.destroy()
+```
+
+### Container CMD Best Practice
+
+Keep containers running with:
+```dockerfile
+CMD ["tail", "-f", "/dev/null"]
+```
+
+Then use `docker exec` to run commands:
+```bash
+# Run initialization script
+docker exec my-senzing-container python /app/initialize_db.py
+
+# Run loader
+docker exec my-senzing-container python /app/load_data.py
+```
+
+This approach:
+- Keeps container alive for debugging
+- Allows multiple commands without restart
+- Provides better control over execution
+
+### Complete Docker Setup Example
+
+See `senzing-bootcamp/steering/docker-deployment.md` for complete examples including:
+- Full docker-compose.yml configuration
+- Two-stage initialization scripts
+- Container health checks
+- Volume management
+- Network configuration
+
+### Docker-Specific Troubleshooting
+
+Common Docker deployment issues:
+
+**SENZ1019: Schema file not found**
+- Cause: Runtime image doesn't include schema files
+- Solution: Use two-stage initialization pattern
+
+**SENZ7223: Database connection failed**
+- Cause: Container networking or PostgreSQL not ready
+- Solution: Add health checks and connection retry logic
+
+**Container restarts immediately**
+- Cause: CMD exits immediately
+- Solution: Use `tail -f /dev/null` as CMD
+
+For more Docker troubleshooting, see `docs/guides/TROUBLESHOOTING_INDEX.md`
+
 ### Linux Installation (apt-based)
 
 ```bash
