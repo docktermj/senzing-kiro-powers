@@ -36,21 +36,18 @@ Senzing is an embeddable entity resolution engine that resolves records about pe
 
 The boot camp follows a progressive learning path. Each module builds on the previous one.
 
-### Module 1: Understand Entity Resolution
+### Module 1: Understand the User's business problem
 
-- Learn what entity resolution is and why it matters
-- Understand how Senzing matches, relates, and deduplicates records
-- Explore concepts: features, entity-centric learning, scoring, principles of resolution
+- Ask user to describe the problem to be solved.
+- If an image is submitted, ask user to instantiate all of the [variable] in the image.
+- In the future, present Entity Resolution design patterns that may be useful in solving the business problem. (This is not ready yet.)
+- Present to the user the proposal for solving the user's business problem.
 
-**Agent behavior**: Use `search_docs` to explain entity resolution concepts. Keep explanations practical with concrete examples.
+### Module 2: Determine if data sources adhere to the Senzing Generic Entity Specification
 
-### Module 2: Explore Sample Data
-
-- Get sample data from CORD (Collections Of Relatable Data) datasets
-- Examine record structures and understand Senzing JSON format
-- See what source data looks like before and after entity resolution
-
-**Agent behavior**: Use `get_sample_data` to retrieve datasets. Walk through record fields and explain how they map to Senzing features.
+- Ask the user for example data for each data source.
+- Compare each data source with the Senzing Generic Entity Specification (SGES)
+- For each data source that does not conform to the SGES, perform Module 3: Map Your data
 
 ### Module 3: Map Your Data
 
