@@ -1,9 +1,12 @@
 ---
 name: "senzing-bootcamp"
 displayName: "Senzing Boot Camp"
+version: "2.0.0"
 description: "Guided discovery of Senzing entity resolution. Walk through data mapping, SDK setup, record loading, and result exploration using the Senzing MCP server."
 keywords: ["Entity Resolution", "Senzing", "Data Mapping", "SDK", "Identity Resolution", "Data Matching", "ER"]
 author: "Senzing"
+senzing_compatibility: ["4.0", "3.x"]
+last_updated: "2025-01-17"
 ---
 
 # Power: Senzing Boot Camp
@@ -13,6 +16,10 @@ author: "Senzing"
 This power provides a guided boot camp experience for learning Senzing entity resolution. It connects to the Senzing MCP server to provide interactive, tool-assisted workflows covering data mapping, SDK installation, record loading, and entity resolution exploration.
 
 Senzing is an embeddable entity resolution engine that resolves records about people and organizations across data sources — matching, relating, and deduplicating without manual rules or model training.
+
+**Power Version**: 2.0.0  
+**Senzing Compatibility**: V4.0 (primary), V3.x (limited support)  
+**Last Updated**: 2025-01-17
 
 ## Available MCP Servers
 
@@ -82,6 +89,52 @@ The boot camp follows a progressive learning path. Each module builds on the pre
 
 **Note**: While the modules are presented in order, you can move back and forth between steps as needed. Discovery is iterative — you might need to revisit earlier steps as you learn more about your data or refine your approach.
 
+### Skip Ahead Options
+
+Experienced users can skip modules based on their situation:
+
+- **Have SGES-compliant data?** → Skip Module 3, go directly to Module 4
+- **Senzing already installed?** → Skip Module 4, go directly to Module 5
+- **Just want to explore?** → Start with Module 0 (Quick Demo)
+- **Already loaded data?** → Jump directly to Module 6
+- **Know your problem well?** → Skim Module 1, focus on Modules 2-6
+
+### Module Prerequisites
+
+Before starting each module, ensure prerequisites are met:
+
+**Module 0** (Optional):
+- No prerequisites
+
+**Module 1**:
+- No prerequisites
+- Recommended: Have business problem in mind
+
+**Module 2**:
+- ✅ Module 1 complete (business problem defined)
+- ✅ Data sources identified
+- ✅ Sample data available
+
+**Module 3**:
+- ✅ Module 2 complete (sources evaluated)
+- ✅ Non-compliant sources identified
+- ✅ Sample data files in `data/raw/`
+
+**Module 4**:
+- ✅ Module 3 complete (all sources mapped) OR
+- ✅ All sources are SGES-compliant
+- ✅ Platform/environment ready
+
+**Module 5**:
+- ✅ Module 4 complete (SDK installed)
+- ✅ Database configured
+- ✅ Transformed data ready in `data/transformed/`
+
+**Module 6**:
+- ✅ Module 5 complete (all sources loaded)
+- ✅ Loading statistics reviewed
+- ✅ No critical errors
+
 ## Project Directory Structure
 
 Before starting, set up a project directory to organize all your boot camp artifacts:
@@ -112,8 +165,9 @@ my-senzing-project/
 ├── config/                        # Configuration files
 ├── logs/                          # Log files
 ├── monitoring/                    # Monitoring and dashboards
-├── scripts/                       # Utility scripts
 └── README.md                      # Project description
+
+**Important**: All generated source code (transformation programs, loading programs, query programs, utilities, and scripts) should be placed in the `src/` directory structure, not in the project root.
 ```
 
 **Agent behavior**: At the start of Module 1, help the user create this directory structure. As you generate programs throughout the boot camp, save them in the appropriate folders.
@@ -124,6 +178,8 @@ The boot camp includes detailed steering files for specific topics. Load these o
 
 ### Core Workflows (Always Available)
 - **steering/steering.md** — Detailed workflows for all modules (Module 0-6)
+- **steering/agent-instructions.md** — Consolidated agent behavior guide (load at start)
+- **steering/quick-reference.md** — MCP tool quick reference card
 
 ### Supporting Topics (Load on Demand)
 - **steering/environment-setup.md** — Version control, Python venv, Docker, environment variables
@@ -146,6 +202,21 @@ The boot camp includes detailed steering files for specific topics. Load these o
   
 - **steering/cost-estimation.md** — Pricing, ROI, deployment costs
   - Load when: Module 1 (planning), Module 4 (deployment choice)
+  
+- **steering/integration-patterns.md** — REST API, batch export, streaming, database sync
+  - Load when: Module 6, user asks about integration
+  
+- **steering/lessons-learned.md** — Post-project retrospective template
+  - Load when: After Module 6, project completion
+  
+- **steering/common-pitfalls.md** — Common mistakes and how to avoid them
+  - Load when: Any module, troubleshooting, user is stuck
+  
+- **steering/troubleshooting-decision-tree.md** — Visual flowchart for diagnosing issues
+  - Load when: User encounters errors, systematic troubleshooting needed
+  
+- **steering/complexity-estimator.md** — Estimate time based on data characteristics
+  - Load when: Module 1 (planning), user asks "how long will this take?"
 
 ## Recommended Hooks
 
@@ -160,25 +231,45 @@ Available hooks:
 
 Installation:
 ```bash
+# Create .kiro directory structure if it doesn't exist
+mkdir -p .kiro/hooks
+
+# Copy hooks
 cp senzing-bootcamp/hooks/*.hook .kiro/hooks/
 ```
+
+**Agent behavior**: When installing hooks, always verify the `.kiro/hooks/` directory exists first. Create it if needed with `mkdir -p .kiro/hooks` before copying hook files.
 
 ## Entity Resolution Design Pattern Gallery
 
 When starting Module 1, offer users a gallery of common entity resolution patterns:
 
-1. **Customer 360 / Single Customer View** — Unified view across CRM, billing, support, marketing
-2. **Fraud Detection & Prevention** — Identify fraud rings, synthetic identities, account takeovers
-3. **Data Migration & Consolidation** — Merge legacy systems with deduplication
-4. **Compliance & Watchlist Screening** — Match against sanctions lists, PEPs, watchlists
-5. **Marketing Database Deduplication** — Eliminate duplicate contacts, household grouping
-6. **Healthcare Patient Matching** — Unified patient records across facilities
-7. **Vendor/Supplier Master Data Management** — Clean vendor master, consolidated spend
-8. **Insurance Claims Fraud Detection** — Detect staged accidents, provider fraud
-9. **Know Your Customer (KYC)** — Verify identity, prevent duplicate accounts
-10. **Supply Chain Entity Resolution** — Unified view of supply chain entities
+| Pattern | Use Case | Key Matching | Typical ROI |
+|---------|----------|--------------|-------------|
+| **Customer 360** | Unified customer view | Names, emails, phones, addresses | Improved service, targeted marketing |
+| **Fraud Detection** | Identify fraud rings | Names, addresses, devices, IPs | Loss prevention, faster detection |
+| **Data Migration** | Merge legacy systems | All available identifiers | Reduced storage, simplified ops |
+| **Compliance Screening** | Watchlist matching | Names, DOB, nationalities, IDs | Regulatory compliance, risk mitigation |
+| **Marketing Dedup** | Eliminate duplicates | Names, addresses, emails | Reduced mailing costs, better metrics |
+| **Patient Matching** | Unified medical records | Names, DOB, SSN, MRNs | Patient safety, care coordination |
+| **Vendor MDM** | Clean vendor master | Company names, tax IDs, addresses | Better pricing, consolidated spend |
+| **Claims Fraud** | Detect staged accidents | Names, vehicles, providers | Reduced fraudulent payouts |
+| **KYC/Onboarding** | Verify identity | Names, DOB, SSN, gov IDs | Reduced fraud, compliance |
+| **Supply Chain** | Unified supplier view | Company names, GLNs, tax IDs | Visibility, risk management |
 
-**Agent behavior**: Present this gallery when user requests it in Module 1. Help them identify which pattern(s) match their situation. Use the selected pattern to guide problem definition.
+**When to use each pattern**:
+- **Customer 360**: Multiple customer touchpoints, CRM consolidation
+- **Fraud Detection**: Financial services, insurance, e-commerce
+- **Data Migration**: M&A, system consolidation, cloud migration
+- **Compliance**: Banking, fintech, international trade
+- **Marketing**: Email campaigns, direct mail, lead management
+- **Healthcare**: Hospital networks, HIE, patient portals
+- **Vendor MDM**: Procurement, AP, spend analysis
+- **Claims Fraud**: Insurance, workers comp, auto claims
+- **KYC**: Banking, fintech, account opening
+- **Supply Chain**: Manufacturing, logistics, procurement
+
+**Agent behavior**: Present this gallery when user requests it in Module 1. Help them identify which pattern(s) match their situation. Use the selected pattern to guide problem definition and set realistic expectations.
 
 ## Best Practices
 

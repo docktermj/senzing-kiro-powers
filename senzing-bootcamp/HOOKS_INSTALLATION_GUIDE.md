@@ -10,12 +10,17 @@ Simply ask Kiro:
 "Please install the Senzing Boot Camp hooks"
 ```
 
-The agent will copy the pre-configured hooks to your project's `.kiro/hooks/` directory.
+The agent will:
+1. Verify the `.kiro/hooks/` directory exists (create if needed)
+2. Copy the pre-configured hooks to your project's `.kiro/hooks/` directory
 
 ### Method 2: Command Line
 ```bash
 # From your project root
+# Create .kiro directory structure if it doesn't exist
 mkdir -p .kiro/hooks
+
+# Copy hooks
 cp senzing-bootcamp/hooks/*.hook .kiro/hooks/
 ```
 
@@ -124,6 +129,10 @@ Increase timeout in hook file:
 cd my-senzing-project
 
 # 2. Install hooks (Module 3)
+# First ensure .kiro directory exists
+mkdir -p .kiro/hooks
+
+# Then copy hooks
 cp senzing-bootcamp/hooks/*.hook .kiro/hooks/
 
 # 3. Verify installation

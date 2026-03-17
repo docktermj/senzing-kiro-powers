@@ -110,7 +110,7 @@ class PerformanceMonitor:
 
 ## Monitoring Dashboard
 
-Create `monitoring/dashboard.html` to visualize metrics in real-time. The dashboard should display:
+Create `src/utils/generate_dashboard.py` (all source code must be in `src/`) to generate `monitoring/dashboard.html` for visualizing metrics in real-time. The dashboard should display:
 - Total records loaded per data source
 - Total entities created
 - Match rate percentage

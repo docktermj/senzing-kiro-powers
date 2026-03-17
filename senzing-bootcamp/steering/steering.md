@@ -92,7 +92,8 @@ Use this workflow when starting the boot camp or when a user wants to explore ho
    - `config/` - Configuration files
    - `logs/` - Log files
    - `monitoring/` - Dashboards and metrics
-   - `scripts/` - Utility scripts (backup, rollback, etc.)
+   
+   **Important**: All source code, including utility scripts, must be in the `src/` directory (e.g., `src/utils/backup_database.sh`, `src/utils/rollback.sh`).
    
    **Initialize version control**:
    ```bash
@@ -567,7 +568,7 @@ Be flexible and supportive of non-linear exploration. The goal is a working tran
    - Data volume (single file vs. batch processing)
    - Environment (local script, cloud function, ETL pipeline)
    
-   **Save the program**: Save to `src/transform/transform_[datasource_name].py` (or appropriate extension for the language).
+   **Save the program**: Save to `src/transform/transform_[datasource_name].py` (or appropriate extension for the language). All transformation programs must be in the `src/transform/` directory.
 
 7. **Step 6 — Test the Program**: Run the transformation program on sample data from `data/samples/`:
    - Start with a small subset (10-100 records) for initial testing
@@ -605,7 +606,7 @@ Be flexible and supportive of non-linear exploration. The goal is a working tran
    Retest the program after changes. You may cycle through steps multiple times before achieving the desired quality.
 
 11. **Step 10 — Save and Document**: Ensure the transformation program is properly saved and documented:
-   - Program saved in `src/transform/transform_[datasource_name].py`
+   - Program saved in `src/transform/transform_[datasource_name].py` (all source code must be in `src/`)
    - Create `docs/mapping_[datasource_name].md` with:
      - Field mappings
      - Transformation logic
@@ -764,7 +765,8 @@ Use this workflow for each data source that needs to be loaded into Senzing. Cre
    - Note loading statistics (time, throughput, error rate)
 
 7. **Save the loading program**: Document and save the program:
-   - Save with a clear name (e.g., `load_customer_db.py`)
+   - Save in `src/load/` with a clear name (e.g., `src/load/load_customer_db.py`)
+   - All loading programs must be in the `src/load/` directory
    - Document how to run it (command line, configuration)
    - Note any prerequisites or dependencies
    - Keep it for future reloads or updates
@@ -999,7 +1001,8 @@ Use this workflow after all data sources have been loaded (Module 5). The goal i
    - Create additional query programs for related questions
 
 11. **Save the query program**: Document and save the program:
-   - Save with a clear name (e.g., `find_customer_duplicates.py`, `search_person.py`)
+   - Save in `src/query/` with a clear name (e.g., `src/query/find_customer_duplicates.py`, `src/query/search_person.py`)
+   - All query programs must be in the `src/query/` directory
    - Document what business question it answers
    - Note how to run it and interpret results
    - Keep it for ongoing use or integration

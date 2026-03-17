@@ -6,7 +6,7 @@ Prepare for failures and enable quick recovery.
 
 ### Before Major Operations
 
-Create `scripts/backup_database.sh`:
+Create `src/utils/backup_database.sh`:
 
 ```bash
 #!/bin/bash
@@ -33,11 +33,11 @@ ls -t $BACKUP_DIR/*.sql 2>/dev/null | tail -n +8 | xargs rm -f
 
 ### Rollback Procedure
 
-Create `scripts/rollback.sh`:
+Create `src/utils/rollback.sh`:
 
 ```bash
 #!/bin/bash
-# scripts/rollback.sh
+# src/utils/rollback.sh
 BACKUP_FILE=$1
 
 if [ -z "$BACKUP_FILE" ]; then
@@ -75,7 +75,7 @@ Create `docs/recovery_procedures.md`:
 
 **Recovery**:
 1. Check logs/transform.log for errors
-2. Fix transformation logic in src/transform/
+2. Fix transformation logic in `src/transform/`
 3. Delete invalid output: `rm data/transformed/[source]_senzing.jsonl`
 4. Re-run transformation on sample data first
 5. Validate with lint_record before full run
@@ -88,7 +88,7 @@ Create `docs/recovery_procedures.md`:
 2. Use explain_error_code to diagnose
 3. Restore database from backup:
    ```bash
-   ./scripts/rollback.sh data/backups/G2C_YYYYMMDD_HHMMSS.db
+   ./src/utils/rollback.sh data/backups/G2C_YYYYMMDD_HHMMSS.db
    ```
 4. Fix data quality issues
 5. Resume loading from last successful record
@@ -119,10 +119,10 @@ Create `docs/recovery_procedures.md`:
 
 **Recovery**:
 ```bash
-# Restore specific file
+# Restore specific file from git
 git checkout HEAD -- src/transform/transform_customer.py
 
-# Restore to previous commit
+# Restore entire src directory to previous commit
 git log  # Find commit hash
 git checkout <commit-hash> -- src/
 

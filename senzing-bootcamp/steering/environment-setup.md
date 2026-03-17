@@ -98,7 +98,7 @@ Copy to `.env` and fill in actual values (never commit `.env` to git).
 
 ## Docker Environment (Optional)
 
-Create `docker-compose.yml` for containerized setup:
+Create `docker-compose.yml` in the project root for containerized setup:
 
 ```yaml
 version: '3.8'
@@ -133,3 +133,13 @@ Load this steering file when:
 - User asks about version control setup
 - User needs help with environment configuration
 - Setting up Docker or containerized environments
+
+## Important Note on Source Code Location
+
+All generated source code, including utility scripts like backup and rollback scripts, must be placed in the `src/` directory structure:
+- Transformation programs → `src/transform/`
+- Loading programs → `src/load/`
+- Query programs → `src/query/`
+- Utility scripts → `src/utils/`
+
+Never place source code files in the project root or in a separate `scripts/` directory.
