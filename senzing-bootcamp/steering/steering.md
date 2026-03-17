@@ -119,10 +119,23 @@ Use this workflow when starting the boot camp or when a user wants to explore ho
    **Important**: All source code, including utility scripts, must be in the `src/` directory (e.g., `src/utils/backup_database.sh`, `src/utils/rollback.sh`).
    
    **Initialize version control**:
+   
+   First, check if this is already a git repository:
+   ```bash
+   git rev-parse --git-dir 2>/dev/null
+   ```
+   
+   If the command returns an error (not a git repository), ask the user:
+   "Would you like to initialize this as a git repository? This will help track changes throughout the boot camp."
+   
+   If yes, initialize git:
    ```bash
    git init
    echo "# [Project Name] - Senzing Entity Resolution" > README.md
    ```
+   
+   If the directory is already a git repository, acknowledge it:
+   "Great! I see this is already a git repository. We'll use it to track your boot camp progress."
    
    **Create .gitignore**:
    ```gitignore

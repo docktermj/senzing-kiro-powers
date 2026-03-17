@@ -30,7 +30,10 @@ This document consolidates all agent behavior instructions from across the boot 
 - Create `docs/business_problem.md`
 - Update README.md with overview
 - Help create project directory structure
-- Initialize git and create .gitignore
+- **Check if directory is already a git repository** before initializing
+- If not a git repository, ask user if they want to initialize git
+- If yes, initialize git and create .gitignore
+- If already a git repository, acknowledge and proceed
 
 ### Module 2: Identify and Collect Data Sources
 - Review data sources identified in Module 1

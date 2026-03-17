@@ -234,7 +234,7 @@ Before starting, set up a project directory to organize all your boot camp artif
 
 ```
 my-senzing-project/
-├── .git/                          # Version control
+├── .git/                          # Version control (optional, but recommended)
 ├── .gitignore                     # Exclude sensitive data
 ├── .env.example                   # Template for environment variables
 ├── .env                           # Actual environment variables (not in git)
@@ -266,6 +266,8 @@ my-senzing-project/
 
 **Agent behavior**:
 - At the start of Module 1, help the user create this directory structure
+- Check if the directory is already a git repository before initializing
+- If not a git repository, ask the user if they want to initialize version control
 - As you generate programs throughout the boot camp, save them in the appropriate folders
 
 ## When to Load Steering Files
