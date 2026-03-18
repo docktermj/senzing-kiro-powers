@@ -94,6 +94,7 @@ The boot camp follows a progressive learning path with 13 focused modules (0-12)
   - Experience entity resolution with sample data
   - See how Senzing resolves duplicate records automatically
   - 10-15 minutes
+  - **Note**: If running Module 0 before Module 1, the agent will create the project directory structure first
 
 - **Module 1: Understand Business Problem**
   - Define your problem and identify data sources
@@ -317,7 +318,9 @@ my-senzing-project/
 ```
 
 **Agent behavior**:
-- At the start of Module 1, help the user create this directory structure
+- **IMPORTANT**: Before creating any Module 0 files, ensure the project directory structure exists
+- If the user starts with Module 0 (before Module 1), create the full project structure first
+- At the start of Module 1, create this directory structure (if not already created)
 - Check if the directory is already a git repository before initializing
 - If not a git repository, ask the user if they want to initialize version control
 - As you generate programs throughout the boot camp, save them in the appropriate folders
@@ -465,6 +468,47 @@ See [steering/steering.md](steering/steering.md) for detailed step-by-step workf
 - **Error codes**: Use `explain_error_code` with the code (accepts `SENZ0005`, `0005`, or `5`).
 - **Configuration issues**: Use `search_docs` with category `configuration` or `database`.
 
+## Providing Feedback
+
+Your feedback helps improve the Senzing Boot Camp for future users!
+
+### How to Provide Feedback
+
+As you work through the boot camp, document any issues, confusion points, or improvement suggestions:
+
+1. **Create feedback file**: Copy the template from `docs/feedback/SENZING_BOOTCAMP_POWER_IMPROVEMENTS_TEMPLATE.md`
+2. **Save as**: `docs/feedback/SENZING_BOOTCAMP_POWER_IMPROVEMENTS.md` in your project
+3. **Document issues**: Add entries as you encounter problems or have suggestions
+4. **Send to author**: Share the completed file with the power author after finishing
+
+### What to Include
+
+- Unclear or confusing instructions
+- Steps that don't work as documented
+- Missing information or prerequisites
+- Awkward or inefficient workflows
+- Unclear error messages
+- Outdated documentation
+- Better approaches you discovered
+- Missing tools or templates
+
+### Feedback Categories
+
+- **Documentation**: Clarity, accuracy, completeness
+- **Workflow**: Step ordering, prerequisites, transitions
+- **Tools**: Missing utilities, template improvements
+- **UX**: Confusion points, navigation issues
+- **Bugs**: Incorrect behavior, errors
+- **Performance**: Slow operations, optimization opportunities
+- **Security**: Security concerns, compliance issues
+
+**Agent behavior**:
+- At the start of Module 1, inform users about the feedback mechanism
+- Remind users to document issues in the feedback file as they occur
+- At the end of Module 12, remind users to share their completed feedback file
+
+---
+
 ## Boot Camp Complete! 🎉
 
 After completing all modules, you'll have:
@@ -490,6 +534,7 @@ After completing all modules, you'll have:
 5. **Expand**: Add more data sources using Modules 2-7
 6. **Maintain security**: Regular audits using Module 10 checklist
 7. **Scale**: Use benchmarks from Module 9 to plan capacity
+8. **Share feedback**: Send your `docs/feedback/SENZING_BOOTCAMP_POWER_IMPROVEMENTS.md` file to the power author
 
 ### Getting Help
 

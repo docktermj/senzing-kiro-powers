@@ -54,6 +54,7 @@ This document consolidates all agent behavior instructions from across the boot 
 - If not a git repository, ask user if they want to initialize git
 - If yes, initialize git and create .gitignore
 - If already a git repository, acknowledge and proceed
+- **Inform user about feedback mechanism**: Explain that they can document issues and suggestions in `docs/feedback/SENZING_BOOTCAMP_POWER_IMPROVEMENTS.md` using the template at `docs/feedback/SENZING_BOOTCAMP_POWER_IMPROVEMENTS_TEMPLATE.md`
 
 ### Module 2: Identify and Collect Data Sources
 - Review data sources identified in Module 1
@@ -175,6 +176,10 @@ All data files must be in `data/`:
 - `data/backups/` - Database backups
 - `data/temp/` - Temporary working files (gitignored)
 
+All feedback files must be in `docs/feedback/`:
+- `docs/feedback/SENZING_BOOTCAMP_POWER_IMPROVEMENTS.md` - User's improvement suggestions (created from template)
+- `docs/feedback/SENZING_BOOTCAMP_POWER_IMPROVEMENTS_TEMPLATE.md` - Template for feedback (provided by power)
+
 **IMPORTANT**: Never place shell scripts (*.sh) in `src/` directory. Shell scripts are for automation and deployment, not application logic.
 
 **CRITICAL**: Never use `/tmp` or other system temporary directories for project files. Always use appropriate project directories (`data/temp/` for temporary files, `~` for downloads).
@@ -186,6 +191,7 @@ Create and maintain:
 - `docs/mapping_[datasource].md` - Module 3 (per source)
 - `docs/query_specifications.md` - Module 6
 - `docs/lessons_learned.md` - After Module 6
+- `docs/feedback/SENZING_BOOTCAMP_POWER_IMPROVEMENTS.md` - Throughout (user creates from template)
 - `README.md` - Keep updated throughout
 
 ### Version Control
@@ -399,6 +405,10 @@ Remember:
 - Create release notes and tag version
 - Document lessons learned
 - Prepare handoff to operations team
+
+### Module 12 Completion
+- **Remind user to share feedback**: At the end of Module 12, remind users to share their completed `docs/feedback/SENZING_BOOTCAMP_POWER_IMPROVEMENTS.md` file with the power author
+- Encourage them to include any final thoughts about the overall boot camp experience
 
 ## Code Quality Standards
 

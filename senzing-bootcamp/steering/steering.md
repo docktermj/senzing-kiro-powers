@@ -46,27 +46,102 @@ Use this workflow when a user wants to see entity resolution in action before wo
 
 **Time**: 10-15 minutes
 
-1. **Explain the demo**: "Let's do a quick demo using sample data so you can see entity resolution in action. We'll load some duplicate records and watch Senzing automatically resolve them into unique entities."
+**IMPORTANT**: Before starting Module 0, ensure the project directory structure exists. If the user is starting with Module 0 (before Module 1), create the full project structure first.
 
-2. **Choose sample dataset**: Call `get_sample_data` to retrieve one of the CORD datasets:
+1. **Create project structure (if needed)**: Check if the project structure exists:
+   
+   ```bash
+   # Check if structure exists
+   if [ ! -d "src/quickstart_demo" ]; then
+       echo "Creating project structure..."
+   fi
+   ```
+   
+   If the structure doesn't exist, create it:
+   
+   ```bash
+   mkdir -p my-senzing-project/{data/{raw,transformed,samples,backups},database,src/{quickstart_demo,transform,load,query,utils},tests,docs,config,docker,logs,monitoring,scripts}
+   cd my-senzing-project
+   ```
+   
+   Create essential files:
+   
+   ```bash
+   # .gitignore
+   cat > .gitignore << 'EOF'
+   # Sensitive data
+   .env
+   *.key
+   *.pem
+   
+   # Data files
+   data/raw/*
+   data/transformed/*
+   !data/raw/.gitkeep
+   !data/transformed/.gitkeep
+   
+   # Database files
+   database/*.db
+   database/*.db-journal
+   !database/.gitkeep
+   
+   # Logs
+   logs/*.log
+   
+   # Python
+   __pycache__/
+   *.pyc
+   .pytest_cache/
+   venv/
+   EOF
+   
+   # .env.example
+   cat > .env.example << 'EOF'
+   # Senzing Configuration
+   SENZING_ENGINE_CONFIGURATION_JSON=
+   
+   # Database
+   DATABASE_URL=sqlite3://na:na@database/G2C.db
+   
+   # Optional: PostgreSQL
+   # DATABASE_URL=postgresql://user:password@localhost:5432/senzing
+   EOF
+   
+   # README.md
+   cat > README.md << 'EOF'
+   # Senzing Boot Camp Project
+   
+   This project was created using the Senzing Boot Camp power.
+   
+   ## Quick Start
+   
+   See `docs/` directory for project documentation.
+   EOF
+   
+   # Create .gitkeep files
+   touch data/raw/.gitkeep
+   touch data/transformed/.gitkeep
+   touch data/samples/.gitkeep
+   touch data/backups/.gitkeep
+   touch database/.gitkeep
+   ```
+   
+   Tell the user: "I've created the project directory structure for you. All demo files will be saved in `src/quickstart_demo/`."
+
+2. **Explain the demo**: "Let's do a quick demo using sample data so you can see entity resolution in action. We'll load some duplicate records and watch Senzing automatically resolve them into unique entities."
+
+3. **Choose sample dataset**: Call `get_sample_data` to retrieve one of the CORD datasets:
    - **Las Vegas**: Customer records with duplicates (good for retail/hospitality use cases)
    - **London**: Person records with variations (good for identity management)
    - **Moscow**: Organization records (good for B2B use cases)
    
    Ask the user which scenario interests them most, or default to Las Vegas.
 
-3. **Show sample records**: Display 3-5 sample records from the dataset. Point out:
+4. **Show sample records**: Display 3-5 sample records from the dataset. Point out:
    - How the same person/organization appears multiple times
    - Variations in names, addresses, phone numbers
    - Different data quality levels
    - How a human would recognize these as duplicates
-
-4. **Create quickstart demo directory**:
-   ```bash
-   mkdir -p src/quickstart_demo
-   ```
-   
-   All Module 0 demo code must be saved in `src/quickstart_demo/` to keep it separate from the main boot camp project code.
 
 5. **Generate demo script**: Call `generate_scaffold` with workflow `full_pipeline` to create a complete demo script that:
    - Initializes Senzing with SQLite (no installation required if using Docker)
