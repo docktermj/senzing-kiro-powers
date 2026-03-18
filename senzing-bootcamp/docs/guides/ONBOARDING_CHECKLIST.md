@@ -4,7 +4,73 @@ Complete this checklist before starting the boot camp to ensure a smooth experie
 
 ## Pre-Flight Checklist
 
-### ✅ System Requirements
+### ✅ Step 1: Create Project Directory Structure
+
+**This should be your first step!** Create the organized directory layout for your Senzing project:
+
+- [ ] **Create project directory**
+  ```bash
+  mkdir my-senzing-project
+  cd my-senzing-project
+  ```
+
+- [ ] **Create directory structure**
+  ```bash
+  mkdir -p data/{raw,transformed,samples,backups}
+  mkdir -p database
+  mkdir -p src/{transform,load,query,utils}
+  mkdir -p tests
+  mkdir -p docs/feedback
+  mkdir -p config
+  mkdir -p docker/scripts
+  mkdir -p logs
+  mkdir -p monitoring
+  mkdir -p scripts
+  ```
+
+- [ ] **Create initial files**
+  ```bash
+  touch README.md
+  touch .gitignore
+  touch .env.example
+  ```
+
+- [ ] **Verify structure**
+  ```bash
+  tree -L 2  # or ls -R
+  ```
+
+Expected structure:
+```
+my-senzing-project/
+├── data/
+│   ├── raw/
+│   ├── transformed/
+│   ├── samples/
+│   └── backups/
+├── database/
+├── src/
+│   ├── transform/
+│   ├── load/
+│   ├── query/
+│   └── utils/
+├── tests/
+├── docs/
+│   └── feedback/
+├── config/
+├── docker/
+│   └── scripts/
+├── logs/
+├── monitoring/
+├── scripts/
+├── README.md
+├── .gitignore
+└── .env.example
+```
+
+**Why first?** Having the directory structure in place ensures all generated files go to the right locations from the start.
+
+### ✅ Step 2: System Requirements
 
 - [ ] **Operating System**
   - Linux (Ubuntu 20.04+, RHEL 8+, Debian 11+)
@@ -33,7 +99,7 @@ Complete this checklist before starting the boot camp to ensure a smooth experie
   - Minimum: 8 GB RAM
   - Recommended: 16 GB+ for production
 
-### ✅ Data Preparation
+### ✅ Step 3: Data Preparation
 
 - [ ] **Data Sources Identified**
   - List of all data sources documented
@@ -56,7 +122,7 @@ Complete this checklist before starting the boot camp to ensure a smooth experie
   - Data anonymization needs identified
   - Compliance requirements documented (GDPR, HIPAA, etc.)
 
-### ✅ Database Setup
+### ✅ Step 4: Database Setup
 
 - [ ] **Database Choice**
   - SQLite for evaluation (< 100K records)
@@ -69,7 +135,7 @@ Complete this checklist before starting the boot camp to ensure a smooth experie
   - Network access confirmed
   - Backup strategy in place
 
-### ✅ Development Environment
+### ✅ Step 5: Development Environment
 
 - [ ] **Code Editor/IDE**
   - VS Code, PyCharm, IntelliJ, or similar
@@ -86,7 +152,7 @@ Complete this checklist before starting the boot camp to ensure a smooth experie
   - Basic shell commands (cd, ls, mkdir, etc.)
   - Ability to run scripts
 
-### ✅ Time and Resources
+### ✅ Step 6: Time and Resources
 
 - [ ] **Time Commitment**
   - 2-3 hours for quick start (Modules 1-6, 8)
@@ -103,7 +169,7 @@ Complete this checklist before starting the boot camp to ensure a smooth experie
   - Infrastructure budget allocated
   - Timeline for procurement
 
-### ✅ Knowledge Prerequisites
+### ✅ Step 7: Knowledge Prerequisites
 
 - [ ] **Basic Programming**
   - Comfortable with Python, Java, or C#
@@ -120,7 +186,7 @@ Complete this checklist before starting the boot camp to ensure a smooth experie
   - Awareness of use cases (deduplication, matching, etc.)
   - Familiarity with data matching concepts
 
-### ✅ Documentation and Support
+### ✅ Step 8: Documentation and Support
 
 - [ ] **Documentation Access**
   - Senzing documentation available
