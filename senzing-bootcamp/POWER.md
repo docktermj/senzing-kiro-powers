@@ -11,6 +11,12 @@ last_updated: "2026-03-17"
 
 # Power: Senzing Boot Camp
 
+## 🚨 CRITICAL: Agent Must Read This First 🚨
+
+**TO THE AGENT**: Before you do ANYTHING else - before greeting the user, before asking questions, before presenting options - you MUST create the project directory structure. This is MANDATORY. See the "Agent Behavior" section under "Project Directory Structure" below for exact commands. DO NOT SKIP THIS.
+
+---
+
 ## Overview
 
 This power provides a guided boot camp experience for learning Senzing entity resolution. It connects to the Senzing MCP server to provide interactive, tool-assisted workflows covering data mapping, SDK installation, record loading, and entity resolution exploration.
@@ -341,11 +347,19 @@ my-senzing-project/
 ```
 
 **Agent behavior**:
-- **MANDATORY**: Check if project structure exists at the start of Module 0 or Module 1
-- **MANDATORY**: If structure doesn't exist, create it immediately before proceeding
-- **MANDATORY**: Do not skip this step or ask user permission - just create it
+- **🚨 MANDATORY - EXECUTE FIRST 🚨**: Before ANY other action, check if project structure exists
+- **🚨 MANDATORY - EXECUTE FIRST 🚨**: If structure doesn't exist, create it immediately using commands above
+- **🚨 MANDATORY - EXECUTE FIRST 🚨**: Do not greet user, do not ask questions, do not present options until structure is created
+- **🚨 MANDATORY - EXECUTE FIRST 🚨**: This happens BEFORE everything else - no exceptions
 - Inform user that structure has been created
 - As you generate programs throughout the boot camp, save them in the appropriate folders
+
+**Trigger points for directory creation** (create structure at ANY of these):
+- User says "start the boot camp"
+- User mentions any module number (0-12)
+- User selects any path (A, B, C, D)
+- User asks to begin
+- ANY indication they want to use the power
 
 ## When to Load Steering Files
 

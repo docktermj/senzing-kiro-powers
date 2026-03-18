@@ -1,12 +1,155 @@
 # Agent Instructions - Consolidated Behavior Guide
 
-This document consolidates all agent behavior instructions from across the boot camp.
+⚠️ **CRITICAL: READ THIS FIRST** ⚠️
+
+## 🚨 MANDATORY FIRST ACTION - CREATE DIRECTORY STRUCTURE 🚨
+
+**BEFORE YOU DO ANYTHING ELSE - BEFORE GREETING THE USER - BEFORE ASKING ANY QUESTIONS - YOU MUST:**
+
+1. **Check if directory structure exists**
+2. **If it doesn't exist, CREATE IT IMMEDIATELY**
+3. **Only then proceed with any other activity**
+
+This is **NOT OPTIONAL**. This is **NOT NEGOTIABLE**. This happens **FIRST**.
+
+---
+
+### Directory Structure Creation Commands
+
+**Execute these commands IMMEDIATELY when user starts the boot camp:**
+
+```bash
+# Check if structure exists
+if [ ! -d "src" ] || [ ! -d "data" ] || [ ! -d "docs" ]; then
+    echo "Creating project directory structure..."
+    
+    # Create all directories
+    mkdir -p data/{raw,transformed,samples,backups}
+    mkdir -p database
+    mkdir -p src/{transform,load,query,utils}
+    mkdir -p tests
+    mkdir -p docs/feedback
+    mkdir -p config
+    mkdir -p docker/scripts
+    mkdir -p logs
+    mkdir -p monitoring
+    mkdir -p scripts
+    
+    # Create .gitignore
+    cat > .gitignore << 'EOF'
+# Sensitive data
+.env
+*.key
+*.pem
+
+# Data files
+data/raw/*
+data/transformed/*
+!data/raw/.gitkeep
+!data/transformed/.gitkeep
+
+# Database files
+database/*.db
+database/*.db-journal
+!database/.gitkeep
+
+# Logs
+logs/*.log
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+venv/
+
+# Temporary files
+data/temp/*
+!data/temp/.gitkeep
+EOF
+    
+    # Create .env.example
+    cat > .env.example << 'EOF'
+# Senzing Configuration
+SENZING_ENGINE_CONFIGURATION_JSON=
+
+# Database
+DATABASE_URL=sqlite3://na:na@database/G2C.db
+
+# Optional: PostgreSQL
+# DATABASE_URL=postgresql://user:password@localhost:5432/senzing
+EOF
+    
+    # Create README.md
+    cat > README.md << 'EOF'
+# Senzing Boot Camp Project
+
+This project was created using the Senzing Boot Camp power.
+
+## Quick Start
+
+See `docs/` directory for project documentation.
+EOF
+    
+    # Create .gitkeep files
+    touch data/raw/.gitkeep
+    touch data/transformed/.gitkeep
+    touch data/samples/.gitkeep
+    touch data/backups/.gitkeep
+    touch database/.gitkeep
+    touch logs/.gitkeep
+    
+    echo "✅ Project directory structure created successfully"
+else
+    echo "✅ Project directory structure already exists"
+fi
+```
+
+**After creating the structure, inform the user:**
+```
+"I've set up the project directory structure for you. All files will be organized properly throughout the boot camp."
+```
+
+---
+
+### When This Happens
+
+**TRIGGER POINTS** (execute directory creation at ANY of these):
+- User says "start the boot camp"
+- User says "Module 0" or "quick demo"
+- User says "Module 1" or any module number
+- User selects any path (A, B, C, D)
+- User asks to begin
+- **ANY indication they want to start using the power**
+
+**BEFORE** you:
+- ❌ Greet the user
+- ❌ Ask what they want to do
+- ❌ Present path options
+- ❌ Explain modules
+- ❌ Create any files
+- ❌ Run any commands
+- ❌ Do ANYTHING else
+
+**YOU MUST**:
+- ✅ Create the directory structure FIRST
+
+---
+
+### Failure is NOT an Option
+
+If directory creation fails:
+1. Report the error to the user
+2. Provide the commands for manual execution
+3. **DO NOT PROCEED** until structure exists
+4. Verify structure exists before continuing
+
+---
 
 ## Core Principles
 
-1. **ALWAYS CREATE DIRECTORY STRUCTURE FIRST** - Before doing ANYTHING else in the boot camp (Module 0 or Module 1), check if the project directory structure exists. If it doesn't exist, create it immediately using the commands below. This is MANDATORY and must happen before any other boot camp activity.
+1. **DIRECTORY STRUCTURE FIRST** - See above. This is principle #1 for a reason.
 
-2. **Always call `get_capabilities` first** when starting a Senzing session
+2. **Always call `get_capabilities` first** when starting a Senzing session (AFTER directory structure is created)
 
 3. **Never hand-code** Senzing JSON mappings or SDK method calls from memory
 
@@ -40,122 +183,16 @@ This document consolidates all agent behavior instructions from across the boot 
     - Use PascalCase for classes
     - Add docstrings to all functions, classes, and modules
 
-## MANDATORY: Directory Structure Creation
-
-**CRITICAL**: Before starting ANY module (0, 1, or any other), you MUST ensure the project directory structure exists.
-
-### When to Create
-
-Create the directory structure:
-- At the very beginning of Module 0 (Quick Demo)
-- At the very beginning of Module 1 (Business Problem)
-- Before creating ANY files in the boot camp
-- If user asks to start the boot camp without specifying a module
-
-### How to Create
-
-1. **Check if structure exists**:
-   ```bash
-   # Check for key directories
-   if [ -d "src" ] && [ -d "data" ] && [ -d "docs" ]; then
-       echo "Project structure already exists"
-   else
-       echo "Creating project structure..."
-   fi
-   ```
-
-2. **Create the structure** (if it doesn't exist):
-   ```bash
-   mkdir -p data/{raw,transformed,samples,backups}
-   mkdir -p database
-   mkdir -p src/{transform,load,query,utils}
-   mkdir -p tests
-   mkdir -p docs/feedback
-   mkdir -p config
-   mkdir -p docker/scripts
-   mkdir -p logs
-   mkdir -p monitoring
-   mkdir -p scripts
-   ```
-
-3. **Create initial files**:
-   ```bash
-   # .gitignore
-   cat > .gitignore << 'EOF'
-   # Sensitive data
-   .env
-   *.key
-   *.pem
-   
-   # Data files
-   data/raw/*
-   data/transformed/*
-   !data/raw/.gitkeep
-   !data/transformed/.gitkeep
-   
-   # Database files
-   database/*.db
-   database/*.db-journal
-   !database/.gitkeep
-   
-   # Logs
-   logs/*.log
-   
-   # Python
-   __pycache__/
-   *.pyc
-   .pytest_cache/
-   venv/
-   
-   # Temporary files
-   data/temp/*
-   !data/temp/.gitkeep
-   EOF
-   
-   # .env.example
-   cat > .env.example << 'EOF'
-   # Senzing Configuration
-   SENZING_ENGINE_CONFIGURATION_JSON=
-   
-   # Database
-   DATABASE_URL=sqlite3://na:na@database/G2C.db
-   
-   # Optional: PostgreSQL
-   # DATABASE_URL=postgresql://user:password@localhost:5432/senzing
-   EOF
-   
-   # README.md
-   cat > README.md << 'EOF'
-   # Senzing Boot Camp Project
-   
-   This project was created using the Senzing Boot Camp power.
-   
-   ## Quick Start
-   
-   See `docs/` directory for project documentation.
-   EOF
-   
-   # Create .gitkeep files to preserve empty directories
-   touch data/raw/.gitkeep
-   touch data/transformed/.gitkeep
-   touch data/samples/.gitkeep
-   touch data/backups/.gitkeep
-   touch database/.gitkeep
-   touch logs/.gitkeep
-   ```
-
-4. **Inform the user**:
-   ```
-   "I've created the project directory structure for you. All files will be organized in the appropriate directories throughout the boot camp."
-   ```
-
-### What NOT to Do
-
-- ❌ Do NOT skip directory creation
-- ❌ Do NOT assume the structure exists
-- ❌ Do NOT create files before creating the structure
-- ❌ Do NOT ask the user if they want the structure created - just create it
-- ❌ Do NOT proceed with Module 0 or Module 1 without creating the structure first
+10. **All Python code must be PEP-8 compliant**:
+    - Maximum line length: 100 characters (for readability)
+    - No trailing whitespace
+    - Two blank lines between top-level functions/classes
+    - One blank line between methods
+    - Imports at top of file (standard library, third-party, local)
+    - Use 4 spaces for indentation (never tabs)
+    - Use snake_case for functions and variables
+    - Use PascalCase for classes
+    - Add docstrings to all functions, classes, and modules
 
 ## Special Workflows
 
@@ -271,8 +308,8 @@ Please respond with A, B, C, or D (or describe what you want to do)
 ## Module-Specific Behaviors
 
 ### Module 0: Quick Demo
-- **FIRST: Ensure project directory structure exists** (see "MANDATORY: Directory Structure Creation" section above)
-- If structure doesn't exist, create it immediately before proceeding
+- **FIRST: CREATE DIRECTORY STRUCTURE** - See "🚨 MANDATORY FIRST ACTION" at the top of this document
+- Execute directory creation commands BEFORE doing anything else
 - Create `src/quickstart_demo/` subdirectory for demo code
 - Use `get_sample_data` to retrieve CORD datasets
 - Use `generate_scaffold` with `full_pipeline` for demo scripts
@@ -282,8 +319,8 @@ Please respond with A, B, C, or D (or describe what you want to do)
 - Connect demo results to user's potential use case
 
 ### Module 1: Business Problem
-- **FIRST: Ensure project directory structure exists** (see "MANDATORY: Directory Structure Creation" section above)
-- If structure doesn't exist, create it immediately before proceeding
+- **FIRST: CREATE DIRECTORY STRUCTURE** - See "🚨 MANDATORY FIRST ACTION" at the top of this document
+- Execute directory creation commands BEFORE doing anything else
 - **Offer design pattern gallery** at the start
 - If pattern selected, use it to guide problem definition
 - **Ask discovery questions ONE AT A TIME** - wait for user response before asking next question
