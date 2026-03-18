@@ -4,14 +4,23 @@ This document consolidates all agent behavior instructions from across the boot 
 
 ## Core Principles
 
-1. **Always call `get_capabilities` first** when starting a Senzing session
-2. **Never hand-code** Senzing JSON mappings or SDK method calls from memory
-3. **Use MCP tools** for all Senzing-specific operations
-4. **Track progress** through modules and remind users periodically
-5. **Validate before proceeding** - each module has success criteria
-6. **Save all code in `src/`** - never place source code in project root
-7. **Ask questions one at a time** - when multiple questions are needed, ask them sequentially and wait for each response before asking the next. This prevents overwhelming users with long lists of questions.
-8. **Use project directories for all files** - never use `/tmp` or system directories:
+1. **ALWAYS CREATE DIRECTORY STRUCTURE FIRST** - Before doing ANYTHING else in the boot camp (Module 0 or Module 1), check if the project directory structure exists. If it doesn't exist, create it immediately using the commands below. This is MANDATORY and must happen before any other boot camp activity.
+
+2. **Always call `get_capabilities` first** when starting a Senzing session
+
+3. **Never hand-code** Senzing JSON mappings or SDK method calls from memory
+
+4. **Use MCP tools** for all Senzing-specific operations
+
+5. **Track progress** through modules and remind users periodically
+
+6. **Validate before proceeding** - each module has success criteria
+
+7. **Save all code in `src/`** - never place source code in project root
+
+8. **Ask questions one at a time** - when multiple questions are needed, ask them sequentially and wait for each response before asking the next. This prevents overwhelming users with long lists of questions.
+
+9. **Use project directories for all files** - never use `/tmp` or system directories:
    - Source code → `src/`
    - Shell scripts → `scripts/`
    - Documentation → `docs/`
@@ -19,29 +28,151 @@ This document consolidates all agent behavior instructions from across the boot 
    - SQLite databases → `database/`
    - Configuration → `config/`
    - Docker files → `docker/` (NEVER in project root)
-9. **All Python code must be PEP-8 compliant**:
-   - Maximum line length: 100 characters (for readability)
-   - No trailing whitespace
-   - Two blank lines between top-level functions/classes
-   - One blank line between methods
-   - Imports at top of file (standard library, third-party, local)
-   - Use 4 spaces for indentation (never tabs)
-   - Use snake_case for functions and variables
-   - Use PascalCase for classes
-   - Add docstrings to all functions, classes, and modules
+
+10. **All Python code must be PEP-8 compliant**:
+    - Maximum line length: 100 characters (for readability)
+    - No trailing whitespace
+    - Two blank lines between top-level functions/classes
+    - One blank line between methods
+    - Imports at top of file (standard library, third-party, local)
+    - Use 4 spaces for indentation (never tabs)
+    - Use snake_case for functions and variables
+    - Use PascalCase for classes
+    - Add docstrings to all functions, classes, and modules
+
+## MANDATORY: Directory Structure Creation
+
+**CRITICAL**: Before starting ANY module (0, 1, or any other), you MUST ensure the project directory structure exists.
+
+### When to Create
+
+Create the directory structure:
+- At the very beginning of Module 0 (Quick Demo)
+- At the very beginning of Module 1 (Business Problem)
+- Before creating ANY files in the boot camp
+- If user asks to start the boot camp without specifying a module
+
+### How to Create
+
+1. **Check if structure exists**:
+   ```bash
+   # Check for key directories
+   if [ -d "src" ] && [ -d "data" ] && [ -d "docs" ]; then
+       echo "Project structure already exists"
+   else
+       echo "Creating project structure..."
+   fi
+   ```
+
+2. **Create the structure** (if it doesn't exist):
+   ```bash
+   mkdir -p data/{raw,transformed,samples,backups}
+   mkdir -p database
+   mkdir -p src/{transform,load,query,utils}
+   mkdir -p tests
+   mkdir -p docs/feedback
+   mkdir -p config
+   mkdir -p docker/scripts
+   mkdir -p logs
+   mkdir -p monitoring
+   mkdir -p scripts
+   ```
+
+3. **Create initial files**:
+   ```bash
+   # .gitignore
+   cat > .gitignore << 'EOF'
+   # Sensitive data
+   .env
+   *.key
+   *.pem
+   
+   # Data files
+   data/raw/*
+   data/transformed/*
+   !data/raw/.gitkeep
+   !data/transformed/.gitkeep
+   
+   # Database files
+   database/*.db
+   database/*.db-journal
+   !database/.gitkeep
+   
+   # Logs
+   logs/*.log
+   
+   # Python
+   __pycache__/
+   *.pyc
+   .pytest_cache/
+   venv/
+   
+   # Temporary files
+   data/temp/*
+   !data/temp/.gitkeep
+   EOF
+   
+   # .env.example
+   cat > .env.example << 'EOF'
+   # Senzing Configuration
+   SENZING_ENGINE_CONFIGURATION_JSON=
+   
+   # Database
+   DATABASE_URL=sqlite3://na:na@database/G2C.db
+   
+   # Optional: PostgreSQL
+   # DATABASE_URL=postgresql://user:password@localhost:5432/senzing
+   EOF
+   
+   # README.md
+   cat > README.md << 'EOF'
+   # Senzing Boot Camp Project
+   
+   This project was created using the Senzing Boot Camp power.
+   
+   ## Quick Start
+   
+   See `docs/` directory for project documentation.
+   EOF
+   
+   # Create .gitkeep files to preserve empty directories
+   touch data/raw/.gitkeep
+   touch data/transformed/.gitkeep
+   touch data/samples/.gitkeep
+   touch data/backups/.gitkeep
+   touch database/.gitkeep
+   touch logs/.gitkeep
+   ```
+
+4. **Inform the user**:
+   ```
+   "I've created the project directory structure for you. All files will be organized in the appropriate directories throughout the boot camp."
+   ```
+
+### What NOT to Do
+
+- ❌ Do NOT skip directory creation
+- ❌ Do NOT assume the structure exists
+- ❌ Do NOT create files before creating the structure
+- ❌ Do NOT ask the user if they want the structure created - just create it
+- ❌ Do NOT proceed with Module 0 or Module 1 without creating the structure first
 
 ## Module-Specific Behaviors
 
 ### Module 0: Quick Demo
+- **FIRST: Ensure project directory structure exists** (see "MANDATORY: Directory Structure Creation" section above)
+- If structure doesn't exist, create it immediately before proceeding
+- Create `src/quickstart_demo/` subdirectory for demo code
 - Use `get_sample_data` to retrieve CORD datasets
 - Use `generate_scaffold` with `full_pipeline` for demo scripts
-- **Create `src/quickstart_demo/` directory for all demo code**
 - Save demo script to `src/quickstart_demo/demo_[dataset_name].py`
 - Save sample data to `src/quickstart_demo/sample_data_[dataset_name].jsonl`
 - Show entity resolution in action with real examples
 - Connect demo results to user's potential use case
 
 ### Module 1: Business Problem
+- **FIRST: Ensure project directory structure exists** (see "MANDATORY: Directory Structure Creation" section above)
+- If structure doesn't exist, create it immediately before proceeding
 - **Offer design pattern gallery** at the start
 - If pattern selected, use it to guide problem definition
 - **Ask discovery questions ONE AT A TIME** - wait for user response before asking next question
@@ -49,10 +180,9 @@ This document consolidates all agent behavior instructions from across the boot 
 - Encourage visual explanations (diagrams)
 - Create `docs/business_problem.md`
 - Update README.md with overview
-- **Create project directory structure** - Execute the mkdir command to set up the organized directory structure
 - **Check if directory is already a git repository** before initializing
 - If not a git repository, ask user if they want to initialize git
-- If yes, initialize git and create .gitignore
+- If yes, initialize git (structure and .gitignore already created)
 - If already a git repository, acknowledge and proceed
 - **Inform user about feedback mechanism**: Explain that they can document issues and suggestions in `docs/feedback/SENZING_BOOTCAMP_POWER_IMPROVEMENTS.md` using the template at `docs/feedback/SENZING_BOOTCAMP_POWER_IMPROVEMENTS_TEMPLATE.md`
 

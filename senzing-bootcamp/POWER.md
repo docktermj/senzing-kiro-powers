@@ -36,6 +36,28 @@ The agent will automatically generate PEP-8 compliant code and check user-provid
 
 ## Getting Started
 
+### CRITICAL FIRST STEP: Create Directory Structure
+
+**Before doing anything else**, the agent will automatically create the project directory structure. This happens at the very beginning of Module 0 or Module 1, whichever you start with.
+
+The agent will execute:
+```bash
+mkdir -p data/{raw,transformed,samples,backups}
+mkdir -p database
+mkdir -p src/{transform,load,query,utils}
+mkdir -p tests
+mkdir -p docs/feedback
+mkdir -p config
+mkdir -p docker/scripts
+mkdir -p logs
+mkdir -p monitoring
+mkdir -p scripts
+```
+
+And create initial files: `.gitignore`, `.env.example`, `README.md`
+
+**Why first?** This ensures all generated files go to the correct locations throughout the boot camp.
+
 ### New to Senzing?
 
 1. **Read the Quick Start**: See `docs/guides/QUICK_START.md` for three fast paths (10 min, 30 min, or 2 hours)
@@ -91,12 +113,13 @@ The boot camp follows a progressive learning path with 13 focused modules (0-12)
 **Modules**:
 
 - **Module 0: Quick Demo (Optional)**
+  - **FIRST**: Agent creates project directory structure automatically
   - Experience entity resolution with sample data
   - See how Senzing resolves duplicate records automatically
   - 10-15 minutes
-  - **Note**: If running Module 0 before Module 1, the agent will create the project directory structure first
 
 - **Module 1: Understand Business Problem**
+  - **FIRST**: Agent creates project directory structure automatically (if not already created in Module 0)
   - Define your problem and identify data sources
   - View design pattern gallery
   - **NEW**: Calculate costs and ROI
@@ -318,11 +341,10 @@ my-senzing-project/
 ```
 
 **Agent behavior**:
-- **IMPORTANT**: Before creating any Module 0 files, ensure the project directory structure exists
-- If the user starts with Module 0 (before Module 1), create the full project structure first
-- At the start of Module 1, create this directory structure (if not already created)
-- Check if the directory is already a git repository before initializing
-- If not a git repository, ask the user if they want to initialize version control
+- **MANDATORY**: Check if project structure exists at the start of Module 0 or Module 1
+- **MANDATORY**: If structure doesn't exist, create it immediately before proceeding
+- **MANDATORY**: Do not skip this step or ask user permission - just create it
+- Inform user that structure has been created
 - As you generate programs throughout the boot camp, save them in the appropriate folders
 
 ## When to Load Steering Files
