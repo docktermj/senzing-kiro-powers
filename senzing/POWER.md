@@ -19,6 +19,7 @@ author: "Senzing"
 - [Prerequisites](#prerequisites)
 - [5-Minute Quick Start](#5-minute-quick-start)
 - [Quick Start](#quick-start)
+- [Available Steering Files](#available-steering-files)
 - [Code Examples](#code-examples)
 - [Available MCP Tools](#available-mcp-tools)
 - [Common Workflows](#common-workflows)
@@ -112,13 +113,6 @@ find_examples(query="load records", language="python")
 
 ---
 
-## License and support
-
-This power integrates with senzing-mcp-server (Apache-2.0).
-
-- [Privacy Policy](https://mcp.senzing.com/privacy)
-- [Support](https://senzing.zendesk.com/hc/en-us/requests/new)
-
 ## Quick Start
 
 New to Senzing? Follow this sequence:
@@ -130,6 +124,44 @@ New to Senzing? Follow this sequence:
 5. **Generate loader code**: `generate_scaffold` with `language: "python"`, `workflow: "full_pipeline"`, `version: "current"`
 
 Typical workflow: Map data → Validate → Generate loader → Load → Query results
+
+## Available Steering Files
+
+This power includes 19 comprehensive steering guides for detailed workflows and advanced topics:
+
+**Core Guides**:
+
+- **getting-started.md** - Quick start, decision trees, common workflows
+- **quick-reference.md** - Copy-paste ready commands and one-liners
+- **examples.md** - Code examples (Python, Java, C#, Rust)
+
+**Best Practices & Optimization**:
+
+- **best-practices.md** - Do's, don'ts, common pitfalls
+- **performance.md** - Optimization, tuning, scaling strategies
+- **troubleshooting.md** - Error handling, debugging, typical sessions
+
+**Advanced Topics**:
+
+- **advanced-topics.md** - Custom config, network analysis, graph traversal
+- **use-cases.md** - 5 real-world implementation walkthroughs with metrics
+- **security-compliance.md** - GDPR, CCPA, PII handling, access control
+- **monitoring.md** - Metrics, Prometheus, Grafana, alerting, dashboards
+
+**Integration & Deployment**:
+
+- **data-sources.md** - 20+ system integrations (CRM, ERP, e-commerce)
+- **cicd.md** - GitHub Actions, GitLab CI, Jenkins, deployment automation
+- **config-examples.md** - Configuration examples for 8+ scenarios
+- **offline-mode.md** - Offline usage and air-gapped deployment guidance
+
+**Reference & Support**:
+
+- **reference.md** - Tool parameters, checklists, glossary (50+ terms)
+- **faq.md** - 100+ questions covering all topics
+- **community.md** - Resources, support, learning materials
+- **smoke-test.md** - Quick and detailed validation procedures
+- **steering.md** - Navigation hub with quick links and task-based index
 
 ## Code Examples
 
@@ -217,19 +249,34 @@ data = get_sample_data(
 
 ## Available MCP Tools
 
-The Senzing MCP server provides these tools:
+The Senzing MCP server provides 12 tools for entity resolution workflows:
+
+**Most Commonly Used**:
 
 - `get_capabilities` — Discover all tools and workflows (call this first)
 - `mapping_workflow` — 7-step interactive data mapping to Senzing JSON
-- `lint_record` / `analyze_record` — Validate and analyze mapped data quality
 - `generate_scaffold` — Generate SDK code (Python, Java, C#, Rust)
-- `sdk_guide` — Platform-specific SDK installation and setup
-- `get_sample_data` — Sample datasets for testing
-- `find_examples` — Working code from 27 Senzing GitHub repos
 - `search_docs` — Search indexed Senzing documentation
-- `explain_error_code` — Diagnose Senzing errors (456 codes)
+
+**Data Validation & Quality**:
+
+- `lint_record` — Validate mapped data format and structure
+- `analyze_record` — Analyze mapped data quality and coverage
+
+**SDK & Installation**:
+
+- `sdk_guide` — Platform-specific SDK installation and setup
 - `get_sdk_reference` — SDK method signatures and flags
 - `download_resource` — Download SDK packages
+
+**Examples & Learning**:
+
+- `get_sample_data` — Sample datasets for testing (CORD collections)
+- `find_examples` — Working code from 27 Senzing GitHub repos
+
+**Support & Troubleshooting**:
+
+- `explain_error_code` — Diagnose Senzing errors (456 codes)
 - `submit_feedback` — Report issues or suggestions
 
 ## Common Workflows
@@ -400,7 +447,7 @@ For on-premises or air-gapped deployments, contact Senzing support for alternati
 
 ## Detailed Guidance
 
-See steering files for detailed workflows:
+See steering files for detailed workflows. Use the agent's `readSteering` action or navigate directly to these files:
 
 - [steering/getting-started.md](steering/getting-started.md) - Quick start, decision trees, common workflows
 - [steering/best-practices.md](steering/best-practices.md) - Best practices, anti-patterns, common pitfalls
@@ -408,6 +455,8 @@ See steering files for detailed workflows:
 - [steering/troubleshooting.md](steering/troubleshooting.md) - Error handling, debugging strategies, typical sessions
 - [steering/examples.md](steering/examples.md) - Code examples and patterns
 - [steering/reference.md](steering/reference.md) - Tool parameters, checklists, glossary
+
+See the [Available Steering Files](#available-steering-files) section above for the complete list of 19 guides.
 
 ## Additional Resources
 
@@ -421,6 +470,13 @@ See steering files for detailed workflows:
 - [steering/offline-mode.md](steering/offline-mode.md) - Offline usage and air-gapped deployments
 - [steering/config-examples.md](steering/config-examples.md) - Configuration examples for all scenarios
 - [steering/smoke-test.md](steering/smoke-test.md) - Quick validation and testing procedures
+
+### License and Support
+
+This power integrates with senzing-mcp-server (Apache-2.0).
+
+- [Privacy Policy](https://mcp.senzing.com/privacy)
+- [Support](https://senzing.zendesk.com/hc/en-us/requests/new)
 
 ---
 
