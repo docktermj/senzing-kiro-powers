@@ -126,6 +126,36 @@ See [reference.md](reference.md) for:
 - Testing strategy
 - Glossary of Senzing terms
 
+### For Configuration
+See [config-examples.md](config-examples.md) for:
+- Configuration examples for all scenarios
+- Development, staging, and production configs
+- Performance-tuned configurations
+- Security-hardened configurations
+- Proxy configurations
+- Multi-environment setup
+
+### For Testing
+See [smoke-test.md](smoke-test.md) for:
+- Quick 5-minute smoke test
+- Detailed 15-minute test suite
+- Automated validation procedures
+- Common issues and solutions
+
+See [test-examples.md](test-examples.md) for:
+- Unit tests for power components
+- Integration tests for MCP connectivity
+- End-to-end workflow tests
+- Performance tests
+- Test automation examples
+
+### For Offline Usage
+See [offline-mode.md](offline-mode.md) for:
+- What works offline vs requires internet
+- Air-gapped environment setup
+- Offline alternatives and workarounds
+- Pre-offline preparation checklist
+
 ## Key Principles
 
 1. **Always use the tools**: Tools like `mapping_workflow`, `generate_scaffold`, and `sdk_guide` produce validated, version-correct output. Never hand-code Senzing JSON or SDK calls.
@@ -160,6 +190,9 @@ See [reference.md](reference.md) for:
 | Find answers | [faq.md](faq.md) | [troubleshooting.md](troubleshooting.md) |
 | Get help | [community.md](community.md) | [faq.md](faq.md) |
 | Understand concepts | [reference.md](reference.md) | [getting-started.md](getting-started.md) |
+| Configure power | [config-examples.md](config-examples.md) | [reference.md](reference.md) |
+| Test power | [smoke-test.md](smoke-test.md) | [test-examples.md](test-examples.md) |
+| Work offline | [offline-mode.md](offline-mode.md) | [getting-started.md](getting-started.md) |
 
 ## Document Structure
 
@@ -180,7 +213,11 @@ steering/
 ├── cicd.md - GitHub Actions, GitLab CI, Jenkins, deployment automation
 ├── faq.md - Comprehensive frequently asked questions
 ├── community.md - Resources, support, learning materials
-└── reference.md - Tool parameters, checklists, glossary
+├── reference.md - Tool parameters, checklists, glossary
+├── config-examples.md - Configuration examples for all scenarios
+├── smoke-test.md - Quick validation and testing procedures
+├── test-examples.md - Comprehensive test examples
+└── offline-mode.md - Offline usage and air-gapped deployments
 ```
 
 ## How to Use These Guides
@@ -198,6 +235,9 @@ steering/
 11. **Integrating data?** See [data-sources.md](data-sources.md)
 12. **Setting up CI/CD?** Check [cicd.md](cicd.md)
 13. **Need help?** Visit [community.md](community.md)
+14. **Configuring power?** See [config-examples.md](config-examples.md)
+15. **Testing power?** Check [smoke-test.md](smoke-test.md) and [test-examples.md](test-examples.md)
+16. **Working offline?** See [offline-mode.md](offline-mode.md)
 
 ## Getting Help
 

@@ -5,11 +5,29 @@ version: "0.1.0"
 description: "Senzing entity resolution. Covers data mapping, SDK setup, loading, performance testing, security hardening, monitoring, and production deployment."
 keywords: ["Senzing", "Entity Resolution", "Data Mapping", "SDK", "Identity Resolution", "Data Matching", "ER", "Performance", "Security", "Monitoring", "Deployment", "Data Quality", "Deduplication", "Master Data", "MDM", "Record Linkage", "Fuzzy Matching", "Customer 360", "KYC", "Fraud Detection", "Data Integration", "Data Cleansing"]
 author: "Senzing"
+homepage: "https://senzing.com"
+repository: "https://github.com/senzing"
+license: "CC-BY-4.0"
+category: "data-integration"
+tags: ["entity-resolution", "data-quality", "mdm", "deduplication", "identity-resolution"]
+maturity: "stable"
 senzing_compatibility: ["4.0"]
-last_updated: "2026-03-17"
+mcp_server_url: "https://mcp.senzing.com/mcp"
+mcp_server_license: "Apache-2.0"
+support_url: "https://senzing.zendesk.com/hc/en-us/requests/new"
+documentation_url: "https://senzing.com/documentation"
+last_updated: "2026-03-21"
 ---
 
 # Power: Senzing
+
+![Version](https://img.shields.io/badge/version-0.1.0-blue) ![Maturity](https://img.shields.io/badge/maturity-stable-green) ![License](https://img.shields.io/badge/license-CC--BY--4.0-lightgrey) ![Senzing](https://img.shields.io/badge/senzing-4.0-orange)
+
+> **Entity Resolution and Identity Matching** - Comprehensive Senzing integration covering data mapping, SDK setup, performance optimization, security, and production deployment.
+
+**Quick Links**: [Homepage](https://senzing.com) | [Documentation](https://senzing.com/documentation) | [Support](https://senzing.zendesk.com/hc/en-us/requests/new) | [GitHub](https://github.com/senzing)
+
+---
 
 ## License and support
 
@@ -125,3 +143,91 @@ See steering files for detailed workflows:
 - [steering/troubleshooting.md](steering/troubleshooting.md) - Error handling, debugging strategies, typical sessions
 - [steering/examples.md](steering/examples.md) - Code examples and patterns
 - [steering/reference.md](steering/reference.md) - Tool parameters, checklists, glossary
+
+## Additional Resources
+
+### Power Infrastructure
+- [CHANGELOG.md](CHANGELOG.md) - Version history and release notes
+- [validate_power.py](validate_power.py) - Automated validation script
+
+### Power Development
+- [docs/METADATA.md](docs/METADATA.md) - Power metadata documentation
+- [docs/PRODUCTION_READY.md](docs/PRODUCTION_READY.md) - Production readiness certification
+- [docs/IMPROVEMENTS_SUMMARY.md](docs/IMPROVEMENTS_SUMMARY.md) - Development history and improvements
+
+### User Guides
+- [steering/offline-mode.md](steering/offline-mode.md) - Offline usage and air-gapped deployments
+- [steering/config-examples.md](steering/config-examples.md) - Configuration examples for all scenarios
+- [steering/smoke-test.md](steering/smoke-test.md) - Quick validation and testing procedures
+- [steering/test-examples.md](steering/test-examples.md) - Comprehensive test examples
+
+---
+
+## Power Metadata Reference
+
+This power includes the following metadata for discoverability and integration:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| **name** | senzing | Unique identifier for the power |
+| **displayName** | Senzing | Human-readable name shown in UI |
+| **version** | 0.1.0 | Semantic version of this power |
+| **description** | Entity resolution... | Brief description of capabilities |
+| **keywords** | [22 keywords] | Search terms for discoverability |
+| **author** | Senzing | Power creator/maintainer |
+| **homepage** | https://senzing.com | Official Senzing website |
+| **repository** | https://github.com/senzing | Source code repositories |
+| **license** | CC-BY-4.0 | License for power documentation |
+| **category** | data-integration | Primary category |
+| **tags** | [5 tags] | Categorical tags |
+| **maturity** | stable | Stability level (alpha/beta/stable) |
+| **senzing_compatibility** | [4.0] | Compatible Senzing versions |
+| **mcp_server_url** | https://mcp.senzing.com/mcp | MCP server endpoint |
+| **mcp_server_license** | Apache-2.0 | MCP server license |
+| **support_url** | https://senzing.zendesk.com | Support portal |
+| **documentation_url** | https://senzing.com/documentation | Official documentation |
+| **last_updated** | 2026-03-21 | Last modification date |
+
+### Metadata Field Descriptions
+
+**Core Identity**:
+- `name`: Unique identifier used in code and configuration
+- `displayName`: User-facing name shown in interfaces
+- `version`: Follows semantic versioning (MAJOR.MINOR.PATCH)
+- `description`: One-line summary of power capabilities
+
+**Discovery**:
+- `keywords`: Array of search terms for finding this power
+- `tags`: Categorical tags for filtering and organization
+- `category`: Primary category (data-integration, analytics, etc.)
+
+**Attribution**:
+- `author`: Creator or maintainer of the power
+- `license`: License for the power content (documentation, examples)
+- `homepage`: Official website for more information
+- `repository`: Source code location
+
+**Quality**:
+- `maturity`: Stability indicator
+  - `alpha`: Early development, may have breaking changes
+  - `beta`: Feature-complete, testing phase
+  - `stable`: Production-ready, stable API
+
+**Integration**:
+- `senzing_compatibility`: Array of compatible Senzing SDK versions
+- `mcp_server_url`: Endpoint for the MCP server
+- `mcp_server_license`: License of the underlying MCP server
+
+**Support**:
+- `support_url`: Where to get help
+- `documentation_url`: Official documentation location
+- `last_updated`: Date of last significant update (YYYY-MM-DD)
+
+### Using Metadata
+
+Power metadata can be used for:
+- **Discovery**: Search by keywords or tags
+- **Filtering**: Filter powers by category or maturity
+- **Validation**: Check compatibility before installation
+- **Attribution**: Proper licensing and credit
+- **Support**: Quick access to help resources
