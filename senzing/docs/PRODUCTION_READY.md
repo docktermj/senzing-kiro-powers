@@ -4,8 +4,8 @@ This document certifies that the Senzing Kiro Power has achieved production-read
 
 ## Status: ✅ PRODUCTION READY
 
-**Version**: 0.1.0  
-**Date**: March 21, 2026  
+**Version**: 1.0.0  
+**Date**: March 22, 2026  
 **Maturity**: Stable  
 
 ## Completion Summary
@@ -253,6 +253,6 @@ The Senzing Kiro Power is **production-ready** and suitable for:
 ---
 
 **Certified By**: Senzing Power Development Team  
-**Date**: March 21, 2026  
-**Version**: 0.1.0  
+**Date**: March 22, 2026  
+**Version**: 1.0.0  
 **Status**: Production Ready ✅

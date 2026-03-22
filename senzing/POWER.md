@@ -1,13 +1,13 @@
 ---
 name: "senzing"
 displayName: "Senzing"
-version: "0.1.0"
+version: "1.0.0"
 description: "Senzing entity resolution. Covers data mapping, SDK setup, loading, performance testing, security hardening, monitoring, and production deployment."
 keywords: ["Senzing", "Entity Resolution", "Data Mapping", "SDK", "Identity Resolution", "Data Matching", "ER", "Performance", "Security", "Monitoring", "Deployment", "Data Quality", "Deduplication", "Master Data", "MDM", "Record Linkage", "Fuzzy Matching", "Customer 360", "KYC", "Fraud Detection", "Data Integration", "Data Cleansing"]
 author: "Senzing"
 homepage: "https://senzing.com"
 repository: "https://github.com/senzing"
-license: "CC-BY-4.0"
+license: "Apache-2.0"
 category: "data-integration"
 tags: ["entity-resolution", "data-quality", "mdm", "deduplication", "identity-resolution"]
 maturity: "stable"
@@ -16,12 +16,12 @@ mcp_server_url: "https://mcp.senzing.com/mcp"
 mcp_server_license: "Apache-2.0"
 support_url: "https://senzing.zendesk.com/hc/en-us/requests/new"
 documentation_url: "https://senzing.com/documentation"
-last_updated: "2026-03-21"
+last_updated: "2026-03-22"
 ---
 
 # Power: Senzing
 
-![Version](https://img.shields.io/badge/version-0.1.0-blue) ![Maturity](https://img.shields.io/badge/maturity-stable-green) ![License](https://img.shields.io/badge/license-CC--BY--4.0-lightgrey) ![Senzing](https://img.shields.io/badge/senzing-4.0-orange)
+![Version](https://img.shields.io/badge/version-1.0.0-blue) ![Maturity](https://img.shields.io/badge/maturity-stable-green) ![License](https://img.shields.io/badge/license-Apache--2.0-lightgrey) ![Senzing](https://img.shields.io/badge/senzing-4.0-orange)
 
 > **Entity Resolution and Identity Matching** - Comprehensive Senzing integration covering data mapping, SDK setup, performance optimization, security, and production deployment.
 
@@ -101,8 +101,6 @@ find_examples → get_sdk_reference
 - **C# SDK**: 4.0+
 - **Rust SDK**: 4.0+
 
-For V3 compatibility, use `version: "3.x"` parameter where supported (Python and Java only).
-
 ## Best Practices
 
 - Always call `get_capabilities` first when starting a Senzing session
@@ -171,13 +169,13 @@ This power includes the following metadata for discoverability and integration:
 |-------|-------|-------------|
 | **name** | senzing | Unique identifier for the power |
 | **displayName** | Senzing | Human-readable name shown in UI |
-| **version** | 0.1.0 | Semantic version of this power |
+| **version** | 1.0.0 | Semantic version of this power |
 | **description** | Entity resolution... | Brief description of capabilities |
 | **keywords** | [22 keywords] | Search terms for discoverability |
 | **author** | Senzing | Power creator/maintainer |
 | **homepage** | https://senzing.com | Official Senzing website |
 | **repository** | https://github.com/senzing | Source code repositories |
-| **license** | CC-BY-4.0 | License for power documentation |
+| **license** | Apache-2.0 | License for power documentation |
 | **category** | data-integration | Primary category |
 | **tags** | [5 tags] | Categorical tags |
 | **maturity** | stable | Stability level (alpha/beta/stable) |
@@ -186,7 +184,7 @@ This power includes the following metadata for discoverability and integration:
 | **mcp_server_license** | Apache-2.0 | MCP server license |
 | **support_url** | https://senzing.zendesk.com | Support portal |
 | **documentation_url** | https://senzing.com/documentation | Official documentation |
-| **last_updated** | 2026-03-21 | Last modification date |
+| **last_updated** | 2026-03-22 | Last modification date |
 
 ### Metadata Field Descriptions
 

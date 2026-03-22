@@ -7,25 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Changed
-- Reorganized file structure for better clarity:
-  - Moved user-facing guides to `steering/` directory:
-    - `OFFLINE_MODE.md` → `steering/offline-mode.md`
-    - `CONFIG_EXAMPLES.md` → `steering/config-examples.md`
-    - `SMOKE_TEST.md` → `steering/smoke-test.md`
-    - `TEST_EXAMPLES.md` → `steering/test-examples.md`
-  - Moved power development documentation to `docs/` directory:
-    - `METADATA.md` → `docs/METADATA.md`
-    - `IMPROVEMENTS_SUMMARY.md` → `docs/IMPROVEMENTS_SUMMARY.md`
-    - `PRODUCTION_READY.md` → `docs/PRODUCTION_READY.md`
-- Updated all internal references to reflect new file locations
-- Updated validation script to check for files in new locations
-
 ### Planned
 - Additional language examples (TypeScript, Go)
 - Video tutorial references
 - Interactive tutorials
 - Community-contributed content
+
+## [1.0.0] - 2026-03-22
+
+### Changed
+- **BREAKING**: Updated license from CC-BY-4.0 to Apache-2.0 for consistency
+- **BREAKING**: Removed Senzing V3 compatibility references (V4 only)
+- Updated version to 1.0.0 (stable release)
+- Updated last_updated date to 2026-03-22
+- Reorganized file structure:
+  - Moved user-facing guides to `steering/` directory
+  - Moved power development documentation to `docs/` directory
+- Updated all internal references to reflect new file locations
+- Updated validation script to check for files in new locations
+
+### Removed
+- V3 compatibility note from Version Compatibility section
+- References to `version: "3.x"` parameter
 
 ## [0.1.0] - 2026-03-21
 
@@ -222,7 +225,7 @@ This changelog is manually maintained. When making changes:
 ## Notes
 
 - This power integrates with Senzing MCP server (Apache-2.0)
-- Power documentation is licensed under CC-BY-4.0
+- Power documentation is licensed under Apache-2.0
 - Compatible with Senzing SDK 4.0+
 - Requires internet connection for MCP server access (see OFFLINE_MODE.md for alternatives)
 

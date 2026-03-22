@@ -109,10 +109,10 @@ Power metadata provides structured information about the power for:
 
 #### license
 - **Type**: String (SPDX License Identifier)
-- **Value**: `CC-BY-4.0`
+- **Value**: `Apache-2.0`
 - **Purpose**: License for power content
 - **Usage**: Legal compliance, attribution requirements
-- **Rules**: Use SPDX identifiers (MIT, Apache-2.0, CC-BY-4.0, etc.)
+- **Rules**: Use SPDX identifiers (MIT, Apache-2.0, BSD-3-Clause, etc.)
 - **Note**: This is for the power documentation, not the underlying software
 
 ### Quality

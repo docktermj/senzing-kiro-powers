@@ -166,7 +166,7 @@ get_sdk_reference(topic="flags", version="current")
 # Check specific flag
 get_sdk_reference(topic="flags", filter="SZ_EXPORT", version="current")
 
-# Migration info (V3 to V4)
+# Migration info (V4 updates)
 get_sdk_reference(topic="migration", version="current")
 
 # Response schemas

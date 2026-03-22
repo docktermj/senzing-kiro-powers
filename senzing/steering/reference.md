@@ -33,7 +33,7 @@ This guide provides quick reference materials including tool parameters, checkli
 - **Required**: 
   - `language` (string) - "python", "java", "csharp", "rust"
   - `workflow` (string) - "initialize", "configure", "add_records", "delete", "query", "redo", "stewardship", "information", "full_pipeline"
-  - `version` (string) - "4.0", "current", or "3.x"
+  - `version` (string) - "4.0" or "current"
 - **Returns**: Working code with source URLs
 
 ### sdk_guide

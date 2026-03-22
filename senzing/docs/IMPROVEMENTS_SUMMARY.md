@@ -400,7 +400,7 @@ Enhanced power metadata with professional polish:
 **Added Metadata Fields**:
 - `homepage`: Official Senzing website (https://senzing.com)
 - `repository`: GitHub organization (https://github.com/senzing)
-- `license`: CC-BY-4.0 for power documentation
+- `license`: Apache-2.0 for power documentation
 - `category`: data-integration
 - `tags`: 5 categorical tags for filtering
 - `maturity`: stable (production-ready)
