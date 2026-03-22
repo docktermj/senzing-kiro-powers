@@ -59,15 +59,8 @@ class PowerValidator:
             "validate_power.py"
         ]
         
-        required_docs_files = [
-            "docs/METADATA.md",
-            "docs/IMPROVEMENTS_SUMMARY.md",
-            "docs/PRODUCTION_READY.md"
-        ]
-        
         required_dirs = [
-            "steering",
-            "docs"
+            "steering"
         ]
         
         required_steering_files = [
@@ -89,7 +82,6 @@ class PowerValidator:
             "steering/reference.md",
             "steering/config-examples.md",
             "steering/smoke-test.md",
-            "steering/test-examples.md",
             "steering/offline-mode.md"
         ]
         
@@ -100,15 +92,6 @@ class PowerValidator:
             file_path = self.power_dir / file
             if not file_path.exists():
                 self.log("ERROR", f"Required file missing: {file}")
-                all_valid = False
-            else:
-                self.log("INFO", f"Found: {file}")
-        
-        # Check required docs files
-        for file in required_docs_files:
-            file_path = self.power_dir / file
-            if not file_path.exists():
-                self.log("ERROR", f"Required docs file missing: {file}")
                 all_valid = False
             else:
                 self.log("INFO", f"Found: {file}")
@@ -342,7 +325,6 @@ class PowerValidator:
             "reference.md",
             "config-examples.md",
             "smoke-test.md",
-            "test-examples.md",
             "offline-mode.md"
         ]
         

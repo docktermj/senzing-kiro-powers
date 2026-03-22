@@ -148,16 +148,10 @@ See steering files for detailed workflows:
 - [CHANGELOG.md](CHANGELOG.md) - Version history and release notes
 - [validate_power.py](validate_power.py) - Automated validation script
 
-### Power Development
-- [docs/METADATA.md](docs/METADATA.md) - Power metadata documentation
-- [docs/PRODUCTION_READY.md](docs/PRODUCTION_READY.md) - Production readiness certification
-- [docs/IMPROVEMENTS_SUMMARY.md](docs/IMPROVEMENTS_SUMMARY.md) - Development history and improvements
-
 ### User Guides
 - [steering/offline-mode.md](steering/offline-mode.md) - Offline usage and air-gapped deployments
 - [steering/config-examples.md](steering/config-examples.md) - Configuration examples for all scenarios
 - [steering/smoke-test.md](steering/smoke-test.md) - Quick validation and testing procedures
-- [steering/test-examples.md](steering/test-examples.md) - Comprehensive test examples
 
 ---
 

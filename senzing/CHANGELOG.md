@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Moved power development documentation to separate `senzing-development` directory
+  - Development docs are no longer part of the user-facing power
+  - Cleaner power structure focused on user needs
+
+### Removed
+- `steering/test-examples.md` - Redundant with smoke-test.md and validate_power.py
+  - Users can validate with smoke-test.md (practical testing)
+  - Users can validate with validate_power.py (automated validation)
+  - Detailed pytest code was more for power developers than users
+
 ### Planned
 - Additional language examples (TypeScript, Go)
 - Video tutorial references
