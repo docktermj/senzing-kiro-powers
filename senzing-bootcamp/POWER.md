@@ -1,15 +1,12 @@
 ---
 name: "senzing-bootcamp"
 displayName: "Senzing Boot Camp"
-version: "3.0.0"
 description: "Comprehensive guided boot camp for Senzing entity resolution. Covers data mapping, SDK setup, loading, performance testing, security hardening, monitoring, and production deployment."
-keywords: ["Entity Resolution", "Senzing", "Data Mapping", "SDK", "Identity Resolution", "Data Matching", "ER", "Performance", "Security", "Monitoring", "Deployment"]
+keywords: ["senzing", "bootcamp", "training", "tutorial", "learning-path", "entity-resolution", "guided-workflow"]
 author: "Senzing"
-senzing_compatibility: ["4.0"]
-last_updated: "2026-03-17"
 ---
 
-# Power: Senzing Boot Camp
+# Senzing Boot Camp
 
 ## 🚨 CRITICAL: Agent Must Read This First 🚨
 
@@ -19,13 +16,38 @@ last_updated: "2026-03-17"
 
 ## Overview
 
-This power provides a guided boot camp experience for learning Senzing entity resolution. It connects to the Senzing MCP server to provide interactive, tool-assisted workflows covering data mapping, SDK installation, record loading, and entity resolution exploration.
+This power provides a **guided boot camp experience** for learning Senzing entity resolution through a structured 13-module curriculum. It connects to the Senzing MCP server to provide interactive, tool-assisted workflows covering data mapping, SDK installation, record loading, and entity resolution exploration.
 
 Senzing is an embeddable entity resolution engine that resolves records about people and organizations across data sources — matching, relating, and deduplicating without manual rules or model training.
 
-**Power Version**: 3.0.0  
-**Senzing Compatibility**: V4.0  
-**Last Updated**: 2026-03-17
+## Relationship to Senzing Power
+
+This boot camp power **complements** the **senzing** Kiro Power:
+
+- **senzing power**: Reference documentation, tool catalog, quick lookup, troubleshooting
+- **senzing-bootcamp power**: Guided learning path, structured curriculum, project-based learning
+
+**Recommendation**:
+
+- Install **both** powers for the best experience
+- Use **senzing** for tool reference and troubleshooting details
+- Use **senzing-bootcamp** for structured learning and project guidance
+
+## What Makes This Boot Camp Unique
+
+Unlike the senzing reference power, this boot camp provides:
+
+✅ **Structured Learning**: 13 progressive modules (0-12)  
+✅ **Project Scaffolding**: Automatic directory structure creation  
+✅ **Design Patterns**: Gallery of 10 common entity resolution patterns  
+✅ **Example Projects**: 3 complete reference implementations  
+✅ **Code Templates**: Ready-to-use transformation, loading, query templates  
+✅ **Progress Tracking**: Built-in progress tracker  
+✅ **Quality Standards**: PEP-8 compliance checking  
+✅ **Feedback Loop**: Structured feedback collection  
+
+**Use this power when**: You're learning Senzing or building your first project  
+**Use senzing power when**: You need quick reference or troubleshooting
 
 ## Code Quality Standards
 
@@ -94,23 +116,20 @@ Use ready-made templates from `templates/` directory:
 - Query and export templates
 - Utility templates for common tasks
 
-## Available MCP Servers
+## Available MCP Tools
 
-### senzing-mcp-server
+This boot camp uses the Senzing MCP server. For complete tool documentation, see the **senzing** Kiro Power.
 
-- **URL**: `https://mcp.senzing.com/mcp`
-- **Purpose**: AI-assisted entity resolution tools — data mapping, SDK code generation, documentation search, troubleshooting, and sample data access.
-- **Key tools**:
-  - `get_capabilities` — Discover all available tools and workflows (call this first)
-  - `mapping_workflow` — 7-step interactive data mapping from source files to Senzing JSON format
-  - `lint_record` / `analyze_record` — Validate and analyze mapped data quality
-  - `generate_scaffold` — Generate SDK code (Python, Java, C#, Rust) for common workflows
-  - `sdk_guide` — Platform-specific SDK installation and pipeline setup
-  - `get_sample_data` — Sample datasets (Las Vegas, London, Moscow) for testing
-  - `find_examples` — Working code examples from 27 Senzing GitHub repositories
-  - `search_docs` — Search indexed Senzing documentation
-  - `explain_error_code` — Diagnose Senzing errors (456 error codes)
-  - `get_sdk_reference` — SDK method signatures and flags
+**Quick reference** - Most commonly used tools in this boot camp:
+
+- `get_capabilities` — Start here (Module 0, 1)
+- `mapping_workflow` — Data mapping (Module 4)
+- `generate_scaffold` — Code generation (Modules 5, 6, 8)
+- `get_sample_data` — Sample data (Module 0)
+- `search_docs` — Find documentation (all modules)
+- `explain_error_code` — Diagnose errors (troubleshooting)
+
+For detailed tool descriptions, parameters, examples, and troubleshooting, activate the **senzing** power.
 
 ## Boot Camp Learning Path
 
@@ -412,6 +431,7 @@ The boot camp includes detailed steering files for specific topics. Load these o
 Install pre-configured hooks to automate quality checks and reminders. See `hooks/README.md` and `docs/guides/HOOKS_INSTALLATION_GUIDE.md` for details.
 
 Available hooks:
+
 - **data-quality-check** — Validates quality when transformations change
 - **backup-before-load** — Reminds to backup before loading
 - **test-before-commit** — Runs tests automatically
@@ -419,6 +439,7 @@ Available hooks:
 - **update-documentation** — Reminds to update docs
 
 Installation:
+
 ```bash
 # Create .kiro directory structure if it doesn't exist
 mkdir -p .kiro/hooks
@@ -428,6 +449,7 @@ cp senzing-bootcamp/hooks/*.hook .kiro/hooks/
 ```
 
 **Agent behavior**:
+
 - When installing hooks, always verify the `.kiro/hooks/` directory exists first
 - Create it if needed with `mkdir -p .kiro/hooks` before copying hook files
 - **Proactively suggest hooks** at the start of Module 3 (data mapping)
@@ -451,6 +473,7 @@ When starting Module 1, offer users a gallery of common entity resolution patter
 | **Supply Chain** | Unified supplier view | Company names, GLNs, tax IDs | Visibility, risk management |
 
 **When to use each pattern**:
+
 - **Customer 360**: Multiple customer touchpoints, CRM consolidation
 - **Fraud Detection**: Financial services, insurance, e-commerce
 - **Data Migration**: M&A, system consolidation, cloud migration
@@ -463,6 +486,7 @@ When starting Module 1, offer users a gallery of common entity resolution patter
 - **Supply Chain**: Manufacturing, logistics, procurement
 
 **Agent behavior**:
+
 - Present this gallery when user requests it in Module 1
 - Help them identify which pattern(s) match their situation
 - Use the selected pattern to guide problem definition and set realistic expectations
@@ -474,7 +498,8 @@ When starting Module 1, offer users a gallery of common entity resolution patter
 When offering users a choice of paths, use letter labels (A, B, C, D) instead of numbers (1, 2, 3, 4) to avoid confusion with module numbers.
 
 **Example**:
-```
+
+```text
 Which path would you like to take?
 
 A) Quick Demo (10 min) - Module 0
@@ -498,13 +523,17 @@ Please respond with A, B, C, or D
 
 ### General Best Practices
 
-- Always call `get_capabilities` first when starting a Senzing session
-- Never hand-code Senzing JSON mappings or SDK method calls from memory — use `mapping_workflow` and `generate_scaffold` for validated output
-- Use `search_docs` with category `anti_patterns` before recommending installation, architecture, or deployment approaches
-- For SDK code, use `generate_scaffold` or `sdk_guide` — these return version-correct method signatures
-- Start with SQLite for evaluation; recommend PostgreSQL for production
-- Use CORD sample data for learning before working with real data
-- **All Python code must be PEP-8 compliant** — the agent will generate compliant code and check user code for compliance (see `docs/development/PEP8_COMPLIANCE.md`)
+This boot camp follows Senzing best practices. For complete guidelines, see the **senzing** power.
+
+**Boot camp-specific practices**:
+
+- Complete modules in order for first-time users
+- Use letter labels (A, B, C, D) when presenting path options to avoid confusion with module numbers
+- Create project directory structure before starting Module 1
+- All Python code must be PEP-8 compliant (see `docs/development/PEP8_COMPLIANCE.md`)
+- Track progress using `docs/guides/PROGRESS_TRACKER.md`
+- Use CORD sample data (Module 0) before working with real data
+- Start with SQLite for evaluation; use PostgreSQL for production
 
 ## Common Workflows
 
@@ -528,10 +557,21 @@ See [steering/steering.md](steering/steering.md) for detailed step-by-step workf
 
 ## Troubleshooting
 
-- **Wrong attribute names**: Never guess Senzing attribute names (e.g., `NAME_ORG` not `BUSINESS_NAME_ORG`). Always use `mapping_workflow`.
-- **Wrong method signatures**: Never guess SDK methods (e.g., `close_export_report` not `close_export`). Always use `generate_scaffold` or `get_sdk_reference`.
-- **Error codes**: Use `explain_error_code` with the code (accepts `SENZ0005`, `0005`, or `5`).
-- **Configuration issues**: Use `search_docs` with category `configuration` or `database`.
+For comprehensive troubleshooting, see the **senzing** power which includes:
+
+- Top 5 common issues with detailed solutions
+- Error code explanations (456 codes)
+- Performance optimization guidance
+- Connectivity troubleshooting
+
+**Boot camp-specific troubleshooting**:
+
+- **Module stuck?** Check prerequisites in module description
+- **Directory structure missing?** Agent should create it automatically at start of Module 0 or 1
+- **Code not PEP-8 compliant?** Use the agent's validation feature
+- **Lost progress?** Check `docs/guides/PROGRESS_TRACKER.md`
+- **Can't find generated files?** Check the `src/` directory structure
+- **Module prerequisites not met?** Review the "Module Prerequisites" section above
 
 ## Providing Feedback
 
@@ -656,8 +696,8 @@ After completing all modules, you'll have:
 
 ### Getting Help
 
-- Use `search_docs` to find Senzing documentation
-- Use `explain_error_code` for error diagnosis
-- Use `find_examples` to see real-world code patterns
-- Review steering guides for detailed workflows
-- Contact Senzing support for production issues
+- **For tool reference**: Activate the **senzing** power
+- **For troubleshooting**: See the **senzing** power's troubleshooting section
+- **For module workflows**: Review steering guides in this power
+- **For code examples**: Check `examples/` directory or use `find_examples` tool
+- **For production issues**: Contact Senzing support
