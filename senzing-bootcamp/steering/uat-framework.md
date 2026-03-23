@@ -361,7 +361,7 @@ Load this guide when:
 
 - `POWER.md` - Module 8 overview
 - `steering/steering.md` - Module 8 workflow
-- `steering/testing-strategy.md` - Overall testing approach
+- Use MCP: `search_docs(query="testing best practices")` for overall testing approach
 
 ## Version History
 

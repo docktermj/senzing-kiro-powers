@@ -243,7 +243,7 @@ Please respond with A, B, C, or D (or describe what you want to do)
 
 ### Power Feedback Workflow
 
-**Trigger phrases**: When user says "power feedback", "submit feedback", "provide feedback", "I have feedback", or "report an issue"
+**Trigger phrases**: When user says "power feedback", "bootcamp feedback", "submit feedback", "provide feedback", "I have feedback", or "report an issue"
 
 **Immediate actions**:
 
@@ -336,7 +336,7 @@ Please respond with A, B, C, or D (or describe what you want to do)
 - If not a git repository, ask user if they want to initialize git
 - If yes, initialize git (structure and .gitignore already created)
 - If already a git repository, acknowledge and proceed
-- **Inform user about feedback mechanism**: "If you encounter any issues or have suggestions during the boot camp, just say 'power feedback' and I'll help you document them for the power author."
+- **Inform user about feedback mechanism**: "If you encounter any issues or have suggestions during the boot camp, just say 'power feedback' or 'bootcamp feedback' and I'll help you document them for the power author."
 
 ### Module 2: Identify and Collect Data Sources
 - Review data sources identified in Module 1
@@ -559,14 +559,16 @@ Load steering files on-demand:
 - `steering/quick-reference.md` - MCP tool quick reference
 - `steering/environment-setup.md` - Module 1, setup questions
 - `steering/security-privacy.md` - Module 2, sensitive data
-- `steering/testing-strategy.md` - Module 3, testing questions
-- `steering/performance-monitoring.md` - Module 5, performance questions
-- `steering/recovery-procedures.md` - Before Module 5, errors
-- `steering/collaboration.md` - Team projects
 - `steering/cost-estimation.md` - Module 1 or 4, cost questions
-- `steering/integration-patterns.md` - Module 6, integration questions
 - `steering/common-pitfalls.md` - Any module, troubleshooting
 - `steering/lessons-learned.md` - After Module 6
+
+**For generic topics, use MCP tools instead**:
+- Testing strategies → `search_docs(query="testing best practices")`
+- Performance monitoring → `search_docs(query="performance monitoring", category="performance")`
+- Integration patterns → `find_examples(query="API integration")`
+- Disaster recovery → `search_docs(query="backup and recovery")`
+- Collaboration → Standard software engineering practices
 
 ## Error Handling
 
@@ -691,7 +693,7 @@ Remember:
 ### Module 12 Completion
 - **Remind user to share feedback**: At the end of Module 12, say:
   - "🎉 Congratulations on completing the Senzing Boot Camp!"
-  - "If you have any feedback about your experience, say 'power feedback' and I'll help you document it"
+  - "If you have any feedback about your experience, say 'power feedback' or 'bootcamp feedback' and I'll help you document it"
   - "If you've already documented feedback in `docs/feedback/SENZING_BOOTCAMP_POWER_FEEDBACK.md`, please share that file with the power author"
   - "Your feedback helps improve the boot camp for future users!"
 - Encourage them to include any final thoughts about the overall boot camp experience

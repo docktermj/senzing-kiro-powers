@@ -24,6 +24,43 @@ Complete history of the boot camp development including:
 - Template cleanup history
 - Workflow integration strategies
 
+### Removed Guides (`guides/`)
+
+Guide files removed from Power distribution (Phase 2):
+- Files duplicating MCP server functionality
+- Internal/development documentation
+- See `GUIDES_REORGANIZATION_2026-03-23.md` for details
+
+### Removed Demo Scripts (`quickstart_demo/`)
+
+Static demo scripts removed from Power distribution (Phase 3):
+- Replaced by MCP-generated code
+- See `DEMO_SCRIPTS_REMOVAL_2026-03-23.md` for details
+
+### Removed Steering Files (`steering/`)
+
+Steering files removed from Power distribution (Phase 5):
+- Generic best practices files
+- Generic pattern files
+- Advanced operations files
+- See `STEERING_FILES_CLEANUP_2026-03-23.md` for details
+
+### Build Artifacts
+
+Build artifacts removed from Power distribution (Phase 4):
+- `mdpdf.log` - PDF generation tool log
+- See `BUILD_ARTIFACTS_CLEANUP_2026-03-23.md` for details
+
+### Reorganization Documentation
+
+- `REORGANIZATION_SUMMARY.md` - Phase 1: Development documentation (34 files)
+- `GUIDES_REORGANIZATION_2026-03-23.md` - Phase 2: Guide files (17 files)
+- `DEMO_SCRIPTS_REMOVAL_2026-03-23.md` - Phase 3: Demo scripts (3 files)
+- `BUILD_ARTIFACTS_CLEANUP_2026-03-23.md` - Phase 4: Build artifacts (1 file)
+- `STEERING_FILES_ANALYSIS_2026-03-23.md` - Phase 5 analysis
+- `STEERING_FILES_CLEANUP_2026-03-23.md` - Phase 5: Steering files (9 files)
+- `COMPLETE_REORGANIZATION_SUMMARY.md` - Complete overview (64 files total)
+
 ### Internal Documentation (Root)
 
 - `DIRECTORY_STRUCTURE_GUARANTEE.md` - Internal guarantee about directory structure creation
@@ -38,6 +75,8 @@ These files were moved out of the main Power distribution because:
 2. **Reduce clutter** - Keep the Power focused on user-facing content
 3. **Preserve history** - Maintain development context for future maintainers
 4. **Clear separation** - Distinguish between user documentation and developer notes
+5. **Eliminate duplication** - MCP server provides Senzing documentation dynamically
+6. **Always current** - MCP-generated content stays up-to-date automatically
 
 ## What's in the Power Distribution?
 
@@ -63,7 +102,12 @@ When developing the Power:
 
 ## Version History
 
-- **2026-03-23**: Created development repository, moved internal docs from Power distribution
+- **2026-03-23**: Complete reorganization (5 phases, 64 files moved)
+  - Phase 1: Moved 34 internal development files
+  - Phase 2: Moved 17 guide files (duplicates and internal docs)
+  - Phase 3: Moved 3 static demo scripts
+  - Phase 4: Moved 1 build artifact (mdpdf.log)
+  - Phase 5: Moved 9 generic steering files
 - **2026-03-17**: Major v3.0.0 improvements (Modules 7-12, enhanced workflows)
 - **Earlier**: Various phases of development tracked in `development/` folder
 

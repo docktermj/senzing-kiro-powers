@@ -417,7 +417,7 @@ Use this workflow after loading at least one data source successfully (Module 6)
 
 ### Step 7: Run Full Orchestration
 
-1. **Backup database** before starting (see `steering/disaster-recovery.md`)
+1. **Backup database** before starting (use MCP: `search_docs(query="backup and recovery")`)
 
 2. **Run orchestration script**:
    ```bash
@@ -2674,7 +2674,7 @@ Use this workflow after monitoring setup (Module 11) to package and deploy your 
    │   ├── security_audit.md        # From Module 10
    │   ├── monitoring_guide.md      # From Module 11
    │   ├── runbooks/                # From Module 11
-   │   └── disaster_recovery.md     # Reference steering/disaster-recovery.md
+   │   └── disaster_recovery.md     # Use MCP: search_docs(query="disaster recovery")
    └── scripts/
        ├── deploy.sh
        ├── backup.sh
@@ -2888,8 +2888,8 @@ Use this workflow after monitoring setup (Module 11) to package and deploy your 
    - [ ] Security audit passed (see `security_audit.md`)
    - [ ] Monitoring configured (see `monitoring_guide.md`)
    - [ ] UAT sign-off obtained
-   - [ ] Disaster recovery plan reviewed (see `disaster_recovery.md`)
-   - [ ] Multi-environment strategy defined (see `steering/multi-environment-strategy.md`)
+   - [ ] Disaster recovery plan reviewed (use MCP: search_docs(query="disaster recovery"))
+   - [ ] Multi-environment strategy defined (use MCP: search_docs(query="multi-environment deployment"))
    
    ## Deployment Steps
    
@@ -2954,17 +2954,17 @@ Use this workflow after monitoring setup (Module 11) to package and deploy your 
    
    ## API Gateway Integration
    
-   See `steering/api-gateway-patterns.md` for API gateway setup.
+   Use MCP: `find_examples(query="API gateway")` for API gateway setup.
    
    ## Multi-Environment Strategy
    
-   See `steering/multi-environment-strategy.md` for dev/staging/prod setup.
+   Use MCP: `search_docs(query="multi-environment deployment")` for dev/staging/prod setup.
    ```
 
 2. **Reference related documentation**:
-   - `steering/disaster-recovery.md` - Backup and recovery procedures
-   - `steering/api-gateway-patterns.md` - API gateway integration
-   - `steering/multi-environment-strategy.md` - Environment management
+   - Use MCP: `search_docs(query="disaster recovery")` for backup and recovery procedures
+   - Use MCP: `find_examples(query="API gateway")` for API gateway integration
+   - Use MCP: `search_docs(query="multi-environment deployment")` for environment management
 
 ### Step 7: Create Deployment Scripts
 

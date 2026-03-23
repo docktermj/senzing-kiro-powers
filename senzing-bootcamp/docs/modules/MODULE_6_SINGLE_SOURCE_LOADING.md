@@ -358,7 +358,7 @@ Module 6 is complete when:
 - Use batch loading (load multiple records per call)
 - Optimize database (indexes, memory)
 - Use PostgreSQL instead of SQLite
-- See `steering/performance-monitoring.md`
+- Use MCP: `search_docs(query="performance optimization", category="performance")`
 
 ### Issue: High Error Rate
 **Symptoms**: > 5% of records fail to load
@@ -435,8 +435,8 @@ When a user is in Module 6:
 - `steering/steering.md` - Detailed Module 6 workflow
 - `steering/agent-instructions.md` - Agent behavior for Module 6
 - `steering/incremental-loading.md` - Incremental loading strategies (load on demand)
-- `steering/performance-monitoring.md` - Performance optimization
-- `steering/recovery-procedures.md` - Backup and recovery
+- Use MCP: `search_docs(query="performance optimization")` for performance optimization
+- Use MCP: `search_docs(query="backup and recovery")` for backup and recovery
 
 ## Version History
 

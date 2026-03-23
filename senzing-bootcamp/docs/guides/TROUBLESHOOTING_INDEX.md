@@ -298,7 +298,7 @@ Quick reference for common issues and solutions across all boot camp modules.
 
 4. Increase system memory
 
-**Related**: [performance-monitoring.md](../../steering/performance-monitoring.md)
+**Related**: Use MCP: `search_docs(query="performance optimization", category="performance")`
 
 ---
 
@@ -404,7 +404,7 @@ Quick reference for common issues and solutions across all boot camp modules.
 3. Check for infinite loops in transformation code
 4. Monitor with `top` or `htop`
 
-**Related**: [performance-monitoring.md](../../steering/performance-monitoring.md)
+**Related**: Use MCP: `search_docs(query="performance monitoring", category="performance")`
 
 ---
 
@@ -447,7 +447,7 @@ Quick reference for common issues and solutions across all boot camp modules.
 
 3. Increase disk space
 
-**Related**: [recovery-procedures.md](../../steering/recovery-procedures.md)
+**Related**: Use MCP: `search_docs(query="backup and recovery")`
 
 ---
 
@@ -576,7 +576,7 @@ Quick reference for common issues and solutions across all boot camp modules.
 
 4. Implement regular backups going forward
 
-**Related**: [disaster-recovery.md](../../steering/disaster-recovery.md)
+**Related**: Use MCP: `search_docs(query="disaster recovery")`
 
 ---
 

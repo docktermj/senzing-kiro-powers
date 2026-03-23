@@ -439,23 +439,8 @@ The boot camp includes detailed steering files for specific topics. Load these o
 - **steering/security-privacy.md** — Data privacy, PII protection, compliance, anonymization
   - Load when: Starting Module 2, working with sensitive data
   
-- **steering/testing-strategy.md** — Unit tests, integration tests, data quality tests
-  - Load when: Module 3 (transformation), user asks about testing
-  
-- **steering/performance-monitoring.md** — Benchmarking, monitoring dashboards, health checks
-  - Load when: Module 5 (loading), performance optimization questions
-  
-- **steering/recovery-procedures.md** — Backup, rollback, disaster recovery
-  - Load when: Before Module 5, user encounters errors
-  
-- **steering/collaboration.md** — Team workflows, code review, handoff procedures
-  - Load when: Team projects, handoff questions
-  
 - **steering/cost-estimation.md** — Pricing, ROI, deployment costs
   - Load when: Module 1 (planning), Module 4 (deployment choice)
-  
-- **steering/integration-patterns.md** — REST API, batch export, streaming, database sync
-  - Load when: Module 6, user asks about integration
   
 - **steering/lessons-learned.md** — Post-project retrospective template
   - Load when: After Module 6, project completion
@@ -468,6 +453,13 @@ The boot camp includes detailed steering files for specific topics. Load these o
   
 - **steering/complexity-estimator.md** — Estimate time based on data characteristics
   - Load when: Module 1 (planning), user asks "how long will this take?"
+
+**Note**: For testing, performance monitoring, integration patterns, disaster recovery, and collaboration guidance, use MCP server tools:
+- Testing strategies → Use `search_docs(query="testing best practices")`
+- Performance monitoring → Use `search_docs(query="performance monitoring", category="performance")`
+- Integration patterns → Use `find_examples(query="API integration")` or `search_docs(query="integration patterns")`
+- Disaster recovery → Use `search_docs(query="backup and recovery")`
+- Collaboration → Standard software engineering practices
 
 ## Recommended Hooks
 
@@ -634,6 +626,7 @@ Your feedback helps improve the Senzing Boot Camp for future users!
 
 When a user says any of these phrases:
 - "power feedback"
+- "bootcamp feedback"
 - "submit feedback"
 - "provide feedback"
 - "I have feedback"
@@ -714,8 +707,8 @@ As you work through the boot camp, document any issues, confusion points, or imp
 - **Security**: Security concerns, compliance issues
 
 **Agent behavior**:
-- At the start of Module 1, inform users: "If you encounter any issues or have suggestions during the boot camp, just say 'power feedback' and I'll help you document them"
-- When user says "power feedback", "submit feedback", "provide feedback", "I have feedback", or "report an issue", immediately trigger the feedback workflow (see Feedback Workflow section above)
+- At the start of Module 1, inform users: "If you encounter any issues or have suggestions during the boot camp, just say 'power feedback' or 'bootcamp feedback' and I'll help you document them"
+- When user says "power feedback", "bootcamp feedback", "submit feedback", "provide feedback", "I have feedback", or "report an issue", immediately trigger the feedback workflow (see Feedback Workflow section above)
 - Remind users at the end of Module 12 to share their completed feedback file with the power author
 
 ---

@@ -730,7 +730,7 @@ Module 8 is complete when:
 - `POWER.md` - Module 8 overview
 - `steering/steering.md` - Module 8 workflow
 - `steering/agent-instructions.md` - Agent behavior for Module 8
-- `steering/integration-patterns.md` - Deployment patterns
+- Use MCP: `find_examples(query="API integration")` for deployment patterns
 - `PYTHON_REQUIREMENTS_POLICY.md` - Python dependency management
 
 ## Version History

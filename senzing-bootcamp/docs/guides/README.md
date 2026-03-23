@@ -85,13 +85,13 @@ The following 15 guides were moved because they either duplicate MCP server func
 
 ### For Automation
 - **Hooks Installation** → Automates quality checks
-- **Testing Strategy** → See `../../steering/testing-strategy.md`
+- **Testing Strategy** → Use MCP: `search_docs(query="testing best practices")`
 
 ### For Troubleshooting
 - **Troubleshooting Index** → This directory
 - **Common Pitfalls** → See `../../steering/common-pitfalls.md`
 - **Troubleshooting Decision Tree** → See `../../steering/troubleshooting-decision-tree.md`
-- **Recovery Procedures** → See `../../steering/recovery-procedures.md`
+- **Recovery Procedures** → Use MCP: `search_docs(query="backup and recovery")`
 
 ## For Agents
 

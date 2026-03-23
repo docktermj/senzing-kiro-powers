@@ -1405,9 +1405,9 @@ This workflow has been updated to reference Modules 9, 10, and 11. Use this work
 - Integrates security measures from Module 10
 - Integrates performance optimizations from Module 9
 - Integrates monitoring from Module 11
-- References `steering/disaster-recovery.md`
-- References `steering/api-gateway-patterns.md`
-- References `steering/multi-environment-strategy.md`
+- Use MCP: `search_docs(query="disaster recovery")` for disaster recovery
+- Use MCP: `find_examples(query="API gateway")` for API gateway patterns
+- Use MCP: `search_docs(query="multi-environment deployment")` for multi-environment strategy
 - Complete Dockerfile with security and health checks
 - Docker Compose with full monitoring stack
 - Comprehensive deployment guide

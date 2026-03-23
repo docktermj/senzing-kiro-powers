@@ -21,7 +21,15 @@ Reorganized the Senzing Boot Camp Power to eliminate duplication with the Senzin
 ### Phase 3: Demo Scripts (3 files)
 - 3 static demo scripts replaced by MCP-generated code
 
-**Total: 52 files + 2 PDFs moved to development repository**
+### Phase 4: Build Artifacts (1 file)
+- 1 build artifact log file (mdpdf.log)
+
+### Phase 5: Steering Files (9 files)
+- 3 generic best practices files (logging, testing, performance)
+- 3 generic pattern files (API gateway, integration, multi-environment)
+- 3 advanced operations files (disaster recovery, recovery procedures, collaboration)
+
+**Total: 64 files + 2 PDFs moved to development repository**
 
 ## What Was Moved
 
@@ -68,6 +76,28 @@ Reorganized the Senzing Boot Camp Power to eliminate duplication with the Senzin
 2. demo_fraud_detection.py → Use `generate_scaffold`
 3. demo_vendor_mdm.py → Use `generate_scaffold`
 
+### Build Artifacts (1 file)
+
+**From root:**
+1. mdpdf.log → PDF generation tool log (not referenced in documentation)
+
+### Steering Files (9 files)
+
+**Generic Best Practices:**
+1. logging-standards.md → Use `search_docs(query="logging best practices")`
+2. testing-strategy.md → Use `search_docs(query="testing best practices")`
+3. performance-monitoring.md → Use `search_docs(query="performance monitoring")`
+
+**Generic Patterns:**
+4. api-gateway-patterns.md → Use `find_examples(query="API gateway")`
+5. integration-patterns.md → Use `find_examples(query="integration patterns")`
+6. multi-environment-strategy.md → Use `search_docs(query="multi-environment deployment")`
+
+**Advanced Operations:**
+7. disaster-recovery.md → Use `search_docs(query="disaster recovery")`
+8. recovery-procedures.md → Use `search_docs(query="backup and recovery")`
+9. collaboration.md → Standard software engineering practices
+
 ## What Remains in Power
 
 ### Essential Structure
@@ -98,7 +128,9 @@ senzing-bootcamp/
 | **docs/development/** | 31 | 0 | 100% |
 | **docs/guides/** | 23 | 8 | 65% |
 | **src/quickstart_demo/** | 3 | 0 | 100% |
-| **Total Removed** | 57 | - | - |
+| **Build artifacts** | 1 | 0 | 100% |
+| **steering/** | 25 | 16 | 36% |
+| **Total Removed** | 83 | - | - |
 
 ### Essential Guides Remaining (8 files)
 
@@ -119,8 +151,9 @@ senzing-bootcamp/
 - Documentation stays current automatically
 
 ### 2. Smaller Distribution
-- 52 files + 2 PDFs removed (54 items total)
+- 64 files + 2 PDFs removed (66 items total)
 - 65% reduction in guide files
+- 36% reduction in steering files
 - 100% reduction in development docs
 - Cleaner, more focused package
 
@@ -194,9 +227,24 @@ senzing-bootcamp-development/
 │   ├── demo_fraud_detection.py
 │   ├── demo_vendor_mdm.py
 │   └── README.md
+├── steering/ (9 files)
+│   ├── logging-standards.md
+│   ├── testing-strategy.md
+│   ├── performance-monitoring.md
+│   ├── api-gateway-patterns.md
+│   ├── integration-patterns.md
+│   ├── multi-environment-strategy.md
+│   ├── disaster-recovery.md
+│   ├── recovery-procedures.md
+│   ├── collaboration.md
+│   └── README.md
+├── mdpdf.log (1 file)
 ├── REORGANIZATION_SUMMARY.md
 ├── GUIDES_REORGANIZATION_2026-03-23.md
 ├── DEMO_SCRIPTS_REMOVAL_2026-03-23.md
+├── BUILD_ARTIFACTS_CLEANUP_2026-03-23.md
+├── STEERING_FILES_ANALYSIS_2026-03-23.md
+├── STEERING_FILES_CLEANUP_2026-03-23.md
 ├── COMPLETE_REORGANIZATION_SUMMARY.md (this file)
 ├── DIRECTORY_STRUCTURE_FIRST.md
 ├── DIRECTORY_STRUCTURE_GUARANTEE.md
@@ -246,8 +294,8 @@ grep -r "COMPATIBILITY_MATRIX\|PREREQUISITES\|FAQ\.md" senzing-bootcamp/**/*.md
 ```
 
 ### File Counts Verified
-- **Power distribution**: 52 fewer files
-- **Development repository**: 52 files preserved
+- **Power distribution**: 64 fewer files
+- **Development repository**: 64 files preserved
 - **No files lost**: All content preserved for reference
 
 ## For Future Maintainers
@@ -289,7 +337,9 @@ Before creating static documentation, check if MCP provides it:
 - **2026-03-23 Morning**: Moved docs/development/ (34 files)
 - **2026-03-23 Midday**: Moved docs/guides/ (17 files)
 - **2026-03-23 Afternoon**: Moved src/quickstart_demo/ (3 files)
-- **Total**: 54 files moved in one day
+- **2026-03-23 Late Afternoon**: Moved build artifacts (1 file)
+- **2026-03-23 Evening**: Moved steering files (9 files)
+- **Total**: 64 files moved in one day
 
 ## Impact
 
@@ -313,16 +363,22 @@ Before creating static documentation, check if MCP provides it:
 - **REORGANIZATION_SUMMARY.md** - Phase 1 (development docs)
 - **GUIDES_REORGANIZATION_2026-03-23.md** - Phase 2 (guide files)
 - **DEMO_SCRIPTS_REMOVAL_2026-03-23.md** - Phase 3 (demo scripts)
+- **BUILD_ARTIFACTS_CLEANUP_2026-03-23.md** - Phase 4 (build artifacts)
+- **STEERING_FILES_ANALYSIS_2026-03-23.md** - Phase 5 analysis
+- **STEERING_FILES_CLEANUP_2026-03-23.md** - Phase 5 (steering files)
 - **senzing-bootcamp-development/README.md** - Development repository index
 - **senzing-bootcamp-development/guides/README.md** - Removed guides index
 - **senzing-bootcamp-development/quickstart_demo/README.md** - Removed demos index
+- **senzing-bootcamp-development/steering/README.md** - Removed steering files index
 
 ## Version History
 
-- **2026-03-23**: Complete reorganization
+- **2026-03-23**: Complete reorganization (5 phases, 64 files moved)
   - Phase 1: Moved 34 development files
   - Phase 2: Moved 17 guide files
   - Phase 3: Moved 3 demo scripts
+  - Phase 4: Moved 1 build artifact
+  - Phase 5: Moved 9 steering files
   - Updated all references
   - Created comprehensive documentation
   - Verified no broken links

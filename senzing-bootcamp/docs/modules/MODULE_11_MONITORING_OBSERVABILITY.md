@@ -451,7 +451,7 @@ Module 11 is complete when:
 
 - `POWER.md` - Module 11 overview
 - `steering/steering.md` - Module 11 workflow (to be added)
-- `steering/performance-monitoring.md` - Performance monitoring details
+- Use MCP: `search_docs(query="performance monitoring", category="performance")` for performance monitoring details
 
 ## Version History
 

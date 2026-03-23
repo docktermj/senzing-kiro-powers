@@ -584,7 +584,7 @@ When a user is in Module 8:
 - `steering/steering.md` - Detailed Module 8 workflow
 - `steering/agent-instructions.md` - Agent behavior for Module 8
 - `steering/uat-framework.md` - Comprehensive UAT guidance (load on demand)
-- `steering/testing-strategy.md` - Overall testing approach
+- Use MCP: `search_docs(query="testing best practices")` for overall testing approach
 
 ## Version History
 

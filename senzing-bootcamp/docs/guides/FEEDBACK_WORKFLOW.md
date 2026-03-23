@@ -1,8 +1,8 @@
 # Power Feedback Workflow
 
 **Purpose**: Guide users through providing structured feedback about the Senzing Boot Camp power.  
-**Trigger**: User says "power feedback", "submit feedback", "provide feedback", "I have feedback", or "report an issue"  
-**Last Updated**: 2026-03-17
+**Trigger**: User says "power feedback", "bootcamp feedback", "submit feedback", "provide feedback", "I have feedback", or "report an issue"  
+**Last Updated**: 2026-03-23
 
 ---
 
@@ -22,6 +22,7 @@ When user requests feedback:
 
 The agent should activate the feedback workflow when user says:
 - "power feedback"
+- "bootcamp feedback"
 - "submit feedback"
 - "provide feedback"
 - "I have feedback"
@@ -256,13 +257,13 @@ You can review or edit it anytime. Would you like to:
 ## Integration Points
 
 ### Module 1 Start
-Agent says: "If you encounter any issues or have suggestions during the boot camp, just say 'power feedback' and I'll help you document them."
+Agent says: "If you encounter any issues or have suggestions during the boot camp, just say 'power feedback' or 'bootcamp feedback' and I'll help you document them."
 
 ### During Any Module
-User can say "power feedback" at any time to document issues as they occur.
+User can say "power feedback" or "bootcamp feedback" at any time to document issues as they occur.
 
 ### Module 12 Completion
-Agent says: "🎉 Congratulations on completing the Senzing Boot Camp! If you have any feedback about your experience, say 'power feedback' and I'll help you document it. If you've already documented feedback, please share `docs/feedback/SENZING_BOOTCAMP_POWER_FEEDBACK.md` with the power author."
+Agent says: "🎉 Congratulations on completing the Senzing Boot Camp! If you have any feedback about your experience, say 'power feedback' or 'bootcamp feedback' and I'll help you document it. If you've already documented feedback, please share `docs/feedback/SENZING_BOOTCAMP_POWER_FEEDBACK.md` with the power author."
 
 ---
 
