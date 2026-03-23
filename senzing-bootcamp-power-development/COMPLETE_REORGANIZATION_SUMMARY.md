@@ -29,7 +29,13 @@ Reorganized the Senzing Boot Camp Power to eliminate duplication with the Senzin
 - 3 generic pattern files (API gateway, integration, multi-environment)
 - 3 advanced operations files (disaster recovery, recovery procedures, collaboration)
 
-**Total: 64 files + 2 PDFs moved to development repository**
+### Phase 6: Empty Directories (1 directory)
+- Removed empty `src/` directory (created dynamically by agent)
+
+### Phase 7: Hooks (2 files)
+- 2 generic hooks removed (test-before-commit, update-documentation)
+
+**Total: 66 files + 2 PDFs moved to development repository**
 
 ## What Was Moved
 
@@ -98,6 +104,17 @@ Reorganized the Senzing Boot Camp Power to eliminate duplication with the Senzin
 8. recovery-procedures.md → Use `search_docs(query="backup and recovery")`
 9. collaboration.md → Standard software engineering practices
 
+### Empty Directories (1 directory)
+
+**From root:**
+1. src/ → Created dynamically by agent when users start boot camp
+
+### Hooks (2 files)
+
+**From `hooks/`:**
+1. test-before-commit.kiro.hook → Conflicts with agent instructions, assumes pytest installed
+2. update-documentation.kiro.hook → Generic reminder, not boot camp-specific
+
 ## What Remains in Power
 
 ### Essential Structure
@@ -111,10 +128,9 @@ senzing-bootcamp/
 │   ├── policies/ (6 policy docs)
 │   └── README.md
 ├── examples/ (3 complete projects)
-├── hooks/ (6 hook files)
+├── hooks/ (4 hook files)
 ├── scripts/ (1 preflight script)
-├── src/ (empty, populated by users)
-├── steering/ (25 steering files)
+├── steering/ (16 steering files)
 ├── templates/ (12 utility templates)
 ├── POWER.md
 ├── README.md
@@ -130,7 +146,8 @@ senzing-bootcamp/
 | **src/quickstart_demo/** | 3 | 0 | 100% |
 | **Build artifacts** | 1 | 0 | 100% |
 | **steering/** | 25 | 16 | 36% |
-| **Total Removed** | 83 | - | - |
+| **hooks/** | 6 | 4 | 33% |
+| **Total Removed** | 89 | - | - |
 
 ### Essential Guides Remaining (8 files)
 
@@ -238,6 +255,10 @@ senzing-bootcamp-development/
 │   ├── recovery-procedures.md
 │   ├── collaboration.md
 │   └── README.md
+├── hooks/ (2 files)
+│   ├── test-before-commit.kiro.hook
+│   ├── update-documentation.kiro.hook
+│   └── README.md
 ├── mdpdf.log (1 file)
 ├── REORGANIZATION_SUMMARY.md
 ├── GUIDES_REORGANIZATION_2026-03-23.md
@@ -245,6 +266,8 @@ senzing-bootcamp-development/
 ├── BUILD_ARTIFACTS_CLEANUP_2026-03-23.md
 ├── STEERING_FILES_ANALYSIS_2026-03-23.md
 ├── STEERING_FILES_CLEANUP_2026-03-23.md
+├── EMPTY_DIRECTORIES_CLEANUP_2026-03-23.md
+├── HOOKS_ANALYSIS_2026-03-23.md
 ├── COMPLETE_REORGANIZATION_SUMMARY.md (this file)
 ├── DIRECTORY_STRUCTURE_FIRST.md
 ├── DIRECTORY_STRUCTURE_GUARANTEE.md
@@ -339,7 +362,9 @@ Before creating static documentation, check if MCP provides it:
 - **2026-03-23 Afternoon**: Moved src/quickstart_demo/ (3 files)
 - **2026-03-23 Late Afternoon**: Moved build artifacts (1 file)
 - **2026-03-23 Evening**: Moved steering files (9 files)
-- **Total**: 64 files moved in one day
+- **2026-03-23 Evening**: Removed empty src/ directory
+- **2026-03-23 Evening**: Moved generic hooks (2 files)
+- **Total**: 66 files moved in one day
 
 ## Impact
 
@@ -366,6 +391,8 @@ Before creating static documentation, check if MCP provides it:
 - **BUILD_ARTIFACTS_CLEANUP_2026-03-23.md** - Phase 4 (build artifacts)
 - **STEERING_FILES_ANALYSIS_2026-03-23.md** - Phase 5 analysis
 - **STEERING_FILES_CLEANUP_2026-03-23.md** - Phase 5 (steering files)
+- **EMPTY_DIRECTORIES_CLEANUP_2026-03-23.md** - Phase 6 (empty directories)
+- **HOOKS_ANALYSIS_2026-03-23.md** - Phase 7 analysis and cleanup
 - **senzing-bootcamp-development/README.md** - Development repository index
 - **senzing-bootcamp-development/guides/README.md** - Removed guides index
 - **senzing-bootcamp-development/quickstart_demo/README.md** - Removed demos index
@@ -373,12 +400,14 @@ Before creating static documentation, check if MCP provides it:
 
 ## Version History
 
-- **2026-03-23**: Complete reorganization (5 phases, 64 files moved)
+- **2026-03-23**: Complete reorganization (7 phases, 66 files moved)
   - Phase 1: Moved 34 development files
   - Phase 2: Moved 17 guide files
   - Phase 3: Moved 3 demo scripts
   - Phase 4: Moved 1 build artifact
   - Phase 5: Moved 9 steering files
+  - Phase 6: Removed empty src/ directory
+  - Phase 7: Moved 2 generic hooks
   - Updated all references
   - Created comprehensive documentation
   - Verified no broken links

@@ -33,15 +33,14 @@ cp senzing-bootcamp/hooks/*.hook .kiro/hooks/
 
 ## What Gets Installed
 
-Five pre-configured hooks that support the boot camp workflow:
+Four pre-configured hooks that support the boot camp workflow:
 
 | Hook | Trigger | Action | Module |
 |------|---------|--------|--------|
+| PEP-8 Check | Save Python file | Check PEP-8 compliance | All |
 | Data Quality Check | Save transformation program | Remind to validate quality | Module 3 |
 | Backup Before Load | Save loading program | Remind to backup database | Module 5 |
-| Test Before Commit | Save any source file | Run pytest tests | All |
 | Validate Senzing JSON | Save transformed data | Validate with lint_record | Module 3 |
-| Update Documentation | Save source file | Remind to update docs | All |
 
 ## When to Install
 

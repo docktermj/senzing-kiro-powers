@@ -467,11 +467,10 @@ Install pre-configured hooks to automate quality checks and reminders. See `hook
 
 Available hooks:
 
+- **pep8-check** — Ensures Python code follows PEP-8 standards (100 char limit)
 - **data-quality-check** — Validates quality when transformations change
 - **backup-before-load** — Reminds to backup before loading
-- **test-before-commit** — Runs tests automatically
-- **validate-senzing-json** — Validates output format
-- **update-documentation** — Reminds to update docs
+- **validate-senzing-json** — Validates output format against SGES
 
 Installation:
 
@@ -487,8 +486,9 @@ cp senzing-bootcamp/hooks/*.hook .kiro/hooks/
 
 - When installing hooks, always verify the `.kiro/hooks/` directory exists first
 - Create it if needed with `mkdir -p .kiro/hooks` before copying hook files
-- **Proactively suggest hooks** at the start of Module 3 (data mapping)
+- **Proactively suggest hooks** at the start of Module 4 (data mapping)
 - Remind users about backup hook before Module 6 (loading)
+- Emphasize PEP-8 hook for maintaining code quality throughout
 
 ## Entity Resolution Design Pattern Gallery
 

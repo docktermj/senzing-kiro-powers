@@ -681,9 +681,10 @@ Use this workflow to set up automated quality checks and reminders before starti
    cp senzing-bootcamp/hooks/*.hook .kiro/hooks/
    
    # Or copy individual hooks
+   cp senzing-bootcamp/hooks/pep8-check.kiro.hook .kiro/hooks/
    cp senzing-bootcamp/hooks/data-quality-check.kiro.hook .kiro/hooks/
    cp senzing-bootcamp/hooks/backup-before-load.kiro.hook .kiro/hooks/
-   cp senzing-bootcamp/hooks/test-before-commit.kiro.hook .kiro/hooks/
+   cp senzing-bootcamp/hooks/validate-senzing-json.kiro.hook .kiro/hooks/
    ```
 
 4. **Verify installation**: Check that hooks are installed:

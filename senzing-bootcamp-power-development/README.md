@@ -45,6 +45,12 @@ Steering files removed from Power distribution (Phase 5):
 - Advanced operations files
 - See `STEERING_FILES_CLEANUP_2026-03-23.md` for details
 
+### Removed Hooks (`hooks/`)
+
+Hook files removed from Power distribution (Phase 7):
+- Generic hooks that conflict with agent instructions or aren't boot camp-specific
+- See `HOOKS_ANALYSIS_2026-03-23.md` for details
+
 ### Build Artifacts
 
 Build artifacts removed from Power distribution (Phase 4):
@@ -59,7 +65,9 @@ Build artifacts removed from Power distribution (Phase 4):
 - `BUILD_ARTIFACTS_CLEANUP_2026-03-23.md` - Phase 4: Build artifacts (1 file)
 - `STEERING_FILES_ANALYSIS_2026-03-23.md` - Phase 5 analysis
 - `STEERING_FILES_CLEANUP_2026-03-23.md` - Phase 5: Steering files (9 files)
-- `COMPLETE_REORGANIZATION_SUMMARY.md` - Complete overview (64 files total)
+- `EMPTY_DIRECTORIES_CLEANUP_2026-03-23.md` - Phase 6: Empty directories
+- `HOOKS_ANALYSIS_2026-03-23.md` - Phase 7: Hooks (2 files)
+- `COMPLETE_REORGANIZATION_SUMMARY.md` - Complete overview (66 files total)
 
 ### Internal Documentation (Root)
 
@@ -102,12 +110,14 @@ When developing the Power:
 
 ## Version History
 
-- **2026-03-23**: Complete reorganization (5 phases, 64 files moved)
+- **2026-03-23**: Complete reorganization (7 phases, 66 files moved)
   - Phase 1: Moved 34 internal development files
   - Phase 2: Moved 17 guide files (duplicates and internal docs)
   - Phase 3: Moved 3 static demo scripts
   - Phase 4: Moved 1 build artifact (mdpdf.log)
   - Phase 5: Moved 9 generic steering files
+  - Phase 6: Removed empty src/ directory
+  - Phase 7: Moved 2 generic hooks
 - **2026-03-17**: Major v3.0.0 improvements (Modules 7-12, enhanced workflows)
 - **Earlier**: Various phases of development tracked in `development/` folder
 
