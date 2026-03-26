@@ -25,6 +25,12 @@ This directory contains pre-configured Kiro hooks to support the Senzing Boot Ca
 **Action**: Suggests validating with lint_record  
 **Use case**: Ensures output conforms to SGES
 
+### 5. Backup Project on Request (`backup-project-on-request.kiro.hook`)
+**Trigger**: When user submits a prompt requesting a backup  
+**Action**: Automatically runs the project backup script  
+**Use case**: Quick project backups via natural language commands  
+**Example prompts**: "backup my project", "create a backup", "make a backup"
+
 ## Installation
 
 ### Option 1: Copy to Workspace Hooks Directory
@@ -79,8 +85,9 @@ Example customization:
 
 ## Recommended Hooks by Module
 
-### All Modules (Python Code)
-- ✅ **PEP-8 Compliance Check** (ensures code quality)
+### All Modules
+- ✅ **PEP-8 Compliance Check** (ensures code quality for Python)
+- ✅ **Backup Project on Request** (quick backups via voice commands)
 
 ### Module 4 (Data Mapping)
 - ✅ PEP-8 Compliance Check

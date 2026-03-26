@@ -191,6 +191,46 @@ config/database_config.yaml
 senzing_config.json     # (in project root, should be in config/)
 ```
 
+### License Files
+
+**Rule**: Senzing license files must be stored in the `licenses/` directory.
+
+**Structure**:
+```
+licenses/
+├── g2.lic               # Senzing license file
+├── .gitkeep             # Keep directory in git
+└── README.md            # Instructions on obtaining/placing license
+```
+
+**Examples**:
+```bash
+# ✅ CORRECT
+licenses/g2.lic
+licenses/g2_dev.lic
+licenses/g2_prod.lic
+
+# ❌ WRONG
+/etc/opt/senzing/g2.lic
+/tmp/g2.lic
+g2.lic                  # (in project root)
+config/g2.lic           # (config/ is for configuration, not licenses)
+```
+
+**Note**: Add `licenses/*.lic` to `.gitignore` to exclude license files from version control:
+```gitignore
+# License files
+licenses/*.lic
+!licenses/.gitkeep
+!licenses/README.md
+```
+
+**License Priority**: Senzing SDK checks for licenses in this order:
+1. Project-specific license: `licenses/g2.lic`
+2. System-wide license: `/etc/opt/senzing/g2.lic` or `SENZING_LICENSE_PATH` environment variable
+
+If users already have a system-wide Senzing license, they don't need to place one in the project. The `licenses/` directory is for bootcampers who want a project-specific license.
+
 ### Docker Files
 
 **Rule**: All Docker-related files must be stored in the `docker/` directory.
@@ -269,6 +309,73 @@ data/temp/*
 !data/temp/.gitkeep
 ```
 
+### Backup Files
+
+**Rule**: Project backup archives must be stored in the `backups/` directory at the project root.
+
+**Structure**:
+```
+backups/
+├── senzing-bootcamp-backup_20260326_143022.zip
+├── senzing-bootcamp-backup_20260325_091500.zip
+└── README.md            # Backup/restore instructions
+```
+
+**Examples**:
+```bash
+# ✅ CORRECT
+backups/senzing-bootcamp-backup_20260326_143022.zip
+backups/senzing-bootcamp-backup_20260325_091500.zip
+
+# ❌ WRONG
+/tmp/backup.zip
+~/Downloads/project-backup.zip
+backup.zip              # (in project root)
+data/backups/           # (data/backups/ is for database exports, not project backups)
+```
+
+**Backup Contents**: Backups include all user data and project files:
+- ✅ `database/` - SQLite database files
+- ✅ `data/` - All data files (raw, transformed, samples)
+- ✅ `licenses/` - Senzing license files
+- ✅ `config/` - Configuration files
+- ✅ `src/` - Source code
+- ✅ `scripts/` - Scripts
+- ✅ `docs/` - Documentation
+
+**Backup Exclusions**: Backups automatically exclude:
+- ❌ `backups/` - Backup files themselves (prevents recursion)
+- ❌ `.git/` - Git repository (use git for version control)
+- ❌ `.env` - Environment secrets (use .env.example as template)
+- ❌ `data/temp/` - Temporary files
+- ❌ `__pycache__/`, `*.pyc` - Python cache files
+- ❌ `node_modules/`, `venv/` - Dependencies
+
+**Creating Backups**:
+```bash
+# Use the backup script
+./scripts/backup_project.sh
+
+# Creates: backups/senzing-bootcamp-backup_YYYYMMDD_HHMMSS.zip
+```
+
+**Restoring Backups**:
+```bash
+# Restore to current location
+./scripts/restore_project.sh backups/senzing-bootcamp-backup_20260326_143022.zip
+
+# Restore to new location
+./scripts/restore_project.sh backups/senzing-bootcamp-backup_20260326_143022.zip ~/new-project
+```
+
+**Note**: Add `backups/*.zip` to `.gitignore` to exclude backup files from version control:
+```gitignore
+# Backup files
+backups/*.zip
+!backups/.gitkeep
+!backups/README.md
+```
+
 ## Rationale
 
 ### Why Not Use /tmp?
@@ -343,6 +450,8 @@ Always create directories before using them:
 # Create project directories
 mkdir -p data/{raw,transformed,samples,backups,temp}
 mkdir -p database
+mkdir -p licenses
+mkdir -p backups
 mkdir -p src/{transform,load,query,utils}
 mkdir -p scripts
 mkdir -p config
@@ -353,6 +462,8 @@ mkdir -p docs/{guides,modules,policies,development}
 touch data/raw/.gitkeep
 touch data/transformed/.gitkeep
 touch database/.gitkeep
+touch licenses/.gitkeep
+touch backups/.gitkeep
 touch docker/.gitkeep
 ```
 
@@ -395,6 +506,8 @@ find . -maxdepth 1 -name "Dockerfile*" -o -name "docker-compose*.yml"
 
 ## Version History
 
+- **v1.2.0** (2026-03-26): Added `backups/` directory for project backup archives
+- **v1.1.0** (2026-03-26): Added `licenses/` directory for Senzing license files
 - **v1.0.0** (2026-03-17): Initial file storage policy created
 
 ## Enforcement
@@ -415,8 +528,10 @@ If you're unsure where to place a file:
 3. **Documentation?** → `docs/`
 4. **Data file?** → `data/`
 5. **Configuration?** → `config/` or root (for .env)
-6. **Docker file?** → `docker/`
-7. **Database file?** → `database/`
-8. **Temporary?** → `data/temp/` (not `/tmp`)
+6. **License file?** → `licenses/`
+7. **Backup file?** → `backups/`
+8. **Docker file?** → `docker/`
+9. **Database file?** → `database/`
+10. **Temporary?** → `data/temp/` (not `/tmp`)
 
 When in doubt, ask: "Does this file belong to the project?" If yes, it goes in a project directory. Never use `/tmp`.
