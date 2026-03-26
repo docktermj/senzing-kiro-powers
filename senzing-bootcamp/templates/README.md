@@ -21,13 +21,14 @@ Utility templates for database management, data collection, validation, and plan
 
 ## Available Templates
 
-### Quick Demo Template
+### Quick Demo Templates
 
-#### demo_quick_start.py ⭐ NEW - Module 0
+#### demo_quick_start.py ⭐ RECOMMENDED - Module 0
 **Purpose**: Live demonstration of Senzing entity resolution with sample data
 **Use when**: Module 0 (Quick Demo), first-time users, demonstrations
 **Features**: Actually runs Senzing SDK, shows before/after, displays match explanations
 **Complexity**: Beginner
+**Prerequisites**: Senzing SDK installed OR Docker available
 **Usage**:
 ```bash
 # Run the demo
@@ -44,6 +45,31 @@ docker run -v $(pwd):/data senzing/senzing-tools python /data/templates/demo_qui
 - Shows which records matched and WHY
 - Displays confidence scores and match explanations
 - Creates the "aha moment" for new users
+
+#### demo_simulation.py ⭐ NEW - Module 0 Fallback
+**Purpose**: Simulated demonstration when Senzing SDK is not available
+**Use when**: Module 0 (Quick Demo), Docker unavailable, SDK installation issues
+**Features**: Pure Python simulation, no dependencies, shows entity resolution concepts
+**Complexity**: Beginner
+**Prerequisites**: Python 3.8+ only (no Senzing SDK required)
+**Usage**:
+```bash
+# Run the simulation
+python templates/demo_simulation.py
+```
+
+**What it does**:
+- Displays 5 sample records with obvious duplicates
+- Simulates entity resolution logic
+- Shows which records would match and WHY
+- Displays simulated confidence scores
+- Explains entity resolution concepts
+- Perfect fallback when SDK unavailable
+
+**When to use each**:
+- Use `demo_quick_start.py` when Senzing SDK is available (preferred)
+- Use `demo_simulation.py` when SDK is not available or Docker fails
+- Agent automatically chooses based on environment
 
 ### Database Management Templates
 

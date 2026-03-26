@@ -259,6 +259,38 @@ A: Create a PR with your example following the structure above.
 - Use `search_docs` for Senzing-specific questions
 - Check `docs/guides/` for additional guidance
 
+## Python Dependencies Reference
+
+This directory includes reference `requirements.txt` files to help you set up Python dependencies for your Senzing projects:
+
+- **requirements.txt.example** - Production dependencies for Senzing projects
+- **requirements-dev.txt.example** - Development and testing dependencies
+
+### Using the Requirements Files
+
+**For your project:**
+```bash
+# Copy the example file to your project root
+cp requirements.txt.example ../my-project/requirements.txt
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+**For development:**
+```bash
+# Copy both files
+cp requirements.txt.example ../my-project/requirements.txt
+cp requirements-dev.txt.example ../my-project/requirements-dev.txt
+
+# Install all dependencies
+pip install -r requirements.txt
+pip install -r requirements-dev.txt
+```
+
+**Note**: Each example project may have its own `requirements.txt` with specific dependencies. The reference files here provide a baseline for typical Senzing projects.
+
 ## Version History
 
 - **v3.0.0** (2026-03-17): Examples directory created with three reference projects
+- **v3.1.0** (2026-03-26): Added requirements.txt reference files for user projects

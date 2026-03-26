@@ -81,6 +81,106 @@ If Senzing is found:
 - Skip to "Configure Database" section
 - If version is not V4.0, proceed with installation
 
+## Senzing License Requirements
+
+### Do You Need a License?
+
+**Yes** - A valid Senzing license is required to install and use the SDK.
+
+### Obtaining a License
+
+#### Option 1: Evaluation License (Recommended for Boot Camp)
+
+**For learning and evaluation**, request a free evaluation license:
+
+1. **Contact Senzing Support**:
+   - **Email**: [support@senzing.com](mailto:support@senzing.com)
+   - **Phone**: +1 (702) 425-7756
+   - **Website**: [https://senzing.com/contact/](https://senzing.com/contact/)
+
+2. **Request Details**:
+   - Mention: "Requesting evaluation license for Senzing Boot Camp"
+   - Provide: Your name, company, and intended use case
+   - Expected response: 1-2 business days
+
+3. **Receive License**:
+   - Senzing will email you a `g2.lic` file
+   - Valid for 30-90 days (evaluation period)
+   - Sufficient to complete the entire boot camp
+
+4. **Install License**:
+   ```bash
+   # Place license in project directory
+   cp /path/to/downloaded/g2.lic licenses/g2.lic
+   
+   # Set proper permissions
+   chmod 644 licenses/g2.lic
+   
+   # Verify license file
+   ls -la licenses/g2.lic
+   ```
+
+#### Option 2: Production License
+
+**For production deployments**, contact Senzing sales:
+
+- **Email**: [sales@senzing.com](mailto:sales@senzing.com)
+- **Phone**: +1 (702) 425-7756
+- **Pricing**: Based on data source records (DSRs)
+- **Includes**: Production support and SLAs
+
+#### Option 3: Existing License
+
+**If you already have a license**:
+
+- **System-wide** (`/etc/opt/senzing/g2.lic`): No action needed
+- **Project-specific**: Place in `licenses/g2.lic`
+
+### License File Location
+
+**Correct location**: `licenses/g2.lic` (project directory)
+
+**Senzing checks licenses in this order**:
+1. Project-specific: `licenses/g2.lic`
+2. Environment variable: `SENZING_LICENSE_PATH`
+3. System-wide: `/etc/opt/senzing/g2.lic`
+
+### Verify License
+
+After placing your license file:
+
+```bash
+# Check license file exists
+ls -la licenses/g2.lic
+
+# Verify license is valid (after SDK installation)
+python3 -c "
+from senzing import G2Product
+import json
+
+product = G2Product()
+config = {
+    'PIPELINE': {
+        'CONFIGPATH': '/etc/opt/senzing',
+        'LICENSESTRINGBASE64': open('licenses/g2.lic').read()
+    }
+}
+product.init('LicenseCheck', json.dumps(config), False)
+print('✅ License valid!')
+print('Version:', product.version())
+product.destroy()
+"
+```
+
+### Important Notes
+
+- **Request early**: Allow 1-2 business days for evaluation license
+- **Never commit**: License files should never be committed to git (already in `.gitignore`)
+- **Expiration**: Evaluation licenses expire after 30-90 days
+- **Renewal**: Contact Senzing before expiration to avoid interruption
+
+**For complete licensing information**, see `licenses/README.md`.
+
 ## Platform Selection
 
 Choose your installation platform:
@@ -646,6 +746,7 @@ SENZING_SUPPORT_PATH=/opt/senzing/data
 
 ## Success Criteria
 
+✅ Senzing license obtained and installed in `licenses/g2.lic`  
 ✅ Senzing SDK installed (or existing installation verified)  
 ✅ Database configured and tested  
 ✅ Data sources registered  

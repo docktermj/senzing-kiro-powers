@@ -4,6 +4,26 @@ This directory contains policy documents that define coding standards and organi
 
 ## Available Policies
 
+### SQLite Database Location Policy
+
+**File**: [SQLITE_DATABASE_LOCATION.md](SQLITE_DATABASE_LOCATION.md)
+
+**Purpose**: Define where SQLite databases must be created during the bootcamp
+
+**Key Rules**:
+- All SQLite databases MUST be placed in `database/G2C.db` (project-relative path)
+- Never use `/tmp/sqlite` or system-wide locations
+- Create `database/` directory if it doesn't exist
+- Use absolute path from project root
+
+**Why It Matters**: Allows multiple bootcamp instances to run concurrently on the same machine without database conflicts
+
+**Applies To**: All modules using SQLite (Modules 0, 5, 6, 7, 8)
+
+**Critical**: Overrides Senzing MCP server recommendation of `/tmp/sqlite` - always use project-local `database/` directory
+
+---
+
 ### Module 0 Code Location Policy
 **File**: [MODULE_0_CODE_LOCATION.md](MODULE_0_CODE_LOCATION.md)
 
@@ -88,6 +108,7 @@ This directory contains policy documents that define coding standards and organi
 
 | Policy | Directory | File Types | Applies To |
 |--------|-----------|------------|------------|
+| SQLite Database | `database/` | `*.db` | Modules 0, 5, 6, 7, 8 |
 | Module 0 Code | `src/quickstart_demo/` | Python/Java/C#/Rust | Module 0 |
 | Python Requirements | Project root | `requirements*.txt` | All Python projects |
 | Shell Scripts | `scripts/` | `*.sh` | Modules 10, 11, 12 |
@@ -97,6 +118,9 @@ This directory contains policy documents that define coding standards and organi
 
 ```
 project-root/
+├── database/                 # SQLite database files (REQUIRED LOCATION)
+│   ├── G2C.db                # Main Senzing database
+│   └── .gitkeep              # Keep directory in git
 ├── src/                      # All source code (Python/Java/C#/Rust)
 │   ├── quickstart_demo/      # Module 0 demo code
 │   ├── transform/            # Transformation programs
@@ -124,7 +148,10 @@ project-root/
 └── ...
 ```
 
-**Important**: Never use `/tmp` for project files. Use appropriate project directories.
+**Important**: 
+- SQLite databases MUST go in `database/G2C.db` (never `/tmp`)
+- Never use `/tmp` for any project files
+- Use appropriate project directories for all files
 
 ## Why These Policies Matter
 
@@ -177,6 +204,10 @@ When organizing your project:
 
 ## Version History
 
+- **v1.2.0** (2026-03-26): Added SQLite database location policy
+  - SQLITE_DATABASE_LOCATION.md
+  - Overrides MCP server `/tmp/sqlite` recommendation
+  - Enables concurrent bootcamp instances
 - **v1.1.0** (2026-03-17): Added file storage policy
   - FILE_STORAGE_POLICY.md
 - **v1.0.0** (2026-03-17): Initial policies created

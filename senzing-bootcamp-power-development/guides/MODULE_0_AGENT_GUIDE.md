@@ -14,13 +14,59 @@ This guide provides step-by-step instructions for agents running Module 0 (Quick
 ## Quick Start Checklist
 
 - [ ] Check if Senzing SDK is available
-- [ ] Offer Docker option if SDK not found
+- [ ] Choose demo type based on availability (live SDK, Docker, or simulation)
 - [ ] Show sample records BEFORE resolution
-- [ ] Run the demo script (actually execute it!)
+- [ ] Run the appropriate demo script (actually execute it!)
 - [ ] Display resolved entities AFTER resolution
 - [ ] Show match explanations with confidence scores
 - [ ] Highlight key insights
 - [ ] Connect results to user's use case
+
+## Demo Type Decision Tree
+
+```
+START: Module 0 Quick Demo
+│
+├─ Check: Is Senzing SDK installed?
+│  ├─ YES → Use demo_quick_start.py (PREFERRED)
+│  │        ✓ Real entity resolution
+│  │        ✓ Actual SDK execution
+│  │        ✓ True confidence scores
+│  │
+│  └─ NO → Check: Is Docker available?
+│     ├─ YES → Offer Docker option
+│     │        Ask: "Would you like to use Docker?"
+│     │        ├─ YES → Use demo_quick_start.py with Docker
+│     │        │        ✓ Real entity resolution
+│     │        │        ✓ No installation required
+│     │        │
+│     │        └─ NO → Use demo_simulation.py (FALLBACK)
+│     │                 ✓ No dependencies
+│     │                 ✓ Shows concepts
+│     │                 ⚠ Simulated results
+│     │
+│     └─ NO → Use demo_simulation.py (FALLBACK)
+│              ✓ No dependencies
+│              ✓ Shows concepts
+│              ⚠ Simulated results
+```
+
+## Fallback Strategy
+
+When SDK and Docker are unavailable:
+
+1. **Acknowledge the limitation**: "I don't see Senzing SDK installed, and Docker isn't available. Let me show you a simulation instead."
+
+2. **Set expectations**: "This simulation will show you how entity resolution works conceptually. For a live demo with real Senzing SDK, we can set that up later."
+
+3. **Run simulation**: Execute `demo_simulation.py`
+
+4. **Explain simulation**: "This was a simulation showing how Senzing would resolve these records. The actual SDK would provide real confidence scores and more detailed match explanations."
+
+5. **Offer next steps**:
+   - "Would you like to install Senzing SDK to see the real thing?"
+   - "Would you like to continue with Module 1 using your own data?"
+   - "Would you like to set up Docker for a live demo?"
 
 ## Step-by-Step Workflow
 
@@ -31,9 +77,22 @@ This guide provides step-by-step instructions for agents running Module 0 (Quick
 python -c "import senzing" 2>/dev/null && echo "SDK found" || echo "SDK not found"
 ```
 
-**If SDK not found**, offer options:
-- **Option A (Recommended)**: Use Docker (no installation required)
-- **Option B**: Guide through SDK installation (5-10 minutes)
+**Decision tree**:
+
+1. **If SDK found** → Use `demo_quick_start.py` (preferred path)
+2. **If SDK not found** → Check Docker availability:
+   ```bash
+   docker --version 2>/dev/null && echo "Docker found" || echo "Docker not found"
+   ```
+   - **If Docker found** → Offer Docker option: "I can run a live demo using Docker (no installation required). Would you like to do that?"
+     - If YES → Use `demo_quick_start.py` with Docker
+     - If NO → Use `demo_simulation.py` (fallback)
+   - **If Docker not found** → Use `demo_simulation.py` (fallback)
+
+**When using simulation fallback**:
+- Acknowledge: "I don't see Senzing SDK or Docker available. Let me show you a simulation instead."
+- Set expectations: "This simulation demonstrates entity resolution concepts. For a live demo with real Senzing SDK, we can set that up later."
+- After simulation: Offer to help install SDK or Docker for a live demo
 
 ### 2. Choose Sample Dataset
 

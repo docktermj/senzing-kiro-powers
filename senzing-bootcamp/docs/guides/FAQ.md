@@ -58,9 +58,37 @@ Run `./scripts/check_prerequisites.sh` to verify your environment.
 
 ### Do I need a Senzing license?
 
-For Module 0 (Quick Demo), no license is needed - it uses an in-memory database.
+**Module 0 (Quick Demo)**: No license required - uses sample data only.
 
-For Modules 5+ (SDK installation), you'll need a Senzing license. Place it in `licenses/g2.lic`.
+**Modules 5+ (SDK Installation)**: Yes, you'll need a valid Senzing license.
+
+**How to get a license**:
+
+1. **Evaluation License** (Recommended for boot camp):
+   - **Free** for learning and evaluation
+   - Contact: [support@senzing.com](mailto:support@senzing.com)
+   - Mention you're completing the Senzing Boot Camp
+   - Typically received within 1-2 business days
+   - Valid for 30-90 days
+
+2. **Production License** (For production deployments):
+   - Contact: [sales@senzing.com](mailto:sales@senzing.com)
+   - Pricing based on data source records (DSRs)
+   - Includes production support
+
+3. **Already have a license?**:
+   - System-wide: `/etc/opt/senzing/g2.lic` (no action needed)
+   - Project-specific: Place in `licenses/g2.lic`
+
+**Where to place license**: `licenses/g2.lic` in your project directory
+
+**More information**: See `licenses/README.md` for complete licensing guide
+
+**Contact Senzing**:
+- Support: [support@senzing.com](mailto:support@senzing.com)
+- Sales: [sales@senzing.com](mailto:sales@senzing.com)
+- Phone: +1 (702) 425-7756
+- Website: [https://senzing.com/contact/](https://senzing.com/contact/)
 
 ### Where should I put my data files?
 

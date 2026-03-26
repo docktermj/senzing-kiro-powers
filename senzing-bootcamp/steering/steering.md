@@ -136,18 +136,32 @@ Use this workflow when a user wants to see entity resolution in action before wo
 
 2. **Explain the demo**: "Let's run a live demo using sample data so you can see entity resolution in action. We'll actually run the Senzing SDK to load duplicate records and watch them automatically resolve into unique entities. This isn't a simulation - it's the real thing!"
 
-3. **Check for Senzing SDK**: Before proceeding, check if Senzing SDK is available:
+3. **Check for Senzing SDK and choose demo type**: Before proceeding, check if Senzing SDK is available:
    
    ```bash
    # Check if Senzing is installed
    python -c "import senzing" 2>/dev/null && echo "SDK found" || echo "SDK not found"
    ```
    
-   If SDK is not found, offer options:
-   - **Option A (Recommended)**: "I can generate a Docker-based demo that requires no installation. This is the fastest way to see Senzing in action."
-   - **Option B**: "I can guide you through installing the Senzing SDK on your system. This takes about 5-10 minutes."
+   **Decision tree**:
    
-   Wait for user choice before proceeding.
+   1. **If SDK found** → Use live demo with `demo_quick_start.py` (preferred)
+      - "Great! I see Senzing SDK is installed. Let's run a live demo."
+   
+   2. **If SDK not found** → Check Docker availability:
+      ```bash
+      docker --version 2>/dev/null && echo "Docker found" || echo "Docker not found"
+      ```
+      
+      - **If Docker found** → Offer Docker option:
+        - "I can run a live demo using Docker (no installation required). Would you like to do that?"
+        - If YES → Use `demo_quick_start.py` with Docker
+        - If NO → Use `demo_simulation.py` (fallback)
+      
+      - **If Docker not found** → Use simulation fallback:
+        - "I don't see Senzing SDK or Docker available. Let me show you a simulation that demonstrates how entity resolution works."
+        - Use `demo_simulation.py`
+        - After simulation: "This was a simulation. For a live demo with real Senzing SDK, we can set that up later if you'd like."
 
 4. **Choose sample dataset**: Call `get_sample_data` to retrieve one of the CORD datasets:
    - **Las Vegas**: Customer records with duplicates (good for retail/hospitality use cases)

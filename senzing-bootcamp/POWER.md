@@ -127,6 +127,8 @@ Use utility templates from `templates/` directory:
 
 This boot camp connects to the Senzing MCP server and provides access to all entity resolution tools.
 
+**MCP Server Configuration**: This power uses a public Senzing MCP server at `https://mcp.senzing.com/mcp`. No API keys, tokens, or configuration placeholders are needed - the server is ready to use immediately after installing the power.
+
 **Most commonly used tools in this boot camp**:
 
 - `get_capabilities` — Discover all available tools and workflows (call this first)
@@ -384,7 +386,7 @@ my-senzing-project/
 │   ├── raw/                       # Original source data
 │   ├── transformed/               # Senzing-formatted JSON output
 │   ├── samples/                   # Sample data for testing
-│   └── backups/                   # Database backups
+│   └── backups/                   # Database backups (created by user)
 ├── database/                      # SQLite database files
 │   ├── G2C.db                     # Main Senzing database (SQLite)
 │   └── .gitkeep                   # Keep directory in git
@@ -408,9 +410,16 @@ my-senzing-project/
 │   └── scripts/                   # Docker-specific scripts
 ├── logs/                          # Log files
 ├── monitoring/                    # Monitoring and dashboards
+├── requirements.txt               # Python dependencies for your project
 └── README.md                      # Project description
 
 **Important**: All generated source code (transformation programs, loading programs, query programs, utilities, and scripts) should be placed in the `src/` directory structure, not in the project root. Docker files should be placed in the `docker/` directory, never in the project root.
+
+**Note on backups**: The `data/backups/` directory is created by users in their project for storing database backups. This is NOT part of the power distribution itself.
+
+**Note on requirements.txt**: Users should create a `requirements.txt` file in their project root to manage Python dependencies. See `examples/` for reference implementations.
+
+**CRITICAL - SQLite Database Location**: All SQLite databases MUST be placed in `database/G2C.db` (project-relative path). Never use `/tmp/sqlite` or system-wide locations. This allows multiple bootcamp instances to run concurrently on the same machine. See `docs/policies/SQLITE_DATABASE_LOCATION.md` for complete policy.
 ```
 
 **Agent behavior**:
@@ -805,4 +814,66 @@ After completing all modules, you'll have:
 - **For tool documentation**: Use `search_docs` tool or `get_capabilities` for tool list
 - **For error diagnosis**: Use `explain_error_code` tool
 - **For quick reference**: Optionally install the **senzing** power for condensed documentation
+- **For licensing questions**: See `licenses/README.md` or contact Senzing support
 - **For production issues**: Contact Senzing support
+
+### Senzing Contact Information
+
+**Support** (Technical assistance, evaluation licenses):
+- Email: [support@senzing.com](mailto:support@senzing.com)
+- Phone: +1 (702) 425-7756
+- Website: [https://senzing.com/support/](https://senzing.com/support/)
+
+**Sales** (Production licenses, pricing):
+- Email: [sales@senzing.com](mailto:sales@senzing.com)
+- Phone: +1 (702) 425-7756
+- Website: [https://senzing.com/contact/](https://senzing.com/contact/)
+
+**General**:
+- Website: [https://senzing.com](https://senzing.com)
+- Documentation: [https://docs.senzing.com](https://docs.senzing.com)
+
+---
+
+## Version Information
+
+**Current Version**: 1.0.0  
+**Senzing Compatibility**: V4.0  
+**Last Updated**: March 23, 2026
+
+See [CHANGELOG.md](CHANGELOG.md) for complete version history and release notes.
+
+## What's New in v1.0.0 (March 2026)
+
+**Complete Learning Path:**
+- 13 focused modules from quick demo to production deployment
+- Automated data quality scoring
+- Multi-source orchestration
+- Performance testing and optimization
+- Security hardening
+- Monitoring and observability
+- UAT framework
+- Cost calculator
+- Data lineage tracking
+
+**Senzing MCP Server Integration:**
+- Live, always-current Senzing documentation
+- SDK code generation and scaffolding
+- Interactive data mapping workflow (8 steps)
+- Sample data access (CORD datasets)
+- Error code explanations (456+ codes)
+- Working code examples (27 GitHub repositories)
+
+**Kiro Features:**
+- 4 automation hooks for quality and validation
+- 12 ready-to-use code templates
+- 16 steering files for guided workflows
+- 8 user guides
+- 14 module documentation files
+- 3 complete example projects
+
+**Streamlined Distribution:**
+- 50% smaller than initial development version
+- Focused exclusively on boot camp-specific content
+- MCP server provides all Senzing documentation
+- No static content that can become outdated

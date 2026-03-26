@@ -165,7 +165,9 @@ my-senzing-project/
   - IT/DevOps support for deployment
 
 - [ ] **Budget** (if applicable)
-  - Senzing license budget approved
+  - Senzing license obtained or requested (see `licenses/README.md`)
+  - For boot camp: Request free evaluation license from [support@senzing.com](mailto:support@senzing.com)
+  - For production: Contact [sales@senzing.com](mailto:sales@senzing.com) for pricing
   - Infrastructure budget allocated
   - Timeline for procurement
 
@@ -195,7 +197,8 @@ my-senzing-project/
 
 - [ ] **Support Channels**
   - Kiro agent available for guidance
-  - Senzing support contact (if licensed)
+  - Senzing support contact: [support@senzing.com](mailto:support@senzing.com) or +1 (702) 425-7756
+  - Senzing sales contact (for licensing): [sales@senzing.com](mailto:sales@senzing.com)
   - Internal team support identified
 
 ## Quick Validation
