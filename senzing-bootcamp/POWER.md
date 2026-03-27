@@ -1,7 +1,7 @@
 ---
 name: "senzing-bootcamp"
 displayName: "Senzing Boot Camp"
-description: "Comprehensive guided boot camp for Senzing entity resolution. Covers data mapping, SDK setup, loading, performance testing, security hardening, monitoring, and production deployment."
+description: "Guided 13-module boot camp for learning Senzing entity resolution, from first demo to production deployment. Interactive MCP-assisted workflows for data mapping, SDK setup, loading, querying, and deployment."
 keywords: ["senzing", "bootcamp", "training", "tutorial", "learning-path", "entity-resolution", "guided-workflow"]
 author: "Senzing"
 ---
@@ -77,13 +77,16 @@ Connects to the Senzing MCP server (no API keys required):
     "senzing-mcp-server": {
       "url": "https://mcp.senzing.com/mcp",
       "disabled": false,
-      "autoApprove": []
+      "autoApprove": [],
+      "disabledTools": []
     }
   }
 }
 ```
 
 **Server name**: `senzing-mcp-server`
+
+All tools are enabled by default. To disable specific tools, add their names to `disabledTools` (e.g., `["submit_feedback"]`). See <https://kiro.dev/docs/mcp/configuration/> for full configuration options.
 
 ## Available MCP Tools
 
@@ -92,12 +95,13 @@ Always call `get_capabilities` first when starting a session.
 **Core tools:**
 
 - `get_capabilities` — Discover all tools and workflows
-- `mapping_workflow` — Interactive 8-step data mapping to Senzing JSON
+- `mapping_workflow` — Interactive 7-step data mapping to Senzing JSON
 - `generate_scaffold` — Generate SDK code (Python, Java, C#, Rust, TypeScript)
 - `get_sample_data` — Download sample datasets (Las Vegas, London, Moscow)
 - `search_docs` — Search indexed Senzing documentation
 - `explain_error_code` — Diagnose Senzing errors (456 error codes)
 - `analyze_record` — Analyze mapped data quality and coverage
+- `lint_record` — Validate mapped data format against Senzing JSON spec
 - `sdk_guide` — Platform-specific SDK installation and setup
 - `find_examples` — Working code from 27 Senzing GitHub repositories
 - `get_sdk_reference` — SDK method signatures and flags

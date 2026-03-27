@@ -3,7 +3,8 @@
     "senzing-mcp-server": {
       "url": "https://mcp.senzing.com/mcp",
       "disabled": false,
-      "autoApprove": []
+      "autoApprove": [],
+      "disabledTools": []
     }
   }
 }
