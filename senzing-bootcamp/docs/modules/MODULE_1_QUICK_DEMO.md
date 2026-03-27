@@ -8,63 +8,43 @@ This module offers multiple demo options to ensure everyone can see entity resol
 
 **Time**:
 
-- First time (Docker): 15-20 minutes (includes 2-5 min Docker image download)
-- Subsequent runs (Docker): 10-15 minutes
-- Simulation Demo: 5-10 minutes (no setup required)
+- Live Demo (SDK installed): 10-15 minutes
+- Simulation Demo: 5-10 minutes (no SDK required)
 
 **Output**: Working demo showing entity resolution results
 
 ## Prerequisites
 
-### For Docker Demo (Recommended - Real SDK)
+### For Live Demo (Recommended - Real SDK)
 
-- ✅ Docker installed and running (version 20.0+)
-- ✅ 2GB free disk space for Senzing SDK image
-- ✅ Network access to pull Docker images
-- ✅ Proper Docker permissions (ability to run containers)
+- ✅ Module 0 complete (Senzing SDK installed)
+- ✅ Python 3.8+ with senzing package
 
-**First-time setup**: 2-5 minutes to download 1.6GB Docker image
-
-### For Simulation Demo (No Installation - Shows Concepts)
+### For Simulation Demo (No SDK - Shows Concepts)
 
 - ✅ Python 3.8+ installed
 - ✅ No other requirements!
 
 **Setup time**: Instant (no downloads)
 
-**Note**: Simulation demo shows what Senzing would do using pre-computed results. It's perfect for quick preview or when Docker isn't available.
-
-### For Native SDK Demo (Advanced - Real SDK)
-
-- ✅ Senzing SDK installed locally
-- ✅ Python 3.8+ with senzing package
-- ✅ SQLite or PostgreSQL
-
-**Setup time**: 15-30 minutes (SDK installation)
+**Note**: Simulation demo shows what Senzing would do using pre-computed results. Use this if you haven't completed Module 0 yet.
 
 ## Choosing Your Demo Path
 
-**Recommended for most users**: Docker Demo
+**Recommended for most users**: Live Demo (SDK)
 
 - ✓ Real Senzing SDK
-- ✓ No permanent installation
-- ✓ Clean and isolated
-- ⏱ 15-20 minutes first time
+- ✓ Actual entity resolution
+- ✓ Match explanations with confidence scores
+- ⏱ 10-15 minutes
 
 **Best for quick preview**: Simulation Demo
 
-- ✓ No Docker needed
+- ✓ No SDK needed
 - ✓ Instant results
 - ✓ Shows concepts clearly
 - ⚠ Simulation, not real SDK
 - ⏱ 5-10 minutes
-
-**Best for developers**: Native SDK Demo
-
-- ✓ Full SDK capabilities
-- ✓ Better performance
-- ✓ Reusable for later modules
-- ⏱ 10-15 minutes (if SDK already installed)
 
 ## Learning Objectives
 
@@ -80,7 +60,7 @@ By the end of this module, you will:
 
 1. Choose a sample dataset (Las Vegas, London, or Moscow)
 2. Review sample records showing duplicates
-3. Set up Senzing SDK (automatic - uses Docker or local installation)
+3. Verify Senzing SDK is available (installed in Module 0)
 4. Initialize an in-memory SQLite database
 5. Load sample records into Senzing
 6. Query the resolved entities
@@ -114,7 +94,7 @@ By the end of this module, you will:
 
 The generated demo script will:
 
-1. **Check for Senzing SDK** - Detects if SDK is installed, offers Docker alternative
+1. **Verify Senzing SDK** - Confirms SDK is installed from Module 0
 2. **Initialize Senzing** with in-memory SQLite database
 3. **Load sample records** from the chosen dataset (with progress bar)
 4. **Query resolved entities** to show which records matched
@@ -242,34 +222,19 @@ src/quickstart_demo/
 
 ## Running the Demo
 
-The demo runs automatically when you start Module 0. The agent will:
+The demo runs automatically when you start Module 1. The agent will:
 
-1. Check if Senzing SDK is installed
-2. If not installed, offer to:
-   - Use Docker (recommended for quick demo)
-   - Guide you through SDK installation
-3. Generate and run the demo script
-4. Display results in real-time
+1. Verify Senzing SDK is installed (from Module 0)
+2. Generate and run the demo script
+3. Display results in real-time
 
 ### Manual Execution
 
 If you want to run the demo again later:
 
 ```bash
-# Navigate to demo directory
 cd src/quickstart_demo
-
-# Run the demo
 python demo_las_vegas.py
-```
-
-### Using Docker (No Installation Required)
-
-```bash
-# Run demo in Docker container
-docker run -v $(pwd)/src/quickstart_demo:/data \
-  senzing/senzing-tools \
-  python /data/demo_las_vegas.py
 ```
 
 ## What to Look For
@@ -312,7 +277,7 @@ After completing the demo:
 ## Common Questions
 
 **Q: Do I need to install Senzing to run the demo?**
-A: No! The demo can run in Docker with no installation. If you want to install the SDK, the agent will guide you through it.
+A: Yes, the SDK should be installed in Module 0. If you haven't done that yet, the simulation demo can show you the concepts without the SDK.
 
 **Q: Does this actually run Senzing, or is it a simulation?**
 A: This runs the real Senzing SDK! You'll see actual entity resolution happening, not a simulation or mock-up.
@@ -328,144 +293,56 @@ A: Yes, it's optional. Skip to Module 1 if you're ready to start with your data.
 
 ## Troubleshooting Module 0
 
-### Issue: Docker Database Initialization Failed
+### Issue: SDK Not Found
+
+**Symptoms**:
+
+- "ModuleNotFoundError: No module named 'senzing'"
+- SDK check returns "SDK not found"
+
+**Solutions**:
+
+1. **Complete Module 0 first** (SDK Setup)
+   - Module 0 installs the SDK natively
+   - Return to Module 1 after installation
+
+2. **Use Simulation Demo** as a preview
+   - Shows same concepts without SDK
+   - Complete Module 0 later
+
+3. **Check Python environment**
+
+   ```bash
+   pip list | grep senzing
+   python3 -c "import senzing; print(senzing.__version__)"
+   ```
+
+---
+
+### Issue: Database Initialization Failed
 
 **Symptoms**:
 
 - Error: "unable to open database file"
-- Error: "SQLITE3: ERROR (14) cannot open file"
 - Error: "SzDatabaseError - SENZ1001"
-- Database creation fails in Docker container
-
-**Causes**:
-
-- Docker volume mount permission issues
-- SELinux/AppArmor restrictions
-- Insufficient permissions in container
-- File system incompatibility
-
-**Solutions** (try in order):
-
-1. **Use Simulation Demo instead** (Recommended - Instant Solution)
-
-   ```text
-   Ask agent: "Use simulation demo instead"
-   ```
-
-   - ✓ No Docker required
-   - ✓ Shows same concepts
-   - ✓ Instant results
-   - ✓ Always works
-   - ⚠ Simulation, not real SDK
-
-2. **Use in-memory database** (Docker - Automatic)
-   - Agent will automatically try this
-   - No file system permissions needed
-   - Database stored in RAM only
-   - Works around permission issues
-
-3. **Check Docker permissions** (Linux)
-
-   ```bash
-   # Add user to docker group
-   sudo usermod -aG docker $USER
-
-   # Log out and back in, then verify
-   docker ps
-   ```
-
-4. **Disable SELinux temporarily** (Linux only - if applicable)
-
-   ```bash
-   # Check if SELinux is the issue
-   getenforce
-
-   # If "Enforcing", temporarily disable
-   sudo setenforce 0
-
-   # Run demo, then re-enable
-   sudo setenforce 1
-   ```
-
-5. **Try different Docker volume mount** (Advanced)
-   - Agent will try /tmp, /var/tmp, /app
-   - If all fail, use Simulation Demo
-
-**Recommended**: Use Simulation Demo - it's faster and always works!
-
----
-
-### Issue: Docker Not Installed or Not Running
-
-**Symptoms**:
-
-- "docker: command not found"
-- "Cannot connect to the Docker daemon"
-- "Docker is not running"
 
 **Solutions**:
 
-1. **Use Simulation Demo** (Recommended)
-   - No Docker required
-   - Shows same concepts
-   - Instant results
-
-2. **Install Docker**
-   - **macOS**: [Docker Desktop](https://www.docker.com/products/docker-desktop)
-   - **Linux**: `sudo apt install docker.io` (Ubuntu/Debian)
-   - **Windows**: [Docker Desktop](https://www.docker.com/products/docker-desktop)
-
-3. **Start Docker** (if installed but not running)
+1. **Check database directory exists**
 
    ```bash
-   # macOS/Windows: Start Docker Desktop application
-
-   # Linux:
-   sudo systemctl start docker
+   mkdir -p database
    ```
 
-4. **Skip to Module 1**
-   - Come back to Module 0 later
-   - Install SDK in Module 5
-   - See real SDK in Module 6
-
----
-
-### Issue: Docker Image Download is Slow or Stuck
-
-**Symptoms**:
-
-- Download taking >5 minutes
-- Progress appears stuck
-- "Pulling from..." message for long time
-
-**Causes**:
-
-- Slow network connection
-- Large image size (1.6GB)
-- Network congestion
-
-**Solutions**:
-
-1. **Be patient** - 1.6GB image takes time
-   - Expected: 2-5 minutes on good connection
-   - May take 10-15 minutes on slow connection
-
-2. **Check network speed**
+2. **Check file permissions**
 
    ```bash
-   # Test connection
-   ping docker.io
+   ls -la database/
    ```
 
-3. **Use Simulation Demo** (Instant alternative)
-   - No download required
+3. **Use Simulation Demo** as a fallback
+   - No database required
    - Shows same concepts
-   - Continue learning immediately
-
-4. **Try again later**
-   - Network may be congested
-   - Try during off-peak hours
 
 ---
 

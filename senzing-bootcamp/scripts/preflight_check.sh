@@ -75,20 +75,6 @@ else
 fi
 echo ""
 
-# Check Docker
-echo "Checking Docker..."
-if command -v docker &> /dev/null; then
-    if docker ps &> /dev/null; then
-        echo "✅ Docker installed and running"
-    else
-        echo "⚠️  Docker installed but not running or no permissions"
-        ((WARNINGS++))
-    fi
-else
-    echo "ℹ️  Docker not found (optional)"
-fi
-echo ""
-
 # Check PostgreSQL
 echo "Checking PostgreSQL..."
 if command -v psql &> /dev/null; then

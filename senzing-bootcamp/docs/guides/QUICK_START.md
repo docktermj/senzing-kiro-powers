@@ -102,19 +102,19 @@ Get started with Senzing entity resolution in 30 minutes or less.
 
 **"See a demo first"** → Path A (10-Minute Demo)
 
-- Start with Module 0
-- No installation required (Docker)
+- Start with Module 1 (after SDK setup in Module 0)
 - Sample data provided
+- See entity resolution in action
 
 **"Get results fast"** → Path B (30-Minute Fast Track)
 
-- Skip to Module 5 (SDK Setup)
+- Skip to Module 5 (Data Mapping)
 - Requires SGES-compliant data
 - SQLite for quick start
 
 **"Learn properly"** → Path C (2-Hour Complete)
 
-- Start with Module 1
+- Start with Module 2
 - Work with your raw data
 - Complete understanding
 
@@ -165,13 +165,14 @@ Get started with Senzing entity resolution in 30 minutes or less.
 ### For Fast Track (Path B)
 
 - ✅ SGES-formatted data file
-- ✅ Python 3.8+ or Docker
+- ✅ Python 3.8+
+- ✅ Senzing SDK installed (Module 0)
 - ✅ 30 minutes
 
 ### For Complete Beginner (Path C)
 
 - ✅ Raw data file (CSV, JSON, Excel, etc.)
-- ✅ Python 3.8+ or Docker
+- ✅ Python 3.8+
 - ✅ 2-3 hours
 - ✅ Basic understanding of your data
 

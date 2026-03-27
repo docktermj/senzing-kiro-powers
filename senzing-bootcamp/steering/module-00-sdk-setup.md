@@ -4,125 +4,161 @@ inclusion: manual
 
 # Module 0: SDK Installation and Configuration
 
-## Workflow: Quick SDK Test Load — Part A: SDK Installation and Configuration (Module 5)
+Install and configure the Senzing SDK natively on your machine. This is the first step of the boot camp — once the SDK is installed, all subsequent modules use it directly without Docker.
 
-**IMPORTANT**: Before installing, verify Senzing is not already installed to avoid conflicts or duplicate installations.
+**Time**: 30 minutes - 1 hour
 
-1. **Check if Senzing is already installed**:
+**Prerequisites**: None (this is the first module)
 
-   **Python check**:
+## Step 1: Check for Existing Installation
 
-   ```bash
-   python -c "import senzing; print('Senzing version:', senzing.__version__)" 2>/dev/null
-   ```
+Before installing, check if Senzing is already present:
 
-   **System check (Linux/macOS)**:
+```bash
+python3 -c "import senzing; print('Senzing version:', senzing.__version__)" 2>/dev/null
+```
 
-   ```bash
-   # Check for Senzing installation directory
-   ls -la /opt/senzing 2>/dev/null
-   ls -la /etc/opt/senzing 2>/dev/null
+If Senzing is found:
+- Verify the version is compatible (V4.0+)
+- If compatible, skip to Step 4 (verify installation)
+- If incompatible or broken, proceed with installation
 
-   # Check for Senzing Python package
-   pip list | grep senzing
-   ```
+## Step 2: Determine Platform
 
-   **If Senzing is already installed**:
-   - Ask user if they want to use the existing installation
-   - Verify the version is V4.0
-   - Skip to step 4 (verify installation)
-   - If version is not V4.0 or installation is broken, proceed with reinstallation
+Ask: "What platform are you using? Linux, macOS, or Windows?"
 
-2. **Determine the user's platform** (if not already installed):
+WAIT for response before proceeding.
 
-   Ask: "What platform are you using? Linux, macOS, Windows, or would you prefer to use Docker?"
+Use `sdk_guide` with `topic='install'` and the user's platform to get current installation commands. The MCP server always has the latest instructions.
 
-   WAIT for their response before proceeding to installation.
+**Platform options for `sdk_guide`**:
+- `platform='linux_apt'` — Ubuntu/Debian
+- `platform='linux_yum'` — RHEL/CentOS/Fedora
+- `platform='macos_arm'` — macOS (Apple Silicon)
+- `platform='windows'` — Windows
 
-3. **Install Senzing** (if not already installed):
-   - Call `sdk_guide` with `topic='install'` and the detected platform for installation commands
-   - Follow platform-specific installation steps
-   - Accept EULA during installation
+## Step 3: Install Senzing SDK
 
-   **If user chooses Docker deployment**:
-   - Explain that Docker runtime images do NOT include PostgreSQL schema files
-   - For PostgreSQL, must use two-stage initialization pattern:
-     1. Create minimal SQL schema with CORRECT column names:
-        - sys_cfg must use `sys_create_dt` (NOT sys_create_date)
-        - sys_codes_used must include `code_id BIGSERIAL` column
-        - sys_vars structure: (var_group, var_code, var_value)
-     2. Insert sys_vars: VERSION='4.2.1', SCHEMA_VERSION='4.0'
-     3. Use SDK's `set_default_config()` to create remaining tables
-   - **Critical**: Wrong column names cause SENZ1001 errors that block initialization
-   - Container CMD should be `tail -f /dev/null` to keep running
-   - Use `docker exec` to run initialization and loading commands
-   - All Docker files must be created in `docker/` directory
-   - Reference `steering/docker-deployment.md` for complete verified schema examples
+Follow the platform-specific instructions from `sdk_guide`. The typical flow:
 
-4. **Verify the installation is working correctly**:
+1. Add the Senzing package repository
+2. Install the Senzing SDK package
+3. Accept the EULA
+4. Install the Python bindings: `pip install senzing`
 
-   ```python
-   # Test script to verify Senzing installation
-   import senzing
-   from senzing import G2Engine
+**Before recommending any approach**, call `search_docs` with `category='anti_patterns'` to check for known pitfalls on the user's platform.
 
-   print(f"Senzing version: {senzing.__version__}")
+## Step 4: Verify Installation
 
-   # Try to initialize engine
-   try:
-       engine = G2Engine()
-       print("✅ Senzing engine initialized successfully")
-       engine.destroy()
-   except Exception as e:
-       print(f"❌ Error initializing engine: {e}")
-   ```
+Run a verification script:
 
-5. **Configure the engine**:
-   - Call `sdk_guide` with `topic='configure'` for engine configuration
-   - Ask: "Which database would you like to use? SQLite is good for evaluation, PostgreSQL is recommended for production."
-   - WAIT for their response
-   - Register data sources identified in Module 1
-   - Create engine configuration JSON
+```python
+#!/usr/bin/env python3
+"""Verify Senzing SDK installation."""
 
-6. **Test database connection**:
+import senzing
+from senzing import SzEngine
 
-   ```python
-   # Test database connectivity
-   import json
-   from senzing import G2Engine
+print(f"Senzing version: {senzing.__version__}")
 
-   config = {
-       "PIPELINE": {
-           "CONFIGPATH": "/etc/opt/senzing",
-           "RESOURCEPATH": "/opt/senzing/g2/resources",
-           "SUPPORTPATH": "/opt/senzing/data"
-       },
-       "SQL": {
-           "CONNECTION": "sqlite3://na:na@database/G2C.db"
-       }
-   }
+try:
+    engine = SzEngine()
+    print("✅ Senzing engine initialized successfully")
+    engine.destroy()
+except Exception as e:
+    print(f"❌ Error initializing engine: {e}")
+```
 
-   engine = G2Engine()
-   engine.init("TestApp", json.dumps(config), False)
+If verification fails, use `explain_error_code` for any SENZ error codes and `search_docs` for troubleshooting.
 
-   # Try a simple operation
-   stats = engine.getStats()
-   print("✅ Database connection successful")
-   print(f"Stats: {stats}")
+## Step 5: Create Project Directory Structure
 
-   engine.destroy()
-   ```
+Follow the directory creation commands from the agent-instructions steering file. This creates the organized project layout (`data/`, `database/`, `src/`, `docs/`, etc.) that all subsequent modules use.
 
-**Success criteria**:
+After creation, inform the user: "I've set up the project directory structure. All files will be organized properly throughout the boot camp."
 
-- ✅ Senzing installed (or existing installation verified)
+## Step 6: Configure Database
+
+Ask: "Which database would you like to use? SQLite is recommended for learning and evaluation. PostgreSQL is better for production."
+
+WAIT for response.
+
+**For SQLite** (recommended for boot camp):
+- Create the database directory: `mkdir -p database`
+- Database path: `database/G2C.db`
+- No additional setup needed — SQLite is built in
+
+**For PostgreSQL** (production):
+- User needs PostgreSQL installed and running
+- Create a database for Senzing
+- Use `sdk_guide` with `topic='configure'` for PostgreSQL setup
+
+## Step 7: Create Engine Configuration
+
+Create `config/engine_config.json`:
+
+```json
+{
+    "PIPELINE": {
+        "CONFIGPATH": "/etc/opt/senzing",
+        "RESOURCEPATH": "/opt/senzing/er/resources",
+        "SUPPORTPATH": "/opt/senzing/data"
+    },
+    "SQL": {
+        "CONNECTION": "sqlite3://na:na@database/G2C.db"
+    }
+}
+```
+
+Adjust paths based on the user's platform and `sdk_guide` output.
+
+## Step 8: Test Database Connection
+
+```python
+#!/usr/bin/env python3
+"""Test Senzing database connection."""
+
+import json
+from senzing import SzEngine
+
+config_path = "config/engine_config.json"
+with open(config_path) as f:
+    config = json.load(f)
+
+engine = SzEngine()
+engine.initialize("TestApp", json.dumps(config), False)
+print("✅ Database connection successful")
+engine.destroy()
+```
+
+## Success Criteria
+
+- ✅ Senzing SDK installed natively (no Docker)
+- ✅ `import senzing` works in Python
 - ✅ Engine initializes without errors
 - ✅ Database connection works
-- ✅ Data sources registered
+- ✅ Project directory structure created
 
-**Agent behavior**:
+## Transition
+
+Once the SDK is installed and verified, proceed to:
+- **Module 1** (Quick Demo) — see the SDK in action with sample data
+- **Module 2** (Business Problem) — start working with your own data
+
+## Troubleshooting
+
+- Installation fails? Use `explain_error_code` for SENZ errors
+- Platform not supported? Use `search_docs` for alternative installation methods
+- Database errors? Check `docs/policies/SQLITE_DATABASE_LOCATION.md` for path requirements
+- Permission issues? Ensure you have admin/sudo access for installation
+- Missing dependencies? Run `./scripts/check_prerequisites.sh`
+
+## Agent Behavior
 
 - Always check for existing installation first
-- Don't reinstall if compatible version exists
-- Verify installation before proceeding to Module 6
-- If installation fails, check common pitfalls guide
+- Do NOT offer Docker as an installation option — install the SDK natively
+- Use `sdk_guide` MCP tool for current platform-specific instructions
+- Use `search_docs` with `category='anti_patterns'` before recommending approaches
+- Recommend SQLite for evaluation, PostgreSQL for production
+- Always use `database/G2C.db` for SQLite (never `/tmp/sqlite`)
+- Verify installation before proceeding to Module 1

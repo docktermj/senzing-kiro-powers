@@ -24,7 +24,6 @@ Complete this checklist before starting the boot camp to ensure a smooth experie
   mkdir -p tests
   mkdir -p docs/feedback
   mkdir -p config
-  mkdir -p docker/scripts
   mkdir -p logs
   mkdir -p monitoring
   mkdir -p scripts

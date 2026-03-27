@@ -55,7 +55,6 @@ Required:
 
 Optional:
 
-- Docker (for containerized deployment)
 - PostgreSQL (for production databases)
 
 Run `./scripts/check_prerequisites.sh` to verify your environment.
@@ -169,7 +168,6 @@ Use these MCP tools:
 Not for Module 0 (Quick Demo). For Modules 5+, you have options:
 
 - Local installation (Linux, macOS, Windows)
-- Docker container
 - Cloud deployment
 
 Module 5 guides you through installation.
@@ -180,10 +178,6 @@ Module 5 guides you through installation.
 - **PostgreSQL**: Recommended for production and large datasets
 
 Start with SQLite, migrate to PostgreSQL when needed.
-
-### Can I use Docker?
-
-Yes! The boot camp supports Docker deployment. See Module 12 for containerization guidance.
 
 ## Code and Development
 
@@ -386,7 +380,6 @@ Review `docs/policies/FILE_STORAGE_POLICY.md` and move files to correct location
 - Code → `src/`
 - Scripts → `scripts/`
 - Data → `data/`
-- Docker files → `docker/`
 
 ## Collaboration
 
@@ -425,7 +418,6 @@ Module 12 covers deployment:
 
 - On-premises servers
 - Cloud (AWS, Azure, GCP)
-- Docker containers
 - Kubernetes
 
 Module 12 provides guidance for each option.
