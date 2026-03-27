@@ -4,51 +4,51 @@ What you need before starting the boot camp.
 
 ## Hardware
 
-| Resource | Minimum | Recommended | Notes |
-|----------|---------|-------------|-------|
-| **RAM** | 8 GB | 16 GB+ | More helps with larger datasets and production modules |
-| **Disk Space** | 10 GB free | 50 GB+ | Raw data, transformed data, and database all consume space |
-| **CPU** | 2 cores | 4+ cores | Multi-threading improves loading performance |
-| **Network** | Internet access | Broadband | Required for installing packages, pulling Docker images, and accessing documentation |
+| Resource       | Minimum         | Recommended | Notes                                                                                |
+|----------------|-----------------|-------------|--------------------------------------------------------------------------------------|
+| **RAM**        | 8 GB            | 16 GB+      | More helps with larger datasets and production modules                               |
+| **Disk Space** | 10 GB free      | 50 GB+      | Raw data, transformed data, and database all consume space                           |
+| **CPU**        | 2 cores         | 4+ cores    | Multi-threading improves loading performance                                         |
+| **Network**    | Internet access | Broadband   | Required for installing packages, pulling Docker images, and accessing documentation |
 
 ## Software
 
-### Required
+### Required Software
 
-| Software | Minimum Version | Recommended | Purpose |
-|----------|----------------|-------------|---------|
-| **Operating System** | See platform list below | Linux (Ubuntu 22.04) | Senzing SDK host |
-| **Git** | Any recent version | Latest | Version control for your project |
+| Software             | Minimum Version         | Recommended          | Purpose                          |
+|----------------------|-------------------------|----------------------|----------------------------------|
+| **Operating System** | See platform list below | Linux (Ubuntu 22.04) | Senzing SDK host                 |
+| **Git**              | Any recent version      | Latest               | Version control for your project |
 
 Plus **one** of the following SDK languages:
 
-| Language | Minimum Version | Recommended |
-|----------|----------------|-------------|
-| **Python** | 3.8 | 3.11+ |
-| **Java** | 11 | 17+ |
-| **C# (.NET)** | 6.0 | 6.0+ |
-| **Rust** | Stable | Latest stable |
+| Language      | Minimum Version | Recommended   |
+|---------------|-----------------|---------------|
+| **Python**    | 3.8             | 3.11+         |
+| **Java**      | 11              | 17+           |
+| **C# (.NET)** | 6.0             | 6.0+          |
+| **Rust**      | Stable          | Latest stable |
 
 Python is the most common choice and what the bootcamp examples default to. If using Python, you also need `pip` and the ability to create virtual environments (`python -m venv`).
 
 ### Supported Platforms
 
-| Platform | Status |
-|----------|--------|
+| Platform             | Status                                       |
+|----------------------|----------------------------------------------|
 | Ubuntu 20.04 / 22.04 | Fully supported (production and development) |
-| RHEL 8 / 9 | Fully supported (production and development) |
-| Debian 11+ | Fully supported (production and development) |
-| macOS (Intel or ARM) | Development only |
-| Windows (WSL2) | Development only |
-| Docker | Fully supported (any host OS) |
+| RHEL 8 / 9           | Fully supported (production and development) |
+| Debian 11+           | Fully supported (production and development) |
+| macOS (Intel or ARM) | Development only                             |
+| Windows (WSL2)       | Development only                             |
+| Docker               | Fully supported (any host OS)                |
 
 ### Optional but Helpful
 
-| Software | Version | When You Need It |
-|----------|---------|------------------|
-| **Docker** | Any recent version | Recommended for Module 0 quick demo; required if you want to skip native Senzing installation |
-| **PostgreSQL** | 11+ (14+ recommended) | Production deployments (Modules 9-12); SQLite works for evaluation |
-| **tree** | Any | Handy for verifying project directory structure |
+| Software       | Version               | When You Need It                                                                              |
+|----------------|-----------------------|-----------------------------------------------------------------------------------------------|
+| **Docker**     | Any recent version    | Recommended for Module 0 quick demo; required if you want to skip native Senzing installation |
+| **PostgreSQL** | 11+ (14+ recommended) | Production deployments (Modules 9-12); SQLite works for evaluation                            |
+| **tree**       | Any                   | Handy for verifying project directory structure                                               |
 
 ## Experience
 
@@ -85,12 +85,12 @@ If you don't have your own data yet, Module 0 provides sample datasets so you ca
 
 ## Time Commitment
 
-| Path | Modules | Time |
-|------|---------|------|
-| Quick Evaluation | 0, 1, 2, 4, 5, 6, 8 | 4-6 hours |
-| Single Source PoC | 1, 2, 3, 4, 5, 6, 8 | 6-8 hours |
-| Multi-Source PoC | 1-8 | 8-12 hours |
-| Full Production Deployment | 0-12 (all) | 10-18 hours |
+| Path                       | Modules             | Time        |
+|----------------------------|---------------------|-------------|
+| Quick Evaluation           | 0, 1, 2, 4, 5, 6, 8 | 4-6 hours   |
+| Single Source PoC          | 1, 2, 3, 4, 5, 6, 8 | 6-8 hours   |
+| Multi-Source PoC           | 1-8                 | 8-12 hours  |
+| Full Production Deployment | 0-12 (all)          | 10-18 hours |
 
 Modules can be completed across multiple sessions.
 

@@ -5,9 +5,11 @@ This directory contains guides for power developers and maintainers, not for boo
 ## Agent Implementation Guides
 
 ### MODULE_0_AGENT_GUIDE.md
-**Purpose**: Step-by-step instructions for agents running Module 0 (Quick Demo)  
-**Audience**: AI agents implementing the boot camp  
+
+**Purpose**: Step-by-step instructions for agents running Module 0 (Quick Demo)
+**Audience**: AI agents implementing the boot camp
 **Contents**:
+
 - Critical requirements for Module 0
 - Quick start checklist
 - Step-by-step workflow
@@ -18,9 +20,11 @@ This directory contains guides for power developers and maintainers, not for boo
 **Why here**: This is implementation documentation for agents, not user-facing guidance.
 
 ### FEEDBACK_WORKFLOW.md
-**Purpose**: Guide for agents to collect structured feedback from users  
-**Audience**: AI agents implementing feedback collection  
+
+**Purpose**: Guide for agents to collect structured feedback from users
+**Audience**: AI agents implementing feedback collection
 **Contents**:
+
 - Feedback workflow steps
 - Question templates
 - Formatting guidelines
@@ -65,25 +69,25 @@ These guides duplicate information that the Senzing MCP Server provides dynamica
 
 These are internal development notes, not user-facing guides:
 
-7. **PATH_SELECTION_FIX.md** - Bug fix documentation
+1. **PATH_SELECTION_FIX.md** - Bug fix documentation
    - **Why Removed**: Internal development note about fixing path selection ambiguity
 
-8. **MODULE_COMPLETION_TRACKER.md** - Detailed completion tracker
+2. **MODULE_COMPLETION_TRACKER.md** - Detailed completion tracker
    - **Why Removed**: Duplicate of PROGRESS_TRACKER.md
 
-9. **INSTALLATION_VERIFICATION.md** - Installation verification policy
+3. **INSTALLATION_VERIFICATION.md** - Installation verification policy
    - **Why Removed**: Internal policy document, not a user guide
 
-10. **EXECUTIVE_SUMMARY.md** + **EXECUTIVE_SUMMARY.pdf** - Marketing material
+4. **EXECUTIVE_SUMMARY.md** + **EXECUTIVE_SUMMARY.pdf** - Marketing material
     - **Why Removed**: Marketing/sales material, not operational guide
 
-11. **PREFLIGHT_CHECKLIST.md** - Pre-flight checklist
+5. **PREFLIGHT_CHECKLIST.md** - Pre-flight checklist
     - **Why Removed**: Duplicate of ONBOARDING_CHECKLIST.md
 
-12. **QUICK_REFERENCE_CARD.md** - One-page reference
+6. **QUICK_REFERENCE_CARD.md** - One-page reference
     - **Why Removed**: Duplicate of steering/quick-reference.md
 
-13. **VISUAL_GUIDE.md** - Diagrams and flowcharts
+7. **VISUAL_GUIDE.md** - Diagrams and flowcharts
     - **Why Removed**: Optional visual aids, not essential
 
 ## What Remains in the Power (User-Facing)
@@ -116,6 +120,7 @@ Agent and developer guides are in `senzing-bootcamp-power-development/guides/`:
 ## For Maintainers
 
 If you need to reference these guides:
+
 - They're preserved here for historical context
 - Consider whether new guides duplicate MCP server functionality
 - Ask: "Can the MCP server provide this information dynamically?"
@@ -125,13 +130,13 @@ If you need to reference these guides:
 
 Instead of static guides, use these MCP tools:
 
-| Removed Guide | MCP Tool | Parameters |
-|---------------|----------|------------|
-| COMPATIBILITY_MATRIX | `get_capabilities` | version="current" |
-| PREREQUISITES | `sdk_guide` | topic="install", platform=... |
-| FAQ | `search_docs` | query=..., version="current" |
-| PERFORMANCE_TUNING | `search_docs` | query=..., category="performance" |
-| DOCKER_QUICK_START | `sdk_guide` | topic="install", platform="docker" |
+| Removed Guide        | MCP Tool           | Parameters                         |
+|----------------------|--------------------|------------------------------------|
+| COMPATIBILITY_MATRIX | `get_capabilities` | version="current"                  |
+| PREREQUISITES        | `sdk_guide`        | topic="install", platform=...      |
+| FAQ                  | `search_docs`      | query=..., version="current"       |
+| PERFORMANCE_TUNING   | `search_docs`      | query=..., category="performance"  |
+| DOCKER_QUICK_START   | `sdk_guide`        | topic="install", platform="docker" |
 
 ## Version History
 

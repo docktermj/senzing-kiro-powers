@@ -105,6 +105,7 @@
     "mgmt",
     "mktemp",
     "mmap",
+    "mmdc",
     "myapp",
     "mypy",
     "ncpu",

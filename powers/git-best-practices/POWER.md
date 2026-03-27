@@ -27,6 +27,7 @@ This power provides essential Git workflows and best practices to help you maint
 **Goal:** Create a new feature branch and start development
 
 **Commands:**
+
 ```bash
 # Update main branch
 git checkout main
@@ -40,6 +41,7 @@ git branch
 ```
 
 **Best Practices:**
+
 - Use descriptive branch names: `feature/`, `bugfix/`, `hotfix/` prefixes
 - Always start from an updated main branch
 - Keep branch names lowercase with hyphens
@@ -49,6 +51,7 @@ git branch
 **Goal:** Create clear, atomic commits
 
 **Commands:**
+
 ```bash
 # Check what's changed
 git status
@@ -65,7 +68,8 @@ git add -p
 ```
 
 **Commit Message Format:**
-```
+
+```text
 <type>: <subject>
 
 <body (optional)>
@@ -74,6 +78,7 @@ git add -p
 ```
 
 **Examples:**
+
 - `feat: Add user login endpoint`
 - `fix: Resolve memory leak in data processing`
 - `docs: Update API documentation for v2.0`
@@ -84,6 +89,7 @@ git add -p
 **Goal:** Keep your branch up to date with remote changes
 
 **Commands:**
+
 ```bash
 # Fetch latest changes
 git fetch origin
@@ -112,6 +118,7 @@ git push origin feature/user-authentication --force-with-lease
 ## Common Mistakes to Avoid
 
 ### ❌ Mistake: Committing directly to main
+
 ```bash
 # Bad
 git checkout main
@@ -119,6 +126,7 @@ git commit -m "Quick fix"
 ```
 
 ### ✅ Solution: Always use a branch
+
 ```bash
 # Good
 git checkout -b hotfix/critical-bug
@@ -126,6 +134,7 @@ git commit -m "Fix critical authentication bug"
 ```
 
 ### ❌ Mistake: Vague commit messages
+
 ```bash
 # Bad
 git commit -m "Fixed stuff"
@@ -133,6 +142,7 @@ git commit -m "Updates"
 ```
 
 ### ✅ Solution: Be specific and descriptive
+
 ```bash
 # Good
 git commit -m "Fix null pointer exception in user profile loader"
@@ -144,6 +154,7 @@ git commit -m "Update dependencies to resolve security vulnerabilities"
 ### Problem: Accidentally committed to wrong branch
 
 **Solution:**
+
 ```bash
 # Move the commit to a new branch
 git branch feature/my-work
@@ -154,6 +165,7 @@ git checkout feature/my-work
 ### Problem: Need to undo last commit
 
 **Solution:**
+
 ```bash
 # Keep changes, undo commit
 git reset --soft HEAD~1
@@ -165,6 +177,7 @@ git reset --hard HEAD~1
 ### Problem: Merge conflicts
 
 **Solution:**
+
 ```bash
 # See conflicted files
 git status

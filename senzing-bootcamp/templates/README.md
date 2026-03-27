@@ -12,6 +12,7 @@ Utility templates for database management, data collection, validation, and plan
 - **SDK initialization** → Use `generate_scaffold(workflow="initialize")`
 
 **Why?** MCP-generated code is:
+
 - Always current with latest SDK version
 - Available in 5 languages (Python, Java, C#, Rust, TypeScript)
 - Follows current Senzing best practices
@@ -24,12 +25,14 @@ Utility templates for database management, data collection, validation, and plan
 ### Quick Demo Templates
 
 #### demo_quick_start.py ⭐ RECOMMENDED - Module 0
+
 **Purpose**: Live demonstration of Senzing entity resolution with sample data
 **Use when**: Module 0 (Quick Demo), first-time users, demonstrations
 **Features**: Actually runs Senzing SDK, shows before/after, displays match explanations
 **Complexity**: Beginner
 **Prerequisites**: Senzing SDK installed OR Docker available
 **Usage**:
+
 ```bash
 # Run the demo
 python templates/demo_quick_start.py
@@ -39,6 +42,7 @@ docker run -v $(pwd):/data senzing/senzing-tools python /data/templates/demo_qui
 ```
 
 **What it does**:
+
 - Displays 5 sample records with obvious duplicates
 - Initializes Senzing with in-memory database
 - Loads records and resolves entities
@@ -47,18 +51,21 @@ docker run -v $(pwd):/data senzing/senzing-tools python /data/templates/demo_qui
 - Creates the "aha moment" for new users
 
 #### demo_simulation.py ⭐ NEW - Module 0 Fallback
+
 **Purpose**: Simulated demonstration when Senzing SDK is not available
 **Use when**: Module 0 (Quick Demo), Docker unavailable, SDK installation issues
 **Features**: Pure Python simulation, no dependencies, shows entity resolution concepts
 **Complexity**: Beginner
 **Prerequisites**: Python 3.8+ only (no Senzing SDK required)
 **Usage**:
+
 ```bash
 # Run the simulation
 python templates/demo_simulation.py
 ```
 
 **What it does**:
+
 - Displays 5 sample records with obvious duplicates
 - Simulates entity resolution logic
 - Shows which records would match and WHY
@@ -67,6 +74,7 @@ python templates/demo_simulation.py
 - Perfect fallback when SDK unavailable
 
 **When to use each**:
+
 - Use `demo_quick_start.py` when Senzing SDK is available (preferred)
 - Use `demo_simulation.py` when SDK is not available or Docker fails
 - Agent automatically chooses based on environment
@@ -74,11 +82,13 @@ python templates/demo_simulation.py
 ### Database Management Templates
 
 #### backup_database.py ⭐ IMPORTANT
+
 **Purpose**: Backup SQLite and PostgreSQL databases
 **Use when**: Before loading data, before major changes
 **Features**: Auto-generates timestamped backups, compression
 **Complexity**: Beginner
 **Usage**:
+
 ```bash
 # SQLite
 python templates/backup_database.py \
@@ -94,11 +104,13 @@ python templates/backup_database.py \
 ```
 
 #### restore_database.py
+
 **Purpose**: Restore databases from backups
 **Use when**: Recovering from errors, rolling back changes
 **Features**: Confirmation prompts, safety checks
 **Complexity**: Beginner
 **Usage**:
+
 ```bash
 # SQLite
 python templates/restore_database.py \
@@ -114,11 +126,13 @@ python templates/restore_database.py \
 ```
 
 #### rollback_load.py
+
 **Purpose**: Guidance for rolling back data loads
 **Use when**: Need to undo a data load
 **Features**: Explains rollback strategies, recommends backup/restore
 **Complexity**: Beginner
 **Usage**:
+
 ```bash
 python templates/rollback_load.py \
   --data-source CUSTOMERS \
@@ -128,11 +142,13 @@ python templates/rollback_load.py \
 ### Data Collection Templates
 
 #### collect_from_csv.py
+
 **Purpose**: Collect and sample CSV data sources
 **Use when**: Module 2 (data collection), working with CSV files
 **Features**: Auto-detects delimiter and encoding, creates samples
 **Complexity**: Beginner
 **Usage**:
+
 ```bash
 python templates/collect_from_csv.py \
   --input data/raw/customers.csv \
@@ -141,11 +157,13 @@ python templates/collect_from_csv.py \
 ```
 
 #### collect_from_json.py
+
 **Purpose**: Collect and sample JSON data sources
 **Use when**: Module 2 (data collection), working with JSON files
 **Features**: Handles JSON and JSON Lines formats, creates samples
 **Complexity**: Beginner
 **Usage**:
+
 ```bash
 python templates/collect_from_json.py \
   --input data/raw/customers.json \
@@ -154,11 +172,13 @@ python templates/collect_from_json.py \
 ```
 
 #### collect_from_api.py
+
 **Purpose**: Collect data from REST APIs with pagination
 **Use when**: Module 2 (data collection), API data sources
 **Features**: Pagination, authentication, rate limiting, retry logic
 **Complexity**: Intermediate
 **Usage**:
+
 ```bash
 python templates/collect_from_api.py \
   --url "https://api.example.com/customers" \
@@ -168,11 +188,13 @@ python templates/collect_from_api.py \
 ```
 
 #### collect_from_database.py
+
 **Purpose**: Extract data from databases
 **Use when**: Module 2 (data collection), database sources
 **Features**: Supports PostgreSQL, MySQL, SQLite, SQL Server, Oracle
 **Complexity**: Intermediate
 **Usage**:
+
 ```bash
 python templates/collect_from_database.py \
   --db-type postgresql \
@@ -184,11 +206,13 @@ python templates/collect_from_database.py \
 ### Validation & Testing Templates
 
 #### validate_schema.py ⭐ HIGH PRIORITY
+
 **Purpose**: Validate PostgreSQL and SQLite database schemas
 **Use when**: Before loading data, troubleshooting schema issues
 **Features**: Checks required tables, validates column names, provides SQL fixes
 **Complexity**: Beginner
 **Usage**:
+
 ```bash
 # PostgreSQL
 python templates/validate_schema.py --database postgresql \
@@ -200,22 +224,26 @@ python templates/validate_schema.py --database sqlite \
 ```
 
 #### performance_baseline.py
+
 **Purpose**: Quick performance testing and baseline metrics
 **Use when**: After SDK setup, before production deployment
 **Features**: Tests loading and query performance, provides interpretation
 **Complexity**: Beginner
 **Usage**:
+
 ```bash
 python templates/performance_baseline.py \
   --config-json '{"SQL":{"CONNECTION":"sqlite3://na:na@database/G2C.db"}}'
 ```
 
 #### troubleshoot.py
+
 **Purpose**: Interactive troubleshooting wizard
 **Use when**: Encountering errors, systematic problem diagnosis
 **Features**: Guided questions, specific solutions, diagnostic checks
 **Complexity**: Beginner
 **Usage**:
+
 ```bash
 python templates/troubleshoot.py
 ```
@@ -223,11 +251,13 @@ python templates/troubleshoot.py
 ### Planning & Analysis Templates
 
 #### cost_calculator.py
+
 **Purpose**: Interactive cost estimation for Senzing projects
 **Use when**: Module 1 (planning), stakeholder presentations
 **Features**: DSR licensing, infrastructure costs, time estimates
 **Complexity**: Beginner
 **Usage**:
+
 ```bash
 # Interactive mode
 python templates/cost_calculator.py --interactive
@@ -246,7 +276,7 @@ python templates/cost_calculator.py \
 
 Use the `mapping_workflow` MCP tool for interactive data mapping:
 
-```
+```text
 Agent: Call mapping_workflow(action="start", file_paths=["data/raw/customers.csv"])
 → Follow the 7-step interactive workflow
 → Agent generates transformation code automatically
@@ -260,7 +290,7 @@ Agent: Call mapping_workflow(action="start", file_paths=["data/raw/customers.csv
 
 Use the `generate_scaffold` MCP tool:
 
-```
+```text
 Agent: Call generate_scaffold(
   language="python",
   workflow="add_records",
@@ -276,7 +306,7 @@ Agent: Call generate_scaffold(
 
 Use the `generate_scaffold` MCP tool:
 
-```
+```text
 Agent: Call generate_scaffold(
   language="python",
   workflow="full_pipeline",
@@ -301,7 +331,7 @@ cp senzing-bootcamp/templates/backup_database.py src/utils/
 
 ### Option 2: Ask the Agent
 
-```
+```text
 "Create a backup script for my SQLite database"
 "Help me collect data from a REST API"
 "Validate my PostgreSQL schema"
@@ -312,6 +342,7 @@ The agent will customize the template for your specific needs.
 ### Option 3: Use as Reference
 
 Browse templates to understand:
+
 - Code structure
 - Best practices
 - Error handling patterns
@@ -320,6 +351,7 @@ Browse templates to understand:
 ## Template Structure
 
 Each template includes:
+
 - **Header comments**: Purpose and usage
 - **Configuration section**: Easy-to-modify settings
 - **Core logic**: Well-documented implementation
@@ -340,6 +372,7 @@ Each template includes:
 ### Template Modifications
 
 **Do**:
+
 - ✅ Adjust file paths and connection strings
 - ✅ Add custom validation
 - ✅ Enhance error messages
@@ -347,6 +380,7 @@ Each template includes:
 - ✅ Customize for your environment
 
 **Don't**:
+
 - ❌ Remove error handling
 - ❌ Skip logging
 - ❌ Hard-code credentials
@@ -356,16 +390,19 @@ Each template includes:
 ## Troubleshooting
 
 **Template doesn't work**:
+
 - Check you've customized all required sections
 - Verify file paths are correct
 - Ensure required tools are installed (pg_dump for PostgreSQL backups)
 
 **Import errors**:
+
 - Install required packages: `pip install -r requirements.txt`
 - Check Python version (3.8+)
 - Verify dependencies are available
 
 **Permission errors**:
+
 - Check file permissions
 - Ensure database user has required privileges
 - Verify backup directory is writable

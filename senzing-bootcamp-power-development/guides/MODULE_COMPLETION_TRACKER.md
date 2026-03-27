@@ -39,7 +39,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 
 **Time Estimate**: 20-30 minutes
 
-### Completion Criteria
+### Module 1: Completion Criteria
 
 - [ ] Identified business problem
 - [ ] Selected design pattern (if applicable)
@@ -49,7 +49,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 - [ ] Set up project directory structure
 - [ ] Initialized git repository (optional)
 
-### Deliverables
+### Module 1: Deliverables
 
 - [ ] Document: `docs/business_problem.md`
 - [ ] Updated: `README.md`
@@ -66,7 +66,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 
 **Time Estimate**: 10-15 minutes per data source
 
-### Completion Criteria
+### Module 2: Completion Criteria
 
 - [ ] Collected all identified data sources
 - [ ] Stored data in `data/raw/` directory
@@ -75,7 +75,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 - [ ] Verified data accessibility
 - [ ] Tracked data lineage (optional)
 
-### Deliverables
+### Module 2: Deliverables
 
 - [ ] Data files in `data/raw/`
 - [ ] Sample files in `data/samples/`
@@ -97,7 +97,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 
 **Time Estimate**: 15-20 minutes per data source
 
-### Completion Criteria
+### Module 3: Completion Criteria
 
 - [ ] Assessed quality for all sources
 - [ ] Generated quality scores (0-100)
@@ -105,7 +105,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 - [ ] Created quality report
 - [ ] Determined if sources need mapping
 
-### Deliverables
+### Module 3: Deliverables
 
 - [ ] Document: `docs/data_quality_report.md`
 - [ ] Quality scores for each source
@@ -126,7 +126,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 
 **Time Estimate**: 1-2 hours per data source
 
-### Completion Criteria
+### Module 4: Completion Criteria
 
 - [ ] Created transformation programs for all sources
 - [ ] Validated transformations with `lint_record`
@@ -135,7 +135,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 - [ ] Documented mapping specifications
 - [ ] Tracked transformation lineage (optional)
 
-### Deliverables
+### Module 4: Deliverables
 
 - [ ] Transformation programs in `src/transform/`
 - [ ] Transformed data in `data/transformed/`
@@ -157,7 +157,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 
 **Time Estimate**: 30 minutes - 1 hour
 
-### Completion Criteria
+### Module 5: Completion Criteria
 
 - [ ] Checked if Senzing already installed
 - [ ] Installed Senzing SDK (if needed)
@@ -167,7 +167,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 - [ ] Verified installation with test script
 - [ ] Documented configuration
 
-### Deliverables
+### Module 5: Deliverables
 
 - [ ] Senzing installed and verified
 - [ ] Configuration: `config/senzing_config.json`
@@ -186,7 +186,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 
 **Time Estimate**: 30 minutes per source
 
-### Completion Criteria
+### Module 6: Completion Criteria
 
 - [ ] Created loading program
 - [ ] Tested with sample data (100 records)
@@ -195,7 +195,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 - [ ] Verified record counts
 - [ ] Reviewed error logs (< 1% errors)
 
-### Deliverables
+### Module 6: Deliverables
 
 - [ ] Loading program: `src/load/load___________.py`
 - [ ] Loading statistics documented
@@ -219,7 +219,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 
 **Skip if**: Single data source only
 
-### Completion Criteria
+### Module 7: Completion Criteria
 
 - [ ] Analyzed data source dependencies
 - [ ] Created loading strategy
@@ -229,7 +229,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 - [ ] Verified cross-source matches
 - [ ] Documented orchestration approach
 
-### Deliverables
+### Module 7: Deliverables
 
 - [ ] Orchestrator: `src/load/orchestrator.py`
 - [ ] Document: `docs/loading_strategy.md`
@@ -250,7 +250,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 
 **Time Estimate**: 1-2 hours
 
-### Completion Criteria
+### Module 8: Completion Criteria
 
 - [ ] Created query programs
 - [ ] Ran exploratory queries
@@ -260,7 +260,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 - [ ] Documented findings
 - [ ] Resolved or documented issues
 
-### Deliverables
+### Module 8: Deliverables
 
 - [ ] Query programs in `src/query/`
 - [ ] Document: `docs/uat_test_cases.md`
@@ -284,7 +284,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 
 **Skip if**: Not deploying to production
 
-### Completion Criteria
+### Module 9: Completion Criteria
 
 - [ ] Defined performance requirements
 - [ ] Benchmarked transformation
@@ -295,7 +295,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 - [ ] Identified and addressed bottlenecks
 - [ ] Created performance report
 
-### Deliverables
+### Module 9: Deliverables
 
 - [ ] Performance tests in `tests/performance/`
 - [ ] Document: `docs/performance_report.md`
@@ -318,7 +318,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 
 **Skip if**: Not deploying to production
 
-### Completion Criteria
+### Module 10: Completion Criteria
 
 - [ ] Assessed security requirements
 - [ ] Implemented secrets management
@@ -330,7 +330,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 - [ ] Completed security checklist
 - [ ] Conducted security review (optional)
 
-### Deliverables
+### Module 10: Deliverables
 
 - [ ] Security code in `src/security/`
 - [ ] Document: `docs/security_checklist.md`
@@ -350,7 +350,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 
 **Skip if**: Not deploying to production
 
-### Completion Criteria
+### Module 11: Completion Criteria
 
 - [ ] Selected monitoring stack
 - [ ] Implemented metrics collection
@@ -362,7 +362,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 - [ ] Created runbooks
 - [ ] Tested monitoring
 
-### Deliverables
+### Module 11: Deliverables
 
 - [ ] Monitoring code in `src/monitoring/`
 - [ ] Dashboards in `monitoring/grafana/dashboards/`
@@ -383,7 +383,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 
 **Skip if**: Not deploying to production
 
-### Completion Criteria
+### Module 12: Completion Criteria
 
 - [ ] Refactored code into package
 - [ ] Created setup.py
@@ -396,7 +396,7 @@ Track your progress through the Senzing Boot Camp with completion criteria and c
 - [ ] Deployed to production
 - [ ] Created operations documentation
 
-### Deliverables
+### Module 12: Deliverables
 
 - [ ] Package structure organized
 - [ ] File: `setup.py`
